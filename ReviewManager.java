@@ -1,3 +1,4 @@
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -8,6 +9,7 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import com.google.gson.stream.JsonReader;
 
 public class ReviewManager {
     private static final String REVIEW_FILE_PATH = "JSON/Review.json";
@@ -32,5 +34,56 @@ public class ReviewManager {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        // Incrementa le review effettuate da quel determinato utente
+        loggedUser.setNumReview(loggedUser.getNumReview() + 1);
+    }
+
+    public int getNumReviewByUsername (String username) {
+        String fieldName, existingUsername = null;
+        int numReview = 0;
+
+        try (JsonReader jsonReader = new JsonReader(new FileReader(REVIEW_FILE_PATH))) {
+            jsonReader.beginObject(); // Assume che il file JSON inizi con un oggetto
+    
+            while (jsonReader.hasNext()) {
+                String key = jsonReader.nextName();
+    
+                if ("reviews".equals(key)) {
+                    jsonReader.beginArray(); // Assume che "reviews" sia un array
+    
+                    // Itera attraverso gli oggetti nell'array
+                    while (jsonReader.hasNext()) {
+                        jsonReader.beginObject(); // Inizia a leggere un oggetto
+    
+                        // Leggi le proprietà dell'oggetto
+                        while (jsonReader.hasNext()) {
+                            fieldName = jsonReader.nextName();
+                            if ("username".equals(fieldName)) {
+                                existingUsername = jsonReader.nextString();
+                            } else {
+                                jsonReader.skipValue(); // Ignora il valore di altri campi
+                            }
+                        }
+    
+                        jsonReader.endObject(); // Fine dell'oggetto
+    
+                        // Verifica se l'username corrente corrisponde a quello cercato
+                        if (existingUsername != null && existingUsername.equals(username)) {
+                            numReview++;
+                        }
+                    }
+                    jsonReader.endArray(); // Fine dell'array
+                } else {
+                    jsonReader.skipValue();
+                }
+            }
+    
+            jsonReader.endObject();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    
+        return numReview;
     }
 }

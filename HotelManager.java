@@ -6,9 +6,8 @@ import com.google.gson.stream.JsonReader;
 public class HotelManager {
     private static final String HOTELS_FILE_PATH = "JSON/Hotels.json";
 
-    public String[] searchHotel (String nomeHotel, String citta) {
-        String existingHotel = "", existingCity = "", fieldName = "";
-        String[] res = {"",""}; //{NomeHotel, Citta}
+    public String searchHotel (String nomeHotel, String citta) {
+        String existingHotel = null, existingCity = "", fieldName = "";
 
         try (JsonReader jsonReader = new JsonReader(new FileReader(HOTELS_FILE_PATH))) {
             jsonReader.beginArray(); // Inizia a leggere l'array
@@ -32,20 +31,17 @@ public class HotelManager {
                 jsonReader.endObject(); // Fine dell'oggetto
 
                 // Controlla se l'hotel corrente ha il nome cercato ed è nella città richiesta
-                if (existingHotel != null && existingHotel.equalsIgnoreCase(nomeHotel)) {
-                    res[0] = nomeHotel;
-                    if (existingCity.equalsIgnoreCase(citta)) {
-                        res[1] = citta;
-                    }
+                if (existingHotel != null && existingHotel.equalsIgnoreCase(nomeHotel) && existingCity.equalsIgnoreCase(citta)) {
+                    return existingHotel;
                 }
             }
-
+            
             jsonReader.endArray(); // Fine dell'array
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-        return res;
+        return "";
     }
     
 }

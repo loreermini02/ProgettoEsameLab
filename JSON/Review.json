@@ -1,5 +1,14 @@
 {
-    "reviews": [
-        
-    ]
+  "reviews": [
+    {
+      "username": "Lorenzo",
+      "globalScore": 1,
+      "singleScores": [
+        1,
+        1,
+        1,
+        1
+      ]
+    }
+  ]
 }

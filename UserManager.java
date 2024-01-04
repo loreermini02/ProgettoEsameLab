@@ -41,7 +41,7 @@ public class UserManager {
     }
 
     public String[] checkUsername(String username) {
-        String existingUsername = "", password = "", fieldName = "";
+        String existingUsername = null, password = "", fieldName = "";
         String[] result = {"",""};
 
         try (JsonReader jsonReader = new JsonReader(new FileReader(USERS_FILE_PATH))) {
@@ -89,7 +89,6 @@ public class UserManager {
             jsonReader.endObject();
         } catch (IOException e) {
             e.printStackTrace();
-            // Gestione dell'errore (ad esempio, registrazione fallita)
         }
     
         result[0] = "";

@@ -175,7 +175,13 @@ public class ClientMain {
         
     }
 
-    private static void showBadges() {}
+    private static void showBadges() {
+        String serverResponse;
+
+        outputStream.println("SHOW_BADGE");
+        serverResponse = inputStream.nextLine();
+        System.out.printf("\n%s\n", serverResponse);
+    }
 
     private static void insertReview(Scanner userInput) {
         String nomeHotel = "", nomeCitta = "", serverResponse = "";
@@ -183,36 +189,38 @@ public class ClientMain {
         int[] singleScores = {0,0,0,0};
 
         System.out.println("\n RECENSIONE:\n");
+    
+        do {
+            System.out.print("Inserire Nome Hotel: ");
+            nomeHotel = userInput.nextLine();
+    
+            System.out.print("Inserire Nome Città: ");
+            nomeCitta = userInput.nextLine();
+
+            outputStream.println("INSERT_REVIEW");
+            outputStream.println(nomeHotel);
+            outputStream.println(nomeCitta);
+
+            serverResponse = inputStream.nextLine();
+
+            if (serverResponse.equals("WRONG_HOTEL")){
+                System.out.printf("\nHotel (%s) non trovato! Riprova...\n\n", nomeHotel);
+            }
+        }while(!serverResponse.equals("HOTEL_FOUND"));
         
-        System.out.print("Inserire Nome Hotel: ");
-        nomeHotel = userInput.nextLine();
-
-        System.out.print("Inserire Nome Città: ");
-        nomeCitta = userInput.nextLine();
-
         globalScore = valueCheck(userInput, "Inserire Global Score (0-5): ", 0, 5);
         singleScores[0] = valueCheck(userInput, "Inserire Single Score per Posizione (0-5): ", 0, 5);
         singleScores[1] = valueCheck(userInput, "Inserire Single Score per Pulizia (0-5): ", 0, 5);
         singleScores[2] = valueCheck(userInput, "Inserire Single Score per Servizio (0-5): ", 0, 5);
         singleScores[3] = valueCheck(userInput, "Inserire Single Score per Qualità (0-5): ", 0, 5);
-
-        outputStream.println("INSERT_REVIEW");
-        outputStream.println(nomeHotel);
-        outputStream.println(nomeCitta);
         outputStream.println(globalScore);
         outputStream.println(singleScores[0]);
         outputStream.println(singleScores[1]);
         outputStream.println(singleScores[2]);
         outputStream.println(singleScores[3]);
-
+        
         serverResponse = inputStream.nextLine();
-        if (serverResponse.equals("WRONG_HOTEL_and_CITY")) {
-            System.out.printf("Hotel (%s) e Città (%s) non esistenti!\n", nomeHotel, nomeCitta);
-        } else if (serverResponse.equals("WRONG_HOTEL")) {
-            System.out.printf("Hotel (%s) non esistente!\n", nomeHotel);            
-        } else if (serverResponse.equals("WRONG_CITY")) {
-            System.out.printf("Città (%s) non esistente!\n", nomeCitta);            
-        } else if (serverResponse.equals("ACCEPT")) {
+        if (serverResponse.equals("ACCEPT")) {
             System.out.println("\nNuova recensione aggiunta con successo!");
         }
     }
