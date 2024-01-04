@@ -21,7 +21,7 @@ public class ClientHandle implements Runnable {
     @Override
     public void run() {
         String clientCommand = "";
-        LoggedUser loggedUser;
+        LoggedUser loggedUser = null;
 
         try (Scanner inputStream = new Scanner(clientSocket.getInputStream())) {
             while (inputStream.hasNextLine()) {
@@ -37,7 +37,7 @@ public class ClientHandle implements Runnable {
                 }
                 // INSERT REVIEW
                 else if (clientCommand.equals("INSERT_REVIEW")) {
-                    insertReview(inputStream);
+                    insertReview(inputStream, loggedUser);
                 }
             }
         } catch (Exception e) {
@@ -88,7 +88,7 @@ public class ClientHandle implements Runnable {
         return loggedUser;
     }
 
-    private void insertReview(Scanner inputStream) {
+    private void insertReview(Scanner inputStream, LoggedUser loggedUser) {
         String nomeHotel = "", nomeCitta = "";
         int globalScore = 0;
         int[] singleScores = {0,0,0,0};
@@ -114,7 +114,7 @@ public class ClientHandle implements Runnable {
             System.out.printf("Città (%s) non esistente!\n", nomeCitta);
             outputStream.println("WRONG_CITY");
         } else {
-            ReviewManager.addReview(nomeHotel, nomeCitta, globalScore, singleScores);;
+            ReviewManager.addReview(loggedUser, nomeHotel, nomeCitta, globalScore, singleScores);;
             System.out.println("Nuova recensione effettuata");
             outputStream.println("ACCEPT");        
         }

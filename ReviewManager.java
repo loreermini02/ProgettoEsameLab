@@ -12,8 +12,8 @@ import com.google.gson.JsonParser;
 public class ReviewManager {
     private static final String REVIEW_FILE_PATH = "JSON/Review.json";
 
-    public void addReview(String nomeHotel, String nomeCitta, int globalScore, int[] singleScores) {
-        Review newReview = new Review(globalScore, singleScores);
+    public void addReview(LoggedUser loggedUser, String nomeHotel, String nomeCitta, int globalScore, int[] singleScores) {
+        Review newReview = new Review(loggedUser.getUsername(), globalScore, singleScores);
         
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
