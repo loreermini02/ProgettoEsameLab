@@ -20,7 +20,7 @@ public class ClientHandle implements Runnable {
 
     @Override
     public void run() {
-        String clientCommand = "";
+        String clientCommand = "Ciao";
         LoggedUser loggedUser = null;
     
         try (Scanner inputStream = new Scanner(clientSocket.getInputStream())) {
