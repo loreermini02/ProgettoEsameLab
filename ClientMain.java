@@ -75,7 +75,7 @@ public class ClientMain {
                         break;
 
                     case 3: // Search All Hotels
-                        searchAllHotels();
+                        searchAllHotels(userInput);
                         break;
                     
                     case 4: // Search Hotel
@@ -162,15 +162,75 @@ public class ClientMain {
         System.out.println("\nRICERCA HOTEL:");
         
         // Controllo se l'hotel, se ritorno false vuol dire che l'utente ha sbagliato input e non vuole ritentare la ricerca
-        if (!searchHotelCheck(userInput)) return;
+        if (!searchHotelCheck(userInput, "SEARCH_HOTEL")) return;
 
         System.out.println("\nHotel trovato\n-------------");
-        while(!(serverResponse = inputStream.nextLine()).equals("END")) {
+
+        while (inputStream.hasNextLine()) {
+            serverResponse = inputStream.nextLine();
             System.out.println(serverResponse);
+    
+            if (serverResponse.equals("END")) {
+                System.out.println("Ricevuto segnale di fine. Terminazione.");
+                break;
+            }
         }
     }
 
-    private static void searchAllHotels() {}
+    private static void searchAllHotels(Scanner userInput) {
+        String serverResponse = "";
+        System.out.println("\nRICERCA HOTEL DI UNA CITTA':");
+
+        int inputChoice;
+        boolean tryAgain;
+        String nomeCitta;
+
+        do {
+            tryAgain = false;
+    
+            System.out.print("\nInserire Nome Città: ");
+            nomeCitta = userInput.nextLine();
+
+            outputStream.println("SEARCH_ALL_HOTELS");
+            outputStream.println(nomeCitta);
+
+            serverResponse = inputStream.nextLine();
+
+            if (serverResponse.equals("HOTELS_NOT_FOUND")){
+                System.out.printf("\nQuesta città (%s) non ha Hotel!\n", nomeCitta);
+                try {
+                    System.out.print("\nPremere 0 per riprovare o qualasi numero per uscire: ");
+                    inputChoice =  userInput.nextInt();
+                } catch (InputMismatchException e) {
+                    // Consuma il resto della riga di input errata
+                    userInput.nextLine();
+
+                    return;
+                }
+                
+                // Consuma il carattere di nuova linea nel buffer
+                userInput.nextLine();
+                if (inputChoice == 0) {
+                    tryAgain = true;
+                } else {
+                    return;
+                }
+            }
+
+        }while(tryAgain);
+
+        while (inputStream.hasNextLine()) {
+            serverResponse = inputStream.nextLine();
+
+            if (serverResponse.equals("END")) {
+                System.out.println("Ricevuto segnale di fine. Terminazione.");
+                break;
+            }
+
+            System.out.println(serverResponse);
+            
+        }
+    }
     
     private static void showBadges() {
         String serverResponse;
@@ -188,7 +248,7 @@ public class ClientMain {
         System.out.println("\nRECENSIONE:");
         
         // Controllo se l'hotel, se ritorno false vuol dire che l'utente ha sbagliato input e non vuole ritentare la ricerca
-        if (!searchHotelCheck(userInput)) return;
+        if (!searchHotelCheck(userInput, "INSERT_REVIEW")) return;
         
         globalScore = inputCheck(userInput, "Inserire Global Score (0-5): ", 0, 5);
         singleScores[1] = inputCheck(userInput, "Inserire Single Score per Pulizia (0-5): ", 0, 5);
@@ -235,7 +295,7 @@ public class ClientMain {
         return value;
     }
 
-    private static boolean searchHotelCheck(Scanner userInput) {
+    private static boolean searchHotelCheck(Scanner userInput, String searchType) {
         int inputChoice;
         boolean tryAgain;
         String nomeHotel, nomeCitta, serverResponse;
@@ -249,7 +309,7 @@ public class ClientMain {
             System.out.print("Inserire Nome Città: ");
             nomeCitta = userInput.nextLine();
 
-            outputStream.println("INSERT_REVIEW");
+            outputStream.println(searchType);
             outputStream.println(nomeHotel);
             outputStream.println(nomeCitta);
 

@@ -49,6 +49,9 @@ public class ClientHandle implements Runnable {
                 }
                 else if (clientCommand.equals("SEARCH_HOTEL")) {
                     searchHotel(inputStream);
+                } 
+                else if (clientCommand.equals("SEARCH_ALL_HOTELS")) {
+                    searchAllHotels(inputStream);
                 }
             }
         } catch (Exception e) {
@@ -144,7 +147,6 @@ public class ClientHandle implements Runnable {
         if (hotel == null) {
             outputStream.println("HOTEL_NOT_FOUND");
         } else {
-            System.out.println(hotel.getName());
             outputStream.println("HOTEL_FOUND");
             outputStream.printf("Nome: %s\n", hotel.getName());
             outputStream.printf("Descrizione: %s\n", hotel.getDescription());
@@ -165,9 +167,54 @@ public class ClientHandle implements Runnable {
             outputStream.printf("- Position: %d\n", rating[1]);
             outputStream.printf("- Services: %d\n", rating[2]);
             outputStream.printf("- Quality: %d\n", rating[3]);
-            outputStream.print ("END");
             
+            outputStream.print("END");
             System.out.println("Effettuata nuova ricerca di un Hotel");
         }
     }
+
+    private void searchAllHotels(Scanner inputStream) {
+        String nomeCitta = "";
+        List <Hotel> hotels = null;
+        List<String> services;
+        int[] rating = {0,0,0,0};
+
+        nomeCitta = inputStream.nextLine();
+        hotels = hotelManager.searchHotelsByCity(nomeCitta);
+
+        if (hotels == null) {
+            outputStream.println("HOTELS_NOT_FOUND");
+        } else {
+            outputStream.println("HOTELS_FOUND");
+
+            outputStream.printf("\n%d Hotel trovati\n", hotels.size());
+            for (Hotel hotel : hotels) {
+                outputStream.printf("\n----------------\n\n");
+                
+                outputStream.printf("Nome: %s\n", hotel.getName());
+                outputStream.printf("Descrizione: %s\n", hotel.getDescription());
+                outputStream.printf("Città: %s\n", hotel.getCity());
+                outputStream.printf("Telefono: %s\n", hotel.getPhone());
+                
+                outputStream.print("Servizi Offerti:\n");
+                services = hotel.getServices();
+                for (String s : services) {
+                    outputStream.printf("- %s\n", s);
+                }
+                
+                outputStream.printf("Rate: %d\n", hotel.getRate());
+                
+                outputStream.printf("Rating:\n");
+                rating = hotel.getRatings();
+                outputStream.printf("- Cleaning: %d\n", rating[0]);
+                outputStream.printf("- Position: %d\n", rating[1]);
+                outputStream.printf("- Services: %d\n", rating[2]);
+                outputStream.printf("- Quality: %d\n", rating[3]);
+            }
+
+            outputStream.print("END");            
+            System.out.println("Effettuata nuova ricerca di Hotel di una città");
+        }
+    }
+
 }

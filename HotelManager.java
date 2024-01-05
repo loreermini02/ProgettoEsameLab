@@ -73,6 +73,74 @@ public class HotelManager {
 
         return null;
     }
+
+    public List<Hotel> searchHotelsByCity (String citta) {
+        List<Hotel> resultHotels = new ArrayList<>();
+
+        String fieldName = "";
+
+        // Proprietà Hotel
+        int id = 0, rate = 0;
+        String name = null, description = "", city = "", phone = "";
+        List<String> services = null;
+        int[] ratings = {0,0,0,0};
+
+        try (JsonReader jsonReader = new JsonReader(new FileReader(HOTELS_FILE_PATH))) {
+            jsonReader.beginArray(); // Inizia a leggere l'array
+
+            // Itera attraverso gli oggetti nell'array
+            while (jsonReader.hasNext()) {
+                jsonReader.beginObject(); // Inizia a leggere un oggetto
+
+                // Leggi le proprietà dell'oggetto
+                while (jsonReader.hasNext()) {
+                    fieldName = jsonReader.nextName();
+                    switch (fieldName) {
+                        case "id":
+                            id = jsonReader.nextInt();
+                            break;
+                        case "name":
+                            name = jsonReader.nextString();
+                            break;
+                        case "description":
+                            description = jsonReader.nextString();
+                            break;
+                        case "city":
+                            city = jsonReader.nextString();
+                            break;
+                        case "phone":
+                            phone = jsonReader.nextString();
+                            break;
+                        case "services":
+                            services = readStringList(jsonReader);
+                            break;
+                        case "rate":
+                            rate = jsonReader.nextInt();
+                            break;
+                        case "ratings":
+                            ratings = readRatingList(jsonReader);
+                            break;
+                        default:
+                            jsonReader.skipValue(); // Ignora il valore di altri campi
+                            break;                        
+                    }
+                }
+
+                jsonReader.endObject(); // Fine dell'oggetto
+
+                // Controlla se l'hotel corrente ha il nome cercato ed è nella città richiesta
+                if (name != null && city.equalsIgnoreCase(citta)) {
+                    resultHotels.add(new Hotel(id, name, description, city, phone, services, rate, ratings));
+                }
+            }
+            
+            jsonReader.endArray(); // Fine dell'array
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return resultHotels;
+    }
     
     private static List<String> readStringList(JsonReader jsonReader) throws IOException {
         List<String> list = new ArrayList<>();
