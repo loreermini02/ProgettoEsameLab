@@ -3,6 +3,7 @@ import java.io.PrintWriter;
 import java.net.Socket;
 import java.net.UnknownHostException;
 import java.util.HashMap;
+import java.util.InputMismatchException;
 import java.util.Map;
 import java.util.Scanner;
 
@@ -14,8 +15,8 @@ public class ClientMain {
     static PrintWriter outputStream;
 
     public static void main(String[] args) throws UnknownHostException, IOException {
-        int comandoScelto;
-        Boolean exit = false;
+        int comandoScelto = -1;
+        Boolean exit = false, tryAgain;
 
         System.out.println("\nBENVENUT* IN HOTELIER!");
         
@@ -37,16 +38,29 @@ public class ClientMain {
                 showAllCommands(comandiDisponibili);
 
                 do {
+                    tryAgain = false;
+
                     System.out.print("\nInserire un Comando (o premere 0 per mostrare i comandi disponibili): ");
-                    comandoScelto = userInput.nextInt();
-
-                    if (comandoScelto == 0) {
-                        showAllCommands(comandiDisponibili);
-
-                    } else if (!comandiDisponibili.containsKey(comandoScelto)) {
-                        System.out.printf("\nERRORE: Il comando %d non esiste!\n", comandoScelto);
+                    try {
+                        comandoScelto = userInput.nextInt();
+    
+                        if (comandoScelto == 0) {
+                            showAllCommands(comandiDisponibili);
+                            tryAgain = true;
+    
+                        } else if (!comandiDisponibili.containsKey(comandoScelto)) {
+                            System.out.printf("\nERRORE: Il comando %d non esiste!\n", comandoScelto);
+                            tryAgain = true;
+                        }
+                    } catch (InputMismatchException e) {
+                        System.out.printf("\nERRORE: Il comando inserito non esiste!\n");
+                        tryAgain = true;
+                        
+                        // Consuma il resto della riga di input errata
+                        userInput.nextLine();
                     }
-                } while(!comandiDisponibili.containsKey(comandoScelto));
+
+                } while(tryAgain);
                 userInput.nextLine(); // Consuma il carattere di newline residuo nel buffer
 
                 switch (comandoScelto) {
@@ -109,57 +123,29 @@ public class ClientMain {
     }
 
     private static void register(Scanner userInput) throws IOException{
-        String username = "", password = "", serverResponse = "";
+        System.out.println("\nREGISTRAZIONE:");
 
-        System.out.println("\nREGISTRAZIONE:\n");
+        // Controllo se l'user è presente, se ritorno false vuol dire che l'utente ha sbagliato input e non vuole ritentare l'accesso
+        if (!searchUserCheck(userInput, "REGISTER")) return;
         
-        System.out.print("Username: ");
-        username = userInput.nextLine();
+        System.out.println("\nRegistrazione avvenuta con successo!");
 
-        System.out.print("Password: ");
-        password = userInput.nextLine();
-        
-        outputStream.println("REGISTER");
-        outputStream.println(username);
-        outputStream.println(password);
-        
-        serverResponse = inputStream.nextLine();
-        if (serverResponse.equals("DENIED")) {
-            System.out.printf("\nUsername (%s) già utilizzato!\n", username);
-        } else if (serverResponse.equals("ACCEPT")) {
-            System.out.println("\nRegistrazione avvenuta con successo!");
-
-            comandiDisponibili.remove(1); // Elimino 'Register' dai comandi disponibili
-        }
+        comandiDisponibili.remove(1); // Elimino 'Register' dai comandi disponibili
     }
 
-    private static void login(Scanner userInput) {
-        String username = "", password = "", serverResponse = "";
-
-        System.out.println("\nLOG-IN:\n");
-
-        System.out.print("Username: ");
-        username = userInput.nextLine();
-
-        System.out.print("Password: ");
-        password = userInput.nextLine();
-
-        outputStream.println("LOGIN");
-        outputStream.println(username);
-        outputStream.println(password);
-
-        serverResponse = inputStream.nextLine();
-        if (serverResponse.equals("DENIED")) {
-            System.out.printf("\nUsername (%s) e/o Password (%s) sbagliati", username, password);
-        } else if (serverResponse.equals("ACCEPT")) {
-            System.out.println("\nLog-In avvenuto con successo!");
-
-            comandiDisponibili.remove(1); // Elimino 'Register' dai comandi disponibili
-            comandiDisponibili.remove(2); // Elimino 'LogIn' dai comandi disponibili
-            comandiDisponibili.put(5, "Insert Review");
-            comandiDisponibili.put(6, "Show My Badges");
-            comandiDisponibili.put(7, "Log-Out");
-        }
+    private static void login(Scanner userInput) {        
+        System.out.println("\nLOG-IN:");
+        
+        // Controllo se l'user è presente, se ritorno false vuol dire che l'utente ha sbagliato input e non vuole ritentare l'accesso
+        if (!searchUserCheck(userInput, "LOGIN")) return;
+        
+        System.out.println("\nLog-In avvenuto con successo!");
+    
+        comandiDisponibili.remove(1); // Elimino 'Register' dai comandi disponibili
+        comandiDisponibili.remove(2); // Elimino 'Login' dai comandi disponibili
+        comandiDisponibili.put(5, "Insert Review");
+        comandiDisponibili.put(6, "Show My Badges");
+        comandiDisponibili.put(7, "Log-Out");
     }
     
     private static void logOut() {
@@ -169,37 +155,23 @@ public class ClientMain {
         comandiDisponibili.remove(6); // Elimino 'Show My Badges' dai comandi disponibili
         comandiDisponibili.remove(7); // Elimino 'Log Out' dai comandi disponibili
     }
-
-    private static void searchAllHotels() {
-        
-    }
     
     private static void searchHotel(Scanner userInput) {
-        String nomeHotel = "", nomeCitta = "", serverResponse = "";
+        String serverResponse = "";
 
-        System.out.println("\nRICERCA HOTEL: \n");
+        System.out.println("\nRICERCA HOTEL:");
         
-        System.out.print("Inserire Nome Hotel: ");
-        nomeHotel = userInput.nextLine();
-        
-        System.out.print("Inserire Nome Città: ");
-        nomeCitta = userInput.nextLine();
-        
-        outputStream.println("SEARCH_HOTEL");
-        outputStream.println(nomeHotel);
-        outputStream.println(nomeCitta);
+        // Controllo se l'hotel, se ritorno false vuol dire che l'utente ha sbagliato input e non vuole ritentare la ricerca
+        if (!searchHotelCheck(userInput)) return;
 
-        serverResponse = inputStream.nextLine();
-        if (serverResponse.equals("HOTEL_NOT_FOUND")) {
-            System.out.printf("\nHotel (%s) non trovato!\n\n", nomeHotel);
-        } else if (serverResponse.equals("HOTEL_FOUND")) {
-            System.out.println("\nHotel trovato\n-------------");
-            while(!(serverResponse = inputStream.nextLine()).equals("END")) {
-                System.out.println(serverResponse);
-            }
+        System.out.println("\nHotel trovato\n-------------");
+        while(!(serverResponse = inputStream.nextLine()).equals("END")) {
+            System.out.println(serverResponse);
         }
     }
 
+    private static void searchAllHotels() {}
+    
     private static void showBadges() {
         String serverResponse;
 
@@ -209,15 +181,69 @@ public class ClientMain {
     }
 
     private static void insertReview(Scanner userInput) {
-        String nomeHotel = "", nomeCitta = "", serverResponse = "";
+        String serverResponse = "";
         int globalScore = 0;
         int[] singleScores = {0,0,0,0};
+        
+        System.out.println("\nRECENSIONE:");
+        
+        // Controllo se l'hotel, se ritorno false vuol dire che l'utente ha sbagliato input e non vuole ritentare la ricerca
+        if (!searchHotelCheck(userInput)) return;
+        
+        globalScore = inputCheck(userInput, "Inserire Global Score (0-5): ", 0, 5);
+        singleScores[1] = inputCheck(userInput, "Inserire Single Score per Pulizia (0-5): ", 0, 5);
+        singleScores[0] = inputCheck(userInput, "Inserire Single Score per Posizione (0-5): ", 0, 5);
+        singleScores[2] = inputCheck(userInput, "Inserire Single Score per Servizio (0-5): ", 0, 5);
+        singleScores[3] = inputCheck(userInput, "Inserire Single Score per Qualità (0-5): ", 0, 5);
+        outputStream.println(globalScore);
+        outputStream.println(singleScores[0]);
+        outputStream.println(singleScores[1]);
+        outputStream.println(singleScores[2]);
+        outputStream.println(singleScores[3]);
+        
+        serverResponse = inputStream.nextLine();
+        if (serverResponse.equals("ACCEPT")) {
+            System.out.println("\nNuova recensione aggiunta con successo!");
+        }
+    }
 
-        System.out.println("\nRECENSIONE:\n");
-    
-        int tryAgain = 1;
+    // Other Methods
+    private static int inputCheck(Scanner userInput, String msg, int min, int max) {
+        int value = -1;
+        boolean tryAgain;
+
         do {
-            System.out.print("Inserire Nome Hotel: ");
+            tryAgain = false;
+
+            try {
+                System.out.print(msg);
+                value = userInput.nextInt();
+                if (value < min || value > max) {
+                    System.out.println("Valore non valido!"); 
+                    tryAgain = true;
+                }
+            } catch (InputMismatchException e) {
+                System.out.println("Valore non valido!"); 
+                tryAgain = true;
+
+                // Consuma il resto della riga di input errata
+                userInput.nextLine();
+            }
+                
+        } while(tryAgain);
+
+        return value;
+    }
+
+    private static boolean searchHotelCheck(Scanner userInput) {
+        int inputChoice;
+        boolean tryAgain;
+        String nomeHotel, nomeCitta, serverResponse;
+
+        do {
+            tryAgain = false;
+
+            System.out.print("\nInserire Nome Hotel: ");
             nomeHotel = userInput.nextLine();
     
             System.out.print("Inserire Nome Città: ");
@@ -231,44 +257,77 @@ public class ClientMain {
 
             if (serverResponse.equals("HOTEL_NOT_FOUND")){
                 System.out.printf("\nHotel (%s) non trovato!\n", nomeHotel);
-                System.out.print("\nPremere 0 per riprovare o qualasi numero per uscire: ");
-                tryAgain = userInput.nextInt();
+                try {
+                    System.out.print("\nPremere 0 per riprovare o qualasi numero per uscire: ");
+                    inputChoice =  userInput.nextInt();
+                } catch (InputMismatchException e) {
+                    // Consuma il resto della riga di input errata
+                    userInput.nextLine();
 
-                if (tryAgain != 0) return; 
+                    return false;
+                }
+                
+                // Consuma il carattere di nuova linea nel buffer
+                userInput.nextLine();
+                if (inputChoice == 0) {
+                    tryAgain = true;
+                } else {
+                    return false;
+                }
             }
-        }while(tryAgain == 0);
-        
-        globalScore = valueCheck(userInput, "Inserire Global Score (0-5): ", 0, 5);
-        singleScores[0] = valueCheck(userInput, "Inserire Single Score per Posizione (0-5): ", 0, 5);
-        singleScores[1] = valueCheck(userInput, "Inserire Single Score per Pulizia (0-5): ", 0, 5);
-        singleScores[2] = valueCheck(userInput, "Inserire Single Score per Servizio (0-5): ", 0, 5);
-        singleScores[3] = valueCheck(userInput, "Inserire Single Score per Qualità (0-5): ", 0, 5);
-        outputStream.println(globalScore);
-        outputStream.println(singleScores[0]);
-        outputStream.println(singleScores[1]);
-        outputStream.println(singleScores[2]);
-        outputStream.println(singleScores[3]);
-        
-        serverResponse = inputStream.nextLine();
-        if (serverResponse.equals("ACCEPT")) {
-            System.out.println("\nNuova recensione aggiunta con successo!");
-        }
+
+        }while(tryAgain);
+
+        return true;
     }
 
-
-    // Other Methods
-    private static int valueCheck(Scanner userInput, String msg, int min, int max) {
-        int value;
+    private static boolean searchUserCheck(Scanner userInput, String searchType) {
+        String username, password, serverResponse;
+        int inputChoice;
+        boolean tryAgain;
 
         do {
-            System.out.print(msg);
-            value = userInput.nextInt();
+            tryAgain = false;
 
-            if (value < min || value > max)
-            System.out.println("Valore non valido!");
+            System.out.print("\nUsername: ");
+            username = userInput.nextLine();
+    
+            System.out.print("Password: ");
+            password = userInput.nextLine();
+
+            outputStream.println(searchType);
+            outputStream.println(username);
+            outputStream.println(password);
+
+            serverResponse = inputStream.nextLine();
+            if (serverResponse.equals("DENIED")){ 
+                if (searchType.equals("LOGIN"))
+                    System.out.printf("\nUsername (%s) e/o Password (%s) sbagliati", username, password);
+                else if (searchType.equals("REGISTER"))
+                    System.out.printf("\nUsername (%s) già utilizzato!", username);
+
+                try {
+                    System.out.print("\nPremere 0 per riprovare o qualasi numero per uscire: ");
+                    inputChoice =  userInput.nextInt();
+                } catch (InputMismatchException e) {
+                    // Consuma il resto della riga di input errata
+                    userInput.nextLine();
+
+                    return false;
+                }
                 
-        } while(value < min || value > max);
+                // Consuma il carattere di nuova linea nel buffer
+                userInput.nextLine();
 
-        return value;
+                if (inputChoice == 0) {
+                    tryAgain = true;
+                } else {
+                    return false;
+                }
+            }
+        }while(tryAgain);
+
+        return true;
     }
+
 }

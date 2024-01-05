@@ -21,6 +21,10 @@ public class Hotel {
         this.ratings = ratings;
     } 
 
+    public int getId() {
+        return id;
+    }
+
     public String getName() {
         return name;
     }

@@ -9,6 +9,26 @@
         1,
         1
       ]
+    },
+    {
+      "username": "Lorenzo",
+      "globalScore": 1,
+      "singleScores": [
+        2,
+        3,
+        4,
+        5
+      ]
+    },
+    {
+      "username": "Lorenzo",
+      "globalScore": 1,
+      "singleScores": [
+        3,
+        2,
+        4,
+        2
+      ]
     }
   ]
 }

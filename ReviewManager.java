@@ -59,13 +59,15 @@ public class ReviewManager {
                         // Leggi le proprietà dell'oggetto
                         while (jsonReader.hasNext()) {
                             fieldName = jsonReader.nextName();
-                            if ("username".equals(fieldName)) {
-                                existingUsername = jsonReader.nextString();
-                            } else {
-                                jsonReader.skipValue(); // Ignora il valore di altri campi
+                            switch (fieldName) {
+                                case "username":
+                                    existingUsername = jsonReader.nextString();
+                                    break;
+                                default:
+                                    jsonReader.skipValue(); // Ignora il valore di altri campi
+                                    break;
                             }
                         }
-    
                         jsonReader.endObject(); // Fine dell'oggetto
     
                         // Verifica se l'username corrente corrisponde a quello cercato

@@ -36,8 +36,9 @@ public class ClientHandle implements Runnable {
                 else if (clientCommand.equals("LOGIN")) {
                     loggedUser = login(inputStream);
 
-                    // Controlla se ci sono già delle recensioni fatte dall'Utente e aggiorna il contatore
-                    loggedUser.setNumReview(reviewManager.getNumReviewByUsername(loggedUser.getUsername()));
+                    if (loggedUser != null)
+                        // Controlla se ci sono già delle recensioni fatte dall'Utente e aggiorna il contatore
+                        loggedUser.setNumReview(reviewManager.getNumReviewByUsername(loggedUser.getUsername()));
                 }
                 // INSERT REVIEW
                 else if (clientCommand.equals("INSERT_REVIEW")) {
@@ -91,7 +92,6 @@ public class ClientHandle implements Runnable {
             System.out.printf("Nuovo Accesso (%s)\n", username);
             outputStream.println("ACCEPT");
         } else {
-            //System.out.printf("Username (%s) non esistente e/o Password (%s) sbagliata\n", username, password);
             outputStream.println("DENIED");                        
         }
         
