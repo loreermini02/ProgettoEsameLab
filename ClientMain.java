@@ -22,6 +22,7 @@ public class ClientMain {
         comandiDisponibili.put(1, "Register");
         comandiDisponibili.put(2, "Log-In");
         comandiDisponibili.put(3, "Search All Hotels");  
+        comandiDisponibili.put(4, "Search Specific Hotel");
         comandiDisponibili.put(8, "Exit");    
  
         
@@ -64,7 +65,7 @@ public class ClientMain {
                         break;
                     
                     case 4: // Search Hotel
-                        searchHotel();
+                        searchHotel(userInput);
                         break;
                     
                     case 5: // Insert Review
@@ -155,17 +156,15 @@ public class ClientMain {
 
             comandiDisponibili.remove(1); // Elimino 'Register' dai comandi disponibili
             comandiDisponibili.remove(2); // Elimino 'LogIn' dai comandi disponibili
-            comandiDisponibili.put(4, "Search Specific Hotel");
             comandiDisponibili.put(5, "Insert Review");
             comandiDisponibili.put(6, "Show My Badges");
             comandiDisponibili.put(7, "Log-Out");
         }
     }
-
+    
     private static void logOut() {
         comandiDisponibili.put(1, "Register");
         comandiDisponibili.put(2, "Log-In");
-        comandiDisponibili.remove(4); // Elimino 'Search Specific Hotel' dai comandi disponibili
         comandiDisponibili.remove(5); // Elimino 'Insert Review' dai comandi disponibili
         comandiDisponibili.remove(6); // Elimino 'Show My Badges' dai comandi disponibili
         comandiDisponibili.remove(7); // Elimino 'Log Out' dai comandi disponibili
@@ -173,6 +172,32 @@ public class ClientMain {
 
     private static void searchAllHotels() {
         
+    }
+    
+    private static void searchHotel(Scanner userInput) {
+        String nomeHotel = "", nomeCitta = "", serverResponse = "";
+
+        System.out.println("\nRICERCA HOTEL: \n");
+        
+        System.out.print("Inserire Nome Hotel: ");
+        nomeHotel = userInput.nextLine();
+        
+        System.out.print("Inserire Nome Città: ");
+        nomeCitta = userInput.nextLine();
+        
+        outputStream.println("SEARCH_HOTEL");
+        outputStream.println(nomeHotel);
+        outputStream.println(nomeCitta);
+
+        serverResponse = inputStream.nextLine();
+        if (serverResponse.equals("HOTEL_NOT_FOUND")) {
+            System.out.printf("\nHotel (%s) non trovato!\n\n", nomeHotel);
+        } else if (serverResponse.equals("HOTEL_FOUND")) {
+            System.out.println("\nHotel trovato\n-------------");
+            while(!(serverResponse = inputStream.nextLine()).equals("END")) {
+                System.out.println(serverResponse);
+            }
+        }
     }
 
     private static void showBadges() {
@@ -188,8 +213,9 @@ public class ClientMain {
         int globalScore = 0;
         int[] singleScores = {0,0,0,0};
 
-        System.out.println("\n RECENSIONE:\n");
+        System.out.println("\nRECENSIONE:\n");
     
+        int tryAgain = 1;
         do {
             System.out.print("Inserire Nome Hotel: ");
             nomeHotel = userInput.nextLine();
@@ -203,10 +229,14 @@ public class ClientMain {
 
             serverResponse = inputStream.nextLine();
 
-            if (serverResponse.equals("WRONG_HOTEL")){
-                System.out.printf("\nHotel (%s) non trovato! Riprova...\n\n", nomeHotel);
+            if (serverResponse.equals("HOTEL_NOT_FOUND")){
+                System.out.printf("\nHotel (%s) non trovato!\n", nomeHotel);
+                System.out.print("\nPremere 0 per riprovare o qualasi numero per uscire: ");
+                tryAgain = userInput.nextInt();
+
+                if (tryAgain != 0) return; 
             }
-        }while(!serverResponse.equals("HOTEL_FOUND"));
+        }while(tryAgain == 0);
         
         globalScore = valueCheck(userInput, "Inserire Global Score (0-5): ", 0, 5);
         singleScores[0] = valueCheck(userInput, "Inserire Single Score per Posizione (0-5): ", 0, 5);
@@ -225,7 +255,6 @@ public class ClientMain {
         }
     }
 
-    private static void searchHotel() {}
 
     // Other Methods
     private static int valueCheck(Scanner userInput, String msg, int min, int max) {

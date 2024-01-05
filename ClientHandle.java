@@ -1,5 +1,6 @@
 import java.io.PrintWriter;
 import java.net.Socket;
+import java.util.List;
 import java.util.Scanner;
 
 public class ClientHandle implements Runnable {
@@ -44,6 +45,9 @@ public class ClientHandle implements Runnable {
                 }
                 else if (clientCommand.equals("SHOW_BADGE")) {
                     showBadge(inputStream, loggedUser);
+                }
+                else if (clientCommand.equals("SEARCH_HOTEL")) {
+                    searchHotel(inputStream);
                 }
             }
         } catch (Exception e) {
@@ -98,14 +102,14 @@ public class ClientHandle implements Runnable {
         String nomeHotel = "", nomeCitta = "";
         int globalScore = 0;
         int[] singleScores = {0,0,0,0};
-        String searchResult;
+        Hotel hotel = null;
 
         nomeHotel = inputStream.nextLine();
         nomeCitta = inputStream.nextLine();
-        searchResult = hotelManager.searchHotel(nomeHotel,nomeCitta);
+        hotel = hotelManager.searchHotel(nomeHotel,nomeCitta);
 
-        if (searchResult.equals("")) {
-            outputStream.println("WRONG_HOTEL");
+        if (hotel == null) {
+            outputStream.println("HOTEL_NOT_FOUND");
         }
         else {
             outputStream.println("HOTEL_FOUND");
@@ -127,4 +131,43 @@ public class ClientHandle implements Runnable {
         outputStream.println(msg);
     }
 
+    private void searchHotel(Scanner inputStream) {
+        String nomeHotel = "", nomeCitta = "";
+        Hotel hotel = null;
+        List<String> services;
+        int[] rating = {0,0,0,0};
+
+        nomeHotel = inputStream.nextLine();
+        nomeCitta = inputStream.nextLine();
+        hotel = hotelManager.searchHotel(nomeHotel, nomeCitta);
+        
+        if (hotel == null) {
+            outputStream.println("HOTEL_NOT_FOUND");
+        } else {
+            System.out.println(hotel.getName());
+            outputStream.println("HOTEL_FOUND");
+            outputStream.printf("Nome: %s\n", hotel.getName());
+            outputStream.printf("Descrizione: %s\n", hotel.getDescription());
+            outputStream.printf("Città: %s\n", hotel.getCity());
+            outputStream.printf("Telefono: %s\n", hotel.getPhone());
+            
+            outputStream.print("Servizi Offerti:\n");
+            services = hotel.getServices();
+            for (String s : services) {
+                outputStream.printf("- %s\n", s);
+            }
+            
+            outputStream.printf("Rate: %d\n", hotel.getRate());
+            
+            outputStream.printf("Rating:\n");
+            rating = hotel.getRatings();
+            outputStream.printf("- Cleaning: %d\n", rating[0]);
+            outputStream.printf("- Position: %d\n", rating[1]);
+            outputStream.printf("- Services: %d\n", rating[2]);
+            outputStream.printf("- Quality: %d\n", rating[3]);
+            outputStream.print ("END");
+            
+            System.out.println("Effettuata nuova ricerca di un Hotel");
+        }
+    }
 }
