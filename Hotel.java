@@ -11,6 +11,7 @@ public class Hotel {
     private Ratings ratings;
     private double score;
     private int numReviews;
+    private String dateLastReview;
 
     public Hotel (int id, String name, String description, String city, String phone, List<String> services, int rate, int[] ratings) {
         this.id = id;
@@ -29,6 +30,8 @@ public class Hotel {
 
         this.score = 0.0;
         this.numReviews = 0;
+
+        this.dateLastReview = "";
 
     } 
 
@@ -99,4 +102,13 @@ public class Hotel {
     public void IncrementNumReview() {
         this.numReviews++;
     }
+
+    public void setNumReviews(int num) {
+        this.numReviews = num;
+    }
+
+    public void setDateLastReview(String date) {
+        this.dateLastReview = date;
+    }
+
 }

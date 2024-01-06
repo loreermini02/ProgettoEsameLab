@@ -1,3 +1,4 @@
+
 public class Review {
     private String username;
     private int idHotel;
@@ -5,14 +6,17 @@ public class Review {
     private String nomeCitta;
     private int globalScore;
     private int[] singleScores;
+    String dateTime;
 
-    Review(String username, int idHotel, String nomeHotel, String nomeCitta, int globalScore, int[] singleScores) {
+    Review(String username, int idHotel, String nomeHotel, String nomeCitta, int globalScore, int[] singleScores, String dateTime) {
         this.username = username;
         this.idHotel = idHotel;
         this.nomeHotel = nomeHotel;
         this.nomeCitta = nomeCitta;
         this.globalScore = globalScore;
+        
         this.singleScores = singleScores;
+        this.dateTime = dateTime;
     }
 
     public String getUsername() {

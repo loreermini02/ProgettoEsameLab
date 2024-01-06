@@ -23,7 +23,9 @@ public class ClientHandle implements Runnable {
     public void run() {
         String clientCommand = "";
         LoggedUser loggedUser = null;
-    
+
+        reloadReview();    
+
         try (Scanner inputStream = new Scanner(clientSocket.getInputStream())) {
             while (inputStream.hasNextLine()) {
                 clientCommand = inputStream.nextLine();
@@ -123,9 +125,12 @@ public class ClientHandle implements Runnable {
             singleScores[2] = inputStream.nextInt();
             singleScores[3] = inputStream.nextInt();
 
-            reviewManager.addReview(loggedUser, hotel.getId(), hotel.getName(), hotel.getCity(), globalScore, singleScores);;
+            
+            outputStream.println("ACCEPT");
+            reviewManager.addReview(loggedUser, hotel.getId(), hotel.getName(), hotel.getCity(), globalScore, singleScores);
             System.out.println("Nuova recensione effettuata");
-            outputStream.println("ACCEPT");        
+
+            hotel.IncrementNumReview();
         }
     }
 
@@ -224,7 +229,7 @@ public class ClientHandle implements Runnable {
         List<Review> allReviews = null; 
 
         int totRate, avgRate;
-        int[] totSingleRate = {0,0,0,0}, avgSingleRate = {0,0,0,0};
+        int[] totSingleRate = {0,0,0,0}, avgSingleRate = {0,0,0,0}, defaultRating = {0,0,0,0};
 
         allHotel = hotelManager.searchAllHotels();
 
@@ -256,10 +261,33 @@ public class ClientHandle implements Runnable {
                 avgSingleRate[0] = Math.round(totSingleRate[0] / allReviews.size());
                 avgSingleRate[1] = Math.round(totSingleRate[1] / allReviews.size());
                 avgSingleRate[2] = Math.round(totSingleRate[2] / allReviews.size());
-                avgSingleRate[3] = Math.round(totSingleRate[3] / allReviews.size());        
+                avgSingleRate[3] = Math.round(totSingleRate[3] / allReviews.size());    
+                
+                hotel.setNumReviews(allReviews.size());
+                hotel.setRate(avgRate);
+                hotel.setRatings(avgSingleRate);
+                hotel.setScore(calcScore(hotel));
+                
+            } else {
+                hotel.setNumReviews(0);
+                hotel.setRate(0);
+                hotel.setRatings(defaultRating);
+                hotel.setScore(0.0);
             }
             
-            hotelManager.loadReview(hotel.getId(), avgRate, avgSingleRate);
+            hotelManager.loadReview(hotel);
         }
     } 
+
+    private double calcScore(Hotel hotel) {
+        double qualitaNormalizzata = 0.0, quantitaNormalizzata = 0.0;
+        
+        qualitaNormalizzata = hotel.getRate() / 5;
+
+        int numReviews = hotel.getNumReviews();
+        if (numReviews > 0)
+            quantitaNormalizzata = Math.log(hotel.getNumReviews());
+        
+        return 0.5 * qualitaNormalizzata + 0.5 * quantitaNormalizzata;
+    }  
 }

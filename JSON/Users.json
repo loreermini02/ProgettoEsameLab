@@ -1,24 +1,6 @@
-{
-  "users": [
-    {
-      "username": "Lorenzo",
-      "password": "1234"
-    },
-    {
-      "username": "GODOOOOOO",
-      "password": "12345"
-    },
-    {
-      "username": "Chiara",
-      "password": "2"
-    },
-    {
-      "username": "Margherita",
-      "password": "1234"
-    },
-    {
-      "username": "Tommaso",
-      "password": "1234"
-    }
-  ]
-}
+[
+  {
+    "username": "Lorenzo",
+    "password": "1234"
+  }
+]

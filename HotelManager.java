@@ -11,28 +11,28 @@ import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 
 public class HotelManager {
-    private static final String HOTELS_FILE_PATH = "JSON/Hotels.json";
+    private static final String HOTEL_FILE_PATH = "JSON/Hotels.json";
 
-    public void loadReview (int idHotel, int globalScore, int[] singleScores) {
+    public void loadReview (Hotel hotel) {
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         Type listType = new TypeToken<List<Hotel>>(){}.getType();
 
-        try (FileReader jsonReader = new FileReader(HOTELS_FILE_PATH)) {
+        try (FileReader jsonReader = new FileReader(HOTEL_FILE_PATH)) {
             List<Hotel> hotels = gson.fromJson(jsonReader, listType);
 
-            for (Hotel hotel : hotels) {
-                if (hotel.getId() == idHotel) {
-                    hotel.setRate(globalScore);
-                    hotel.setRatings(singleScores);
-                    hotel.IncrementNumReview();
-                    hotel.setScore(calcScore(hotel));
-
+            for (Hotel h : hotels) {
+                if (h.getId() == hotel.getId()) {
+                    h.setNumReviews(hotel.getNumReviews());
+                    h.setRate(hotel.getRate());
+                    h.setRatings(hotel.getRatings());
+                    h.setScore(hotel.getScore());
+                    
                     break;
                 }
             }
 
             // Scrivi i nuovi dati nel file JSON
-            try (FileWriter writer = new FileWriter(HOTELS_FILE_PATH)) {
+            try (FileWriter writer = new FileWriter(HOTEL_FILE_PATH)) {
                 gson.toJson(hotels, writer);
             }
         } catch (IOException e) {
@@ -49,7 +49,7 @@ public class HotelManager {
         List<String> services = null;
         int[] ratings = {0,0,0,0};
 
-        try (JsonReader jsonReader = new JsonReader(new FileReader(HOTELS_FILE_PATH))) {
+        try (JsonReader jsonReader = new JsonReader(new FileReader(HOTEL_FILE_PATH))) {
             jsonReader.beginArray(); // Inizia a leggere l'array
 
             // Itera attraverso gli oggetti nell'array
@@ -117,7 +117,7 @@ public class HotelManager {
         List<String> services = null;
         int[] ratings = {0,0,0,0};
 
-        try (JsonReader jsonReader = new JsonReader(new FileReader(HOTELS_FILE_PATH))) {
+        try (JsonReader jsonReader = new JsonReader(new FileReader(HOTEL_FILE_PATH))) {
             jsonReader.beginArray(); // Inizia a leggere l'array
 
             // Itera attraverso gli oggetti nell'array
@@ -186,7 +186,7 @@ public class HotelManager {
         List<String> services = null;
         int[] ratings = {0,0,0,0};
 
-        try (JsonReader jsonReader = new JsonReader(new FileReader(HOTELS_FILE_PATH))) {
+        try (JsonReader jsonReader = new JsonReader(new FileReader(HOTEL_FILE_PATH))) {
             jsonReader.beginArray(); // Inizia a leggere l'array
 
             // Itera attraverso gli oggetti nell'array
@@ -288,20 +288,6 @@ public class HotelManager {
 
         jsonReader.endObject(); // Fine dell'oggetto delle valutazioni
         return ratings;        
-    }
-
-    private double calcScore(Hotel hotel) {
-        int[] singleRatings = hotel.getRatings();
-        double mediaQualita = 0.0, qualitaNormalizzata = 0.0, quantitaNormalizzata = 0.0;
-        
-        mediaQualita = (singleRatings[0] + singleRatings[1] + singleRatings[2] + singleRatings[3]) / 4;
-        qualitaNormalizzata = mediaQualita / 5;
-
-        int numReviews = hotel.getNumReviews();
-        if (numReviews > 0)
-            quantitaNormalizzata = Math.log(hotel.getNumReviews());
-        
-        return 0.5 * qualitaNormalizzata + 0.5 * quantitaNormalizzata;
-    }   
+    } 
 
 }

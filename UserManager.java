@@ -1,14 +1,14 @@
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
+import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.lang.reflect.Type;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.List;
 
 public class UserManager {
 
@@ -24,20 +24,19 @@ public class UserManager {
         // Leggi il JSON esistente
         try {
             String jsonContent = new String(Files.readAllBytes(Paths.get(USERS_FILE_PATH)));
-            JsonObject rootObject = JsonParser.parseString(jsonContent).getAsJsonObject();
-            JsonArray usersArray = rootObject.getAsJsonArray("users");
+            Type listType = new TypeToken<List<User>>() {}.getType();
+            List<User> users = gson.fromJson(jsonContent, listType);
 
-            // Aggiungi il nuovo utente al array di utenti
-            usersArray.add(gson.toJsonTree(newUser));
+            // Aggiungi la nuova recensione
+            users.add(newUser);
 
-            // Riscrivi il file JSON con il nuovo utente
+            // Scrivi l'array aggiornato nel file
             try (FileWriter writer = new FileWriter(USERS_FILE_PATH)) {
-                gson.toJson(rootObject, writer);
-            }
-
+                gson.toJson(users, writer);
+            }   
         } catch (IOException e) {
             e.printStackTrace();
-        }   
+        }
     }
 
     public String[] checkUsername(String username) {
@@ -45,51 +44,42 @@ public class UserManager {
         String[] result = {"",""};
 
         try (JsonReader jsonReader = new JsonReader(new FileReader(USERS_FILE_PATH))) {
-            jsonReader.beginObject(); // Assume che il file JSON inizi con un oggetto
     
-            while (jsonReader.hasNext()) {
-                String key = jsonReader.nextName();
-    
-                if ("users".equals(key)) {
-                    jsonReader.beginArray(); // Assume che "users" sia un array
-    
-                    // Itera attraverso gli oggetti nell'array
-                    while (jsonReader.hasNext()) {
-                        jsonReader.beginObject(); // Inizia a leggere un oggetto
-    
-                        // Leggi le proprietà dell'oggetto
-                        while (jsonReader.hasNext()) {
-                            fieldName = jsonReader.nextName();
-                            switch (fieldName) {
-                                case "username":
-                                    existingUsername = jsonReader.nextString();                                    
-                                    break;
-                                case "password":
-                                    password = jsonReader.nextString();
-                                    break;
-                                default:
-                                    jsonReader.skipValue(); // Ignora il valore di altri campi
-                                    break;
-                            }
-                        }
-                        jsonReader.endObject(); // Fine dell'oggetto
-    
-                        // Verifica se l'username corrente corrisponde a quello cercato
-                        if (existingUsername != null && existingUsername.equals(username)) {
-                            // Restituisce una tupla [boolean, String]
-                            result[0] = username;
-                            result[1] = password;
+            jsonReader.beginArray(); // Assume che "users" sia un array
 
-                            return result;
-                        }
+            // Itera attraverso gli oggetti nell'array
+            while (jsonReader.hasNext()) {
+                jsonReader.beginObject(); // Inizia a leggere un oggetto
+
+                // Leggi le proprietà dell'oggetto
+                while (jsonReader.hasNext()) {
+                    fieldName = jsonReader.nextName();
+                    switch (fieldName) {
+                        case "username":
+                            existingUsername = jsonReader.nextString();                                    
+                            break;
+                        case "password":
+                            password = jsonReader.nextString();
+                            break;
+                        default:
+                            jsonReader.skipValue(); // Ignora il valore di altri campi
+                            break;
                     }
-                    jsonReader.endArray(); // Fine dell'array
-                } else {
-                    jsonReader.skipValue();
+                }
+                jsonReader.endObject(); // Fine dell'oggetto
+
+                // Verifica se l'username corrente corrisponde a quello cercato
+                if (existingUsername != null && existingUsername.equalsIgnoreCase(username)) {
+                    // Restituisce una tupla [boolean, String]
+                    result[0] = username;
+                    result[1] = password;
+
+                    return result;
                 }
             }
+
+            jsonReader.endArray(); // Fine dell'array
     
-            jsonReader.endObject();
         } catch (IOException e) {
             e.printStackTrace();
         }
