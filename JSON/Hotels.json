@@ -16,7 +16,9 @@
       "position": 4,
       "services": 4,
       "quality": 3
-    }
+    },
+    "score": 0.3,
+    "numReviews": 1
   },
   {
     "id": 2,
@@ -38,7 +40,9 @@
       "position": 0,
       "services": 0,
       "quality": 0
-    }
+    },
+    "score": 0.0,
+    "numReviews": 1
   },
   {
     "id": 3,
@@ -53,7 +57,9 @@
       "position": 0,
       "services": 0,
       "quality": 0
-    }
+    },
+    "score": 0.0,
+    "numReviews": 1
   },
   {
     "id": 4,
@@ -68,7 +74,9 @@
       "position": 0,
       "services": 0,
       "quality": 0
-    }
+    },
+    "score": 0.0,
+    "numReviews": 1
   },
   {
     "id": 5,
@@ -92,7 +100,9 @@
       "position": 0,
       "services": 0,
       "quality": 0
-    }
+    },
+    "score": 0.0,
+    "numReviews": 1
   },
   {
     "id": 6,
@@ -107,7 +117,9 @@
       "position": 0,
       "services": 0,
       "quality": 0
-    }
+    },
+    "score": 0.0,
+    "numReviews": 1
   },
   {
     "id": 7,
@@ -127,7 +139,9 @@
       "position": 0,
       "services": 0,
       "quality": 0
-    }
+    },
+    "score": 0.0,
+    "numReviews": 1
   },
   {
     "id": 8,
@@ -148,7 +162,9 @@
       "position": 0,
       "services": 0,
       "quality": 0
-    }
+    },
+    "score": 0.0,
+    "numReviews": 1
   },
   {
     "id": 9,
@@ -163,7 +179,9 @@
       "position": 0,
       "services": 0,
       "quality": 0
-    }
+    },
+    "score": 0.0,
+    "numReviews": 1
   },
   {
     "id": 10,
@@ -182,7 +200,9 @@
       "position": 0,
       "services": 0,
       "quality": 0
-    }
+    },
+    "score": 0.0,
+    "numReviews": 1
   },
   {
     "id": 11,
@@ -205,7 +225,9 @@
       "position": 0,
       "services": 0,
       "quality": 0
-    }
+    },
+    "score": 0.0,
+    "numReviews": 1
   },
   {
     "id": 12,
@@ -228,7 +250,9 @@
       "position": 0,
       "services": 0,
       "quality": 0
-    }
+    },
+    "score": 0.0,
+    "numReviews": 1
   },
   {
     "id": 13,
@@ -247,7 +271,9 @@
       "position": 0,
       "services": 0,
       "quality": 0
-    }
+    },
+    "score": 0.0,
+    "numReviews": 1
   },
   {
     "id": 14,
@@ -267,7 +293,9 @@
       "position": 0,
       "services": 0,
       "quality": 0
-    }
+    },
+    "score": 0.0,
+    "numReviews": 1
   },
   {
     "id": 15,
@@ -290,7 +318,9 @@
       "position": 0,
       "services": 0,
       "quality": 0
-    }
+    },
+    "score": 0.0,
+    "numReviews": 1
   },
   {
     "id": 16,
@@ -310,7 +340,9 @@
       "position": 0,
       "services": 0,
       "quality": 0
-    }
+    },
+    "score": 0.0,
+    "numReviews": 1
   },
   {
     "id": 17,
@@ -335,7 +367,9 @@
       "position": 0,
       "services": 0,
       "quality": 0
-    }
+    },
+    "score": 0.0,
+    "numReviews": 1
   },
   {
     "id": 18,
@@ -353,7 +387,9 @@
       "position": 0,
       "services": 0,
       "quality": 0
-    }
+    },
+    "score": 0.0,
+    "numReviews": 1
   },
   {
     "id": 19,
@@ -368,7 +404,9 @@
       "position": 0,
       "services": 0,
       "quality": 0
-    }
+    },
+    "score": 0.0,
+    "numReviews": 1
   },
   {
     "id": 20,
@@ -383,7 +421,9 @@
       "position": 0,
       "services": 0,
       "quality": 0
-    }
+    },
+    "score": 0.0,
+    "numReviews": 1
   },
   {
     "id": 21,
@@ -407,7 +447,9 @@
       "position": 0,
       "services": 0,
       "quality": 0
-    }
+    },
+    "score": 0.0,
+    "numReviews": 1
   },
   {
     "id": 22,
@@ -429,7 +471,9 @@
       "position": 0,
       "services": 0,
       "quality": 0
-    }
+    },
+    "score": 0.0,
+    "numReviews": 1
   },
   {
     "id": 23,
@@ -446,7 +490,9 @@
       "position": 0,
       "services": 0,
       "quality": 0
-    }
+    },
+    "score": 0.0,
+    "numReviews": 1
   },
   {
     "id": 24,
@@ -471,7 +517,9 @@
       "position": 0,
       "services": 0,
       "quality": 0
-    }
+    },
+    "score": 0.0,
+    "numReviews": 1
   },
   {
     "id": 25,
@@ -489,7 +537,9 @@
       "position": 0,
       "services": 0,
       "quality": 0
-    }
+    },
+    "score": 0.0,
+    "numReviews": 1
   },
   {
     "id": 26,
@@ -512,7 +562,9 @@
       "position": 0,
       "services": 0,
       "quality": 0
-    }
+    },
+    "score": 0.0,
+    "numReviews": 1
   },
   {
     "id": 27,
@@ -527,7 +579,9 @@
       "position": 0,
       "services": 0,
       "quality": 0
-    }
+    },
+    "score": 0.0,
+    "numReviews": 1
   },
   {
     "id": 28,
@@ -552,7 +606,9 @@
       "position": 0,
       "services": 0,
       "quality": 0
-    }
+    },
+    "score": 0.0,
+    "numReviews": 1
   },
   {
     "id": 29,
@@ -572,7 +628,9 @@
       "position": 0,
       "services": 0,
       "quality": 0
-    }
+    },
+    "score": 0.0,
+    "numReviews": 1
   },
   {
     "id": 30,
@@ -587,7 +645,9 @@
       "position": 0,
       "services": 0,
       "quality": 0
-    }
+    },
+    "score": 0.0,
+    "numReviews": 1
   },
   {
     "id": 31,
@@ -611,7 +671,9 @@
       "position": 0,
       "services": 0,
       "quality": 0
-    }
+    },
+    "score": 0.0,
+    "numReviews": 1
   },
   {
     "id": 32,
@@ -629,7 +691,9 @@
       "position": 0,
       "services": 0,
       "quality": 0
-    }
+    },
+    "score": 0.0,
+    "numReviews": 1
   },
   {
     "id": 33,
@@ -654,7 +718,9 @@
       "position": 0,
       "services": 0,
       "quality": 0
-    }
+    },
+    "score": 0.0,
+    "numReviews": 1
   },
   {
     "id": 34,
@@ -677,7 +743,9 @@
       "position": 0,
       "services": 0,
       "quality": 0
-    }
+    },
+    "score": 0.0,
+    "numReviews": 1
   },
   {
     "id": 35,
@@ -698,7 +766,9 @@
       "position": 0,
       "services": 0,
       "quality": 0
-    }
+    },
+    "score": 0.0,
+    "numReviews": 1
   },
   {
     "id": 36,
@@ -715,7 +785,9 @@
       "position": 0,
       "services": 0,
       "quality": 0
-    }
+    },
+    "score": 0.0,
+    "numReviews": 1
   },
   {
     "id": 37,
@@ -740,7 +812,9 @@
       "position": 0,
       "services": 0,
       "quality": 0
-    }
+    },
+    "score": 0.0,
+    "numReviews": 1
   },
   {
     "id": 38,
@@ -757,7 +831,9 @@
       "position": 0,
       "services": 0,
       "quality": 0
-    }
+    },
+    "score": 0.0,
+    "numReviews": 1
   },
   {
     "id": 39,
@@ -780,7 +856,9 @@
       "position": 0,
       "services": 0,
       "quality": 0
-    }
+    },
+    "score": 0.0,
+    "numReviews": 1
   },
   {
     "id": 40,
@@ -795,7 +873,9 @@
       "position": 0,
       "services": 0,
       "quality": 0
-    }
+    },
+    "score": 0.0,
+    "numReviews": 1
   },
   {
     "id": 41,
@@ -818,7 +898,9 @@
       "position": 0,
       "services": 0,
       "quality": 0
-    }
+    },
+    "score": 0.0,
+    "numReviews": 1
   },
   {
     "id": 42,
@@ -835,7 +917,9 @@
       "position": 0,
       "services": 0,
       "quality": 0
-    }
+    },
+    "score": 0.0,
+    "numReviews": 1
   },
   {
     "id": 43,
@@ -860,7 +944,9 @@
       "position": 0,
       "services": 0,
       "quality": 0
-    }
+    },
+    "score": 0.0,
+    "numReviews": 1
   },
   {
     "id": 44,
@@ -875,7 +961,9 @@
       "position": 0,
       "services": 0,
       "quality": 0
-    }
+    },
+    "score": 0.0,
+    "numReviews": 1
   },
   {
     "id": 45,
@@ -897,7 +985,9 @@
       "position": 0,
       "services": 0,
       "quality": 0
-    }
+    },
+    "score": 0.0,
+    "numReviews": 1
   },
   {
     "id": 46,
@@ -912,7 +1002,9 @@
       "position": 0,
       "services": 0,
       "quality": 0
-    }
+    },
+    "score": 0.0,
+    "numReviews": 1
   },
   {
     "id": 47,
@@ -937,7 +1029,9 @@
       "position": 0,
       "services": 0,
       "quality": 0
-    }
+    },
+    "score": 0.0,
+    "numReviews": 1
   },
   {
     "id": 48,
@@ -960,7 +1054,9 @@
       "position": 0,
       "services": 0,
       "quality": 0
-    }
+    },
+    "score": 0.0,
+    "numReviews": 1
   },
   {
     "id": 49,
@@ -985,7 +1081,9 @@
       "position": 0,
       "services": 0,
       "quality": 0
-    }
+    },
+    "score": 0.0,
+    "numReviews": 1
   },
   {
     "id": 50,
@@ -1009,7 +1107,9 @@
       "position": 0,
       "services": 0,
       "quality": 0
-    }
+    },
+    "score": 0.0,
+    "numReviews": 1
   },
   {
     "id": 51,
@@ -1029,7 +1129,9 @@
       "position": 0,
       "services": 0,
       "quality": 0
-    }
+    },
+    "score": 0.0,
+    "numReviews": 1
   },
   {
     "id": 52,
@@ -1044,7 +1146,9 @@
       "position": 0,
       "services": 0,
       "quality": 0
-    }
+    },
+    "score": 0.0,
+    "numReviews": 1
   },
   {
     "id": 53,
@@ -1065,7 +1169,9 @@
       "position": 0,
       "services": 0,
       "quality": 0
-    }
+    },
+    "score": 0.0,
+    "numReviews": 1
   },
   {
     "id": 54,
@@ -1089,7 +1195,9 @@
       "position": 0,
       "services": 0,
       "quality": 0
-    }
+    },
+    "score": 0.0,
+    "numReviews": 1
   },
   {
     "id": 55,
@@ -1110,7 +1218,9 @@
       "position": 0,
       "services": 0,
       "quality": 0
-    }
+    },
+    "score": 0.0,
+    "numReviews": 1
   },
   {
     "id": 56,
@@ -1132,7 +1242,9 @@
       "position": 0,
       "services": 0,
       "quality": 0
-    }
+    },
+    "score": 0.0,
+    "numReviews": 1
   },
   {
     "id": 57,
@@ -1155,7 +1267,9 @@
       "position": 0,
       "services": 0,
       "quality": 0
-    }
+    },
+    "score": 0.0,
+    "numReviews": 1
   },
   {
     "id": 58,
@@ -1172,7 +1286,9 @@
       "position": 0,
       "services": 0,
       "quality": 0
-    }
+    },
+    "score": 0.0,
+    "numReviews": 1
   },
   {
     "id": 59,
@@ -1192,7 +1308,9 @@
       "position": 0,
       "services": 0,
       "quality": 0
-    }
+    },
+    "score": 0.0,
+    "numReviews": 1
   },
   {
     "id": 60,
@@ -1215,7 +1333,9 @@
       "position": 0,
       "services": 0,
       "quality": 0
-    }
+    },
+    "score": 0.0,
+    "numReviews": 1
   },
   {
     "id": 61,
@@ -1230,7 +1350,9 @@
       "position": 0,
       "services": 0,
       "quality": 0
-    }
+    },
+    "score": 0.0,
+    "numReviews": 1
   },
   {
     "id": 62,
@@ -1253,7 +1375,9 @@
       "position": 0,
       "services": 0,
       "quality": 0
-    }
+    },
+    "score": 0.0,
+    "numReviews": 1
   },
   {
     "id": 63,
@@ -1270,7 +1394,9 @@
       "position": 0,
       "services": 0,
       "quality": 0
-    }
+    },
+    "score": 0.0,
+    "numReviews": 1
   },
   {
     "id": 64,
@@ -1290,7 +1416,9 @@
       "position": 0,
       "services": 0,
       "quality": 0
-    }
+    },
+    "score": 0.0,
+    "numReviews": 1
   },
   {
     "id": 65,
@@ -1308,7 +1436,9 @@
       "position": 0,
       "services": 0,
       "quality": 0
-    }
+    },
+    "score": 0.0,
+    "numReviews": 1
   },
   {
     "id": 66,
@@ -1328,7 +1458,9 @@
       "position": 0,
       "services": 0,
       "quality": 0
-    }
+    },
+    "score": 0.0,
+    "numReviews": 1
   },
   {
     "id": 67,
@@ -1343,7 +1475,9 @@
       "position": 0,
       "services": 0,
       "quality": 0
-    }
+    },
+    "score": 0.0,
+    "numReviews": 1
   },
   {
     "id": 68,
@@ -1367,7 +1501,9 @@
       "position": 0,
       "services": 0,
       "quality": 0
-    }
+    },
+    "score": 0.0,
+    "numReviews": 1
   },
   {
     "id": 69,
@@ -1386,7 +1522,9 @@
       "position": 0,
       "services": 0,
       "quality": 0
-    }
+    },
+    "score": 0.0,
+    "numReviews": 1
   },
   {
     "id": 70,
@@ -1409,7 +1547,9 @@
       "position": 0,
       "services": 0,
       "quality": 0
-    }
+    },
+    "score": 0.0,
+    "numReviews": 1
   },
   {
     "id": 71,
@@ -1433,7 +1573,9 @@
       "position": 0,
       "services": 0,
       "quality": 0
-    }
+    },
+    "score": 0.0,
+    "numReviews": 1
   },
   {
     "id": 72,
@@ -1448,7 +1590,9 @@
       "position": 0,
       "services": 0,
       "quality": 0
-    }
+    },
+    "score": 0.0,
+    "numReviews": 1
   },
   {
     "id": 73,
@@ -1468,7 +1612,9 @@
       "position": 0,
       "services": 0,
       "quality": 0
-    }
+    },
+    "score": 0.0,
+    "numReviews": 1
   },
   {
     "id": 74,
@@ -1488,7 +1634,9 @@
       "position": 0,
       "services": 0,
       "quality": 0
-    }
+    },
+    "score": 0.0,
+    "numReviews": 1
   },
   {
     "id": 75,
@@ -1505,7 +1653,9 @@
       "position": 0,
       "services": 0,
       "quality": 0
-    }
+    },
+    "score": 0.0,
+    "numReviews": 1
   },
   {
     "id": 76,
@@ -1526,7 +1676,9 @@
       "position": 0,
       "services": 0,
       "quality": 0
-    }
+    },
+    "score": 0.0,
+    "numReviews": 1
   },
   {
     "id": 77,
@@ -1549,7 +1701,9 @@
       "position": 0,
       "services": 0,
       "quality": 0
-    }
+    },
+    "score": 0.0,
+    "numReviews": 1
   },
   {
     "id": 78,
@@ -1570,7 +1724,9 @@
       "position": 0,
       "services": 0,
       "quality": 0
-    }
+    },
+    "score": 0.0,
+    "numReviews": 1
   },
   {
     "id": 79,
@@ -1593,7 +1749,9 @@
       "position": 0,
       "services": 0,
       "quality": 0
-    }
+    },
+    "score": 0.0,
+    "numReviews": 1
   },
   {
     "id": 80,
@@ -1615,7 +1773,9 @@
       "position": 0,
       "services": 0,
       "quality": 0
-    }
+    },
+    "score": 0.0,
+    "numReviews": 1
   },
   {
     "id": 81,
@@ -1634,7 +1794,9 @@
       "position": 0,
       "services": 0,
       "quality": 0
-    }
+    },
+    "score": 0.0,
+    "numReviews": 1
   },
   {
     "id": 82,
@@ -1649,7 +1811,9 @@
       "position": 0,
       "services": 0,
       "quality": 0
-    }
+    },
+    "score": 0.0,
+    "numReviews": 1
   },
   {
     "id": 83,
@@ -1669,7 +1833,9 @@
       "position": 0,
       "services": 0,
       "quality": 0
-    }
+    },
+    "score": 0.0,
+    "numReviews": 1
   },
   {
     "id": 84,
@@ -1684,7 +1850,9 @@
       "position": 0,
       "services": 0,
       "quality": 0
-    }
+    },
+    "score": 0.0,
+    "numReviews": 1
   },
   {
     "id": 85,
@@ -1701,7 +1869,9 @@
       "position": 0,
       "services": 0,
       "quality": 0
-    }
+    },
+    "score": 0.0,
+    "numReviews": 1
   },
   {
     "id": 86,
@@ -1720,7 +1890,9 @@
       "position": 0,
       "services": 0,
       "quality": 0
-    }
+    },
+    "score": 0.0,
+    "numReviews": 1
   },
   {
     "id": 87,
@@ -1738,7 +1910,9 @@
       "position": 0,
       "services": 0,
       "quality": 0
-    }
+    },
+    "score": 0.0,
+    "numReviews": 1
   },
   {
     "id": 88,
@@ -1761,7 +1935,9 @@
       "position": 0,
       "services": 0,
       "quality": 0
-    }
+    },
+    "score": 0.0,
+    "numReviews": 1
   },
   {
     "id": 89,
@@ -1784,7 +1960,9 @@
       "position": 0,
       "services": 0,
       "quality": 0
-    }
+    },
+    "score": 0.0,
+    "numReviews": 1
   },
   {
     "id": 90,
@@ -1806,7 +1984,9 @@
       "position": 0,
       "services": 0,
       "quality": 0
-    }
+    },
+    "score": 0.0,
+    "numReviews": 1
   },
   {
     "id": 91,
@@ -1829,7 +2009,9 @@
       "position": 0,
       "services": 0,
       "quality": 0
-    }
+    },
+    "score": 0.0,
+    "numReviews": 1
   },
   {
     "id": 92,
@@ -1848,7 +2030,9 @@
       "position": 0,
       "services": 0,
       "quality": 0
-    }
+    },
+    "score": 0.0,
+    "numReviews": 1
   },
   {
     "id": 93,
@@ -1873,7 +2057,9 @@
       "position": 0,
       "services": 0,
       "quality": 0
-    }
+    },
+    "score": 0.0,
+    "numReviews": 1
   },
   {
     "id": 94,
@@ -1888,7 +2074,9 @@
       "position": 0,
       "services": 0,
       "quality": 0
-    }
+    },
+    "score": 0.0,
+    "numReviews": 1
   },
   {
     "id": 95,
@@ -1913,7 +2101,9 @@
       "position": 0,
       "services": 0,
       "quality": 0
-    }
+    },
+    "score": 0.0,
+    "numReviews": 1
   },
   {
     "id": 96,
@@ -1935,7 +2125,9 @@
       "position": 0,
       "services": 0,
       "quality": 0
-    }
+    },
+    "score": 0.0,
+    "numReviews": 1
   },
   {
     "id": 97,
@@ -1960,7 +2152,9 @@
       "position": 0,
       "services": 0,
       "quality": 0
-    }
+    },
+    "score": 0.0,
+    "numReviews": 1
   },
   {
     "id": 98,
@@ -1980,7 +2174,9 @@
       "position": 0,
       "services": 0,
       "quality": 0
-    }
+    },
+    "score": 0.0,
+    "numReviews": 1
   },
   {
     "id": 99,
@@ -1997,7 +2193,9 @@
       "position": 0,
       "services": 0,
       "quality": 0
-    }
+    },
+    "score": 0.0,
+    "numReviews": 1
   },
   {
     "id": 100,
@@ -2020,7 +2218,9 @@
       "position": 0,
       "services": 0,
       "quality": 0
-    }
+    },
+    "score": 0.0,
+    "numReviews": 1
   },
   {
     "id": 101,
@@ -2042,7 +2242,9 @@
       "position": 0,
       "services": 0,
       "quality": 0
-    }
+    },
+    "score": 0.0,
+    "numReviews": 1
   },
   {
     "id": 102,
@@ -2067,7 +2269,9 @@
       "position": 0,
       "services": 0,
       "quality": 0
-    }
+    },
+    "score": 0.0,
+    "numReviews": 1
   },
   {
     "id": 103,
@@ -2088,7 +2292,9 @@
       "position": 0,
       "services": 0,
       "quality": 0
-    }
+    },
+    "score": 0.0,
+    "numReviews": 1
   },
   {
     "id": 104,
@@ -2106,7 +2312,9 @@
       "position": 0,
       "services": 0,
       "quality": 0
-    }
+    },
+    "score": 0.0,
+    "numReviews": 1
   },
   {
     "id": 105,
@@ -2128,7 +2336,9 @@
       "position": 0,
       "services": 0,
       "quality": 0
-    }
+    },
+    "score": 0.0,
+    "numReviews": 1
   },
   {
     "id": 106,
@@ -2147,7 +2357,9 @@
       "position": 0,
       "services": 0,
       "quality": 0
-    }
+    },
+    "score": 0.0,
+    "numReviews": 1
   },
   {
     "id": 107,
@@ -2166,7 +2378,9 @@
       "position": 0,
       "services": 0,
       "quality": 0
-    }
+    },
+    "score": 0.0,
+    "numReviews": 1
   },
   {
     "id": 108,
@@ -2181,7 +2395,9 @@
       "position": 0,
       "services": 0,
       "quality": 0
-    }
+    },
+    "score": 0.0,
+    "numReviews": 1
   },
   {
     "id": 109,
@@ -2206,7 +2422,9 @@
       "position": 0,
       "services": 0,
       "quality": 0
-    }
+    },
+    "score": 0.0,
+    "numReviews": 1
   },
   {
     "id": 110,
@@ -2230,7 +2448,9 @@
       "position": 0,
       "services": 0,
       "quality": 0
-    }
+    },
+    "score": 0.0,
+    "numReviews": 1
   },
   {
     "id": 111,
@@ -2247,7 +2467,9 @@
       "position": 0,
       "services": 0,
       "quality": 0
-    }
+    },
+    "score": 0.0,
+    "numReviews": 1
   },
   {
     "id": 112,
@@ -2266,7 +2488,9 @@
       "position": 0,
       "services": 0,
       "quality": 0
-    }
+    },
+    "score": 0.0,
+    "numReviews": 1
   },
   {
     "id": 113,
@@ -2281,7 +2505,9 @@
       "position": 0,
       "services": 0,
       "quality": 0
-    }
+    },
+    "score": 0.0,
+    "numReviews": 1
   },
   {
     "id": 114,
@@ -2303,7 +2529,9 @@
       "position": 0,
       "services": 0,
       "quality": 0
-    }
+    },
+    "score": 0.0,
+    "numReviews": 1
   },
   {
     "id": 115,
@@ -2323,7 +2551,9 @@
       "position": 0,
       "services": 0,
       "quality": 0
-    }
+    },
+    "score": 0.0,
+    "numReviews": 1
   },
   {
     "id": 116,
@@ -2342,7 +2572,9 @@
       "position": 0,
       "services": 0,
       "quality": 0
-    }
+    },
+    "score": 0.0,
+    "numReviews": 1
   },
   {
     "id": 117,
@@ -2357,7 +2589,9 @@
       "position": 0,
       "services": 0,
       "quality": 0
-    }
+    },
+    "score": 0.0,
+    "numReviews": 1
   },
   {
     "id": 118,
@@ -2382,7 +2616,9 @@
       "position": 0,
       "services": 0,
       "quality": 0
-    }
+    },
+    "score": 0.0,
+    "numReviews": 1
   },
   {
     "id": 119,
@@ -2397,7 +2633,9 @@
       "position": 0,
       "services": 0,
       "quality": 0
-    }
+    },
+    "score": 0.0,
+    "numReviews": 1
   },
   {
     "id": 120,
@@ -2417,7 +2655,9 @@
       "position": 0,
       "services": 0,
       "quality": 0
-    }
+    },
+    "score": 0.0,
+    "numReviews": 1
   },
   {
     "id": 121,
@@ -2437,7 +2677,9 @@
       "position": 0,
       "services": 0,
       "quality": 0
-    }
+    },
+    "score": 0.0,
+    "numReviews": 1
   },
   {
     "id": 122,
@@ -2458,7 +2700,9 @@
       "position": 0,
       "services": 0,
       "quality": 0
-    }
+    },
+    "score": 0.0,
+    "numReviews": 1
   },
   {
     "id": 123,
@@ -2482,7 +2726,9 @@
       "position": 0,
       "services": 0,
       "quality": 0
-    }
+    },
+    "score": 0.0,
+    "numReviews": 1
   },
   {
     "id": 124,
@@ -2497,7 +2743,9 @@
       "position": 0,
       "services": 0,
       "quality": 0
-    }
+    },
+    "score": 0.0,
+    "numReviews": 1
   },
   {
     "id": 125,
@@ -2519,7 +2767,9 @@
       "position": 0,
       "services": 0,
       "quality": 0
-    }
+    },
+    "score": 0.0,
+    "numReviews": 1
   },
   {
     "id": 126,
@@ -2544,7 +2794,9 @@
       "position": 0,
       "services": 0,
       "quality": 0
-    }
+    },
+    "score": 0.0,
+    "numReviews": 1
   },
   {
     "id": 127,
@@ -2569,7 +2821,9 @@
       "position": 0,
       "services": 0,
       "quality": 0
-    }
+    },
+    "score": 0.0,
+    "numReviews": 1
   },
   {
     "id": 128,
@@ -2590,7 +2844,9 @@
       "position": 0,
       "services": 0,
       "quality": 0
-    }
+    },
+    "score": 0.0,
+    "numReviews": 1
   },
   {
     "id": 129,
@@ -2611,7 +2867,9 @@
       "position": 0,
       "services": 0,
       "quality": 0
-    }
+    },
+    "score": 0.0,
+    "numReviews": 1
   },
   {
     "id": 130,
@@ -2629,7 +2887,9 @@
       "position": 0,
       "services": 0,
       "quality": 0
-    }
+    },
+    "score": 0.0,
+    "numReviews": 1
   },
   {
     "id": 131,
@@ -2648,7 +2908,9 @@
       "position": 0,
       "services": 0,
       "quality": 0
-    }
+    },
+    "score": 0.0,
+    "numReviews": 1
   },
   {
     "id": 132,
@@ -2669,7 +2931,9 @@
       "position": 0,
       "services": 0,
       "quality": 0
-    }
+    },
+    "score": 0.0,
+    "numReviews": 1
   },
   {
     "id": 133,
@@ -2690,7 +2954,9 @@
       "position": 0,
       "services": 0,
       "quality": 0
-    }
+    },
+    "score": 0.0,
+    "numReviews": 1
   },
   {
     "id": 134,
@@ -2710,7 +2976,9 @@
       "position": 0,
       "services": 0,
       "quality": 0
-    }
+    },
+    "score": 0.0,
+    "numReviews": 1
   },
   {
     "id": 135,
@@ -2733,7 +3001,9 @@
       "position": 0,
       "services": 0,
       "quality": 0
-    }
+    },
+    "score": 0.0,
+    "numReviews": 1
   },
   {
     "id": 136,
@@ -2754,7 +3024,9 @@
       "position": 0,
       "services": 0,
       "quality": 0
-    }
+    },
+    "score": 0.0,
+    "numReviews": 1
   },
   {
     "id": 137,
@@ -2772,7 +3044,9 @@
       "position": 0,
       "services": 0,
       "quality": 0
-    }
+    },
+    "score": 0.0,
+    "numReviews": 1
   },
   {
     "id": 138,
@@ -2797,7 +3071,9 @@
       "position": 0,
       "services": 0,
       "quality": 0
-    }
+    },
+    "score": 0.0,
+    "numReviews": 1
   },
   {
     "id": 139,
@@ -2821,7 +3097,9 @@
       "position": 0,
       "services": 0,
       "quality": 0
-    }
+    },
+    "score": 0.0,
+    "numReviews": 1
   },
   {
     "id": 140,
@@ -2844,7 +3122,9 @@
       "position": 0,
       "services": 0,
       "quality": 0
-    }
+    },
+    "score": 0.0,
+    "numReviews": 1
   },
   {
     "id": 141,
@@ -2864,7 +3144,9 @@
       "position": 0,
       "services": 0,
       "quality": 0
-    }
+    },
+    "score": 0.0,
+    "numReviews": 1
   },
   {
     "id": 142,
@@ -2889,7 +3171,9 @@
       "position": 0,
       "services": 0,
       "quality": 0
-    }
+    },
+    "score": 0.0,
+    "numReviews": 1
   },
   {
     "id": 143,
@@ -2912,7 +3196,9 @@
       "position": 0,
       "services": 0,
       "quality": 0
-    }
+    },
+    "score": 0.0,
+    "numReviews": 1
   },
   {
     "id": 144,
@@ -2932,7 +3218,9 @@
       "position": 0,
       "services": 0,
       "quality": 0
-    }
+    },
+    "score": 0.0,
+    "numReviews": 1
   },
   {
     "id": 145,
@@ -2951,7 +3239,9 @@
       "position": 0,
       "services": 0,
       "quality": 0
-    }
+    },
+    "score": 0.0,
+    "numReviews": 1
   },
   {
     "id": 146,
@@ -2972,7 +3262,9 @@
       "position": 0,
       "services": 0,
       "quality": 0
-    }
+    },
+    "score": 0.0,
+    "numReviews": 1
   },
   {
     "id": 147,
@@ -2991,7 +3283,9 @@
       "position": 0,
       "services": 0,
       "quality": 0
-    }
+    },
+    "score": 0.0,
+    "numReviews": 1
   },
   {
     "id": 148,
@@ -3016,7 +3310,9 @@
       "position": 0,
       "services": 0,
       "quality": 0
-    }
+    },
+    "score": 0.0,
+    "numReviews": 1
   },
   {
     "id": 149,
@@ -3039,7 +3335,9 @@
       "position": 0,
       "services": 0,
       "quality": 0
-    }
+    },
+    "score": 0.0,
+    "numReviews": 1
   },
   {
     "id": 150,
@@ -3054,7 +3352,9 @@
       "position": 0,
       "services": 0,
       "quality": 0
-    }
+    },
+    "score": 0.0,
+    "numReviews": 1
   },
   {
     "id": 151,
@@ -3071,7 +3371,9 @@
       "position": 0,
       "services": 0,
       "quality": 0
-    }
+    },
+    "score": 0.0,
+    "numReviews": 1
   },
   {
     "id": 152,
@@ -3093,7 +3395,9 @@
       "position": 0,
       "services": 0,
       "quality": 0
-    }
+    },
+    "score": 0.0,
+    "numReviews": 1
   },
   {
     "id": 153,
@@ -3117,7 +3421,9 @@
       "position": 0,
       "services": 0,
       "quality": 0
-    }
+    },
+    "score": 0.0,
+    "numReviews": 1
   },
   {
     "id": 154,
@@ -3139,7 +3445,9 @@
       "position": 0,
       "services": 0,
       "quality": 0
-    }
+    },
+    "score": 0.0,
+    "numReviews": 1
   },
   {
     "id": 155,
@@ -3159,7 +3467,9 @@
       "position": 0,
       "services": 0,
       "quality": 0
-    }
+    },
+    "score": 0.0,
+    "numReviews": 1
   },
   {
     "id": 156,
@@ -3180,7 +3490,9 @@
       "position": 0,
       "services": 0,
       "quality": 0
-    }
+    },
+    "score": 0.0,
+    "numReviews": 1
   },
   {
     "id": 157,
@@ -3197,7 +3509,9 @@
       "position": 0,
       "services": 0,
       "quality": 0
-    }
+    },
+    "score": 0.0,
+    "numReviews": 1
   },
   {
     "id": 158,
@@ -3222,7 +3536,9 @@
       "position": 0,
       "services": 0,
       "quality": 0
-    }
+    },
+    "score": 0.0,
+    "numReviews": 1
   },
   {
     "id": 159,
@@ -3246,7 +3562,9 @@
       "position": 0,
       "services": 0,
       "quality": 0
-    }
+    },
+    "score": 0.0,
+    "numReviews": 1
   },
   {
     "id": 160,
@@ -3267,7 +3585,9 @@
       "position": 0,
       "services": 0,
       "quality": 0
-    }
+    },
+    "score": 0.0,
+    "numReviews": 1
   },
   {
     "id": 161,
@@ -3292,7 +3612,9 @@
       "position": 0,
       "services": 0,
       "quality": 0
-    }
+    },
+    "score": 0.0,
+    "numReviews": 1
   },
   {
     "id": 162,
@@ -3314,7 +3636,9 @@
       "position": 0,
       "services": 0,
       "quality": 0
-    }
+    },
+    "score": 0.0,
+    "numReviews": 1
   },
   {
     "id": 163,
@@ -3332,7 +3656,9 @@
       "position": 0,
       "services": 0,
       "quality": 0
-    }
+    },
+    "score": 0.0,
+    "numReviews": 1
   },
   {
     "id": 164,
@@ -3353,7 +3679,9 @@
       "position": 0,
       "services": 0,
       "quality": 0
-    }
+    },
+    "score": 0.0,
+    "numReviews": 1
   },
   {
     "id": 165,
@@ -3370,7 +3698,9 @@
       "position": 0,
       "services": 0,
       "quality": 0
-    }
+    },
+    "score": 0.0,
+    "numReviews": 1
   },
   {
     "id": 166,
@@ -3385,7 +3715,9 @@
       "position": 0,
       "services": 0,
       "quality": 0
-    }
+    },
+    "score": 0.0,
+    "numReviews": 1
   },
   {
     "id": 167,
@@ -3408,7 +3740,9 @@
       "position": 0,
       "services": 0,
       "quality": 0
-    }
+    },
+    "score": 0.0,
+    "numReviews": 1
   },
   {
     "id": 168,
@@ -3426,7 +3760,9 @@
       "position": 0,
       "services": 0,
       "quality": 0
-    }
+    },
+    "score": 0.0,
+    "numReviews": 1
   },
   {
     "id": 169,
@@ -3444,7 +3780,9 @@
       "position": 0,
       "services": 0,
       "quality": 0
-    }
+    },
+    "score": 0.0,
+    "numReviews": 1
   },
   {
     "id": 170,
@@ -3459,7 +3797,9 @@
       "position": 0,
       "services": 0,
       "quality": 0
-    }
+    },
+    "score": 0.0,
+    "numReviews": 1
   },
   {
     "id": 171,
@@ -3482,7 +3822,9 @@
       "position": 0,
       "services": 0,
       "quality": 0
-    }
+    },
+    "score": 0.0,
+    "numReviews": 1
   },
   {
     "id": 172,
@@ -3506,7 +3848,9 @@
       "position": 0,
       "services": 0,
       "quality": 0
-    }
+    },
+    "score": 0.0,
+    "numReviews": 1
   },
   {
     "id": 173,
@@ -3524,7 +3868,9 @@
       "position": 0,
       "services": 0,
       "quality": 0
-    }
+    },
+    "score": 0.0,
+    "numReviews": 1
   },
   {
     "id": 174,
@@ -3546,7 +3892,9 @@
       "position": 0,
       "services": 0,
       "quality": 0
-    }
+    },
+    "score": 0.0,
+    "numReviews": 1
   },
   {
     "id": 175,
@@ -3563,7 +3911,9 @@
       "position": 0,
       "services": 0,
       "quality": 0
-    }
+    },
+    "score": 0.0,
+    "numReviews": 1
   },
   {
     "id": 176,
@@ -3585,7 +3935,9 @@
       "position": 0,
       "services": 0,
       "quality": 0
-    }
+    },
+    "score": 0.0,
+    "numReviews": 1
   },
   {
     "id": 177,
@@ -3600,7 +3952,9 @@
       "position": 0,
       "services": 0,
       "quality": 0
-    }
+    },
+    "score": 0.0,
+    "numReviews": 1
   },
   {
     "id": 178,
@@ -3621,7 +3975,9 @@
       "position": 0,
       "services": 0,
       "quality": 0
-    }
+    },
+    "score": 0.0,
+    "numReviews": 1
   },
   {
     "id": 179,
@@ -3639,7 +3995,9 @@
       "position": 0,
       "services": 0,
       "quality": 0
-    }
+    },
+    "score": 0.0,
+    "numReviews": 1
   },
   {
     "id": 180,
@@ -3661,7 +4019,9 @@
       "position": 0,
       "services": 0,
       "quality": 0
-    }
+    },
+    "score": 0.0,
+    "numReviews": 1
   },
   {
     "id": 181,
@@ -3685,7 +4045,9 @@
       "position": 0,
       "services": 0,
       "quality": 0
-    }
+    },
+    "score": 0.0,
+    "numReviews": 1
   },
   {
     "id": 182,
@@ -3708,7 +4070,9 @@
       "position": 0,
       "services": 0,
       "quality": 0
-    }
+    },
+    "score": 0.0,
+    "numReviews": 1
   },
   {
     "id": 183,
@@ -3729,7 +4093,9 @@
       "position": 0,
       "services": 0,
       "quality": 0
-    }
+    },
+    "score": 0.0,
+    "numReviews": 1
   },
   {
     "id": 184,
@@ -3746,7 +4112,9 @@
       "position": 0,
       "services": 0,
       "quality": 0
-    }
+    },
+    "score": 0.0,
+    "numReviews": 1
   },
   {
     "id": 185,
@@ -3768,7 +4136,9 @@
       "position": 0,
       "services": 0,
       "quality": 0
-    }
+    },
+    "score": 0.0,
+    "numReviews": 1
   },
   {
     "id": 186,
@@ -3783,7 +4153,9 @@
       "position": 0,
       "services": 0,
       "quality": 0
-    }
+    },
+    "score": 0.0,
+    "numReviews": 1
   },
   {
     "id": 187,
@@ -3802,7 +4174,9 @@
       "position": 0,
       "services": 0,
       "quality": 0
-    }
+    },
+    "score": 0.0,
+    "numReviews": 1
   },
   {
     "id": 188,
@@ -3821,7 +4195,9 @@
       "position": 0,
       "services": 0,
       "quality": 0
-    }
+    },
+    "score": 0.0,
+    "numReviews": 1
   },
   {
     "id": 189,
@@ -3845,7 +4221,9 @@
       "position": 0,
       "services": 0,
       "quality": 0
-    }
+    },
+    "score": 0.0,
+    "numReviews": 1
   },
   {
     "id": 190,
@@ -3864,7 +4242,9 @@
       "position": 0,
       "services": 0,
       "quality": 0
-    }
+    },
+    "score": 0.0,
+    "numReviews": 1
   },
   {
     "id": 191,
@@ -3885,7 +4265,9 @@
       "position": 0,
       "services": 0,
       "quality": 0
-    }
+    },
+    "score": 0.0,
+    "numReviews": 1
   },
   {
     "id": 192,
@@ -3903,7 +4285,9 @@
       "position": 0,
       "services": 0,
       "quality": 0
-    }
+    },
+    "score": 0.0,
+    "numReviews": 1
   },
   {
     "id": 193,
@@ -3924,7 +4308,9 @@
       "position": 0,
       "services": 0,
       "quality": 0
-    }
+    },
+    "score": 0.0,
+    "numReviews": 1
   },
   {
     "id": 194,
@@ -3942,7 +4328,9 @@
       "position": 0,
       "services": 0,
       "quality": 0
-    }
+    },
+    "score": 0.0,
+    "numReviews": 1
   },
   {
     "id": 195,
@@ -3964,7 +4352,9 @@
       "position": 0,
       "services": 0,
       "quality": 0
-    }
+    },
+    "score": 0.0,
+    "numReviews": 1
   },
   {
     "id": 196,
@@ -3984,7 +4374,9 @@
       "position": 0,
       "services": 0,
       "quality": 0
-    }
+    },
+    "score": 0.0,
+    "numReviews": 1
   },
   {
     "id": 197,
@@ -4009,7 +4401,9 @@
       "position": 0,
       "services": 0,
       "quality": 0
-    }
+    },
+    "score": 0.0,
+    "numReviews": 1
   },
   {
     "id": 198,
@@ -4027,7 +4421,9 @@
       "position": 0,
       "services": 0,
       "quality": 0
-    }
+    },
+    "score": 0.0,
+    "numReviews": 1
   },
   {
     "id": 199,
@@ -4047,7 +4443,9 @@
       "position": 0,
       "services": 0,
       "quality": 0
-    }
+    },
+    "score": 0.0,
+    "numReviews": 1
   },
   {
     "id": 200,
@@ -4069,6 +4467,8 @@
       "position": 0,
       "services": 0,
       "quality": 0
-    }
+    },
+    "score": 0.0,
+    "numReviews": 1
   }
 ]

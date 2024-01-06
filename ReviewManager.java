@@ -156,7 +156,7 @@ public class ReviewManager {
 
         return allReviews;
     }
-    
+
     // Other methods
     private int[] readRatingList(JsonReader jsonReader) throws IOException {
         int[] ratings = {0,0,0,0};

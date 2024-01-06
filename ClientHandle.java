@@ -23,8 +23,6 @@ public class ClientHandle implements Runnable {
     public void run() {
         String clientCommand = "";
         LoggedUser loggedUser = null;
-
-        loadReview();
     
         try (Scanner inputStream = new Scanner(clientSocket.getInputStream())) {
             while (inputStream.hasNextLine()) {
@@ -45,6 +43,7 @@ public class ClientHandle implements Runnable {
                 // INSERT REVIEW
                 else if (clientCommand.equals("INSERT_REVIEW")) {
                     insertReview(inputStream, loggedUser);
+                    reloadReview();
                 }
                 else if (clientCommand.equals("SHOW_BADGE")) {
                     showBadge(inputStream, loggedUser);
@@ -219,8 +218,8 @@ public class ClientHandle implements Runnable {
         }
     }
 
-    // Other methods
-    private void loadReview() {
+    //Other Methods
+    private synchronized void reloadReview() {
         List<Hotel> allHotel = null;
         List<Review> allReviews = null; 
 
@@ -262,5 +261,5 @@ public class ClientHandle implements Runnable {
             
             hotelManager.loadReview(hotel.getId(), avgRate, avgSingleRate);
         }
-    }
+    } 
 }

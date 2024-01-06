@@ -24,6 +24,8 @@ public class HotelManager {
                 if (hotel.getId() == idHotel) {
                     hotel.setRate(globalScore);
                     hotel.setRatings(singleScores);
+                    hotel.IncrementNumReview();
+                    hotel.setScore(calcScore(hotel));
 
                     break;
                 }
@@ -287,4 +289,19 @@ public class HotelManager {
         jsonReader.endObject(); // Fine dell'oggetto delle valutazioni
         return ratings;        
     }
+
+    private double calcScore(Hotel hotel) {
+        int[] singleRatings = hotel.getRatings();
+        double mediaQualita = 0.0, qualitaNormalizzata = 0.0, quantitaNormalizzata = 0.0;
+        
+        mediaQualita = (singleRatings[0] + singleRatings[1] + singleRatings[2] + singleRatings[3]) / 4;
+        qualitaNormalizzata = mediaQualita / 5;
+
+        int numReviews = hotel.getNumReviews();
+        if (numReviews > 0)
+            quantitaNormalizzata = Math.log(hotel.getNumReviews());
+        
+        return 0.5 * qualitaNormalizzata + 0.5 * quantitaNormalizzata;
+    }   
+
 }

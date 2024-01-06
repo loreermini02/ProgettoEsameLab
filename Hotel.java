@@ -9,6 +9,8 @@ public class Hotel {
     private List<String> services;
     private int rate;
     private Ratings ratings;
+    private double score;
+    private int numReviews;
 
     public Hotel (int id, String name, String description, String city, String phone, List<String> services, int rate, int[] ratings) {
         this.id = id;
@@ -24,6 +26,9 @@ public class Hotel {
         this.ratings.position = ratings[1];
         this.ratings.services = ratings[2];
         this.ratings.quality = ratings[3];
+
+        this.score = 0.0;
+        this.numReviews = 0;
 
     } 
 
@@ -77,5 +82,21 @@ public class Hotel {
         this.ratings.position = ratings[1];
         this.ratings.services = ratings[2];
         this.ratings.quality = ratings[3];
+    }
+
+    public double getScore() {
+        return score;
+    }
+
+    public void setScore(double score) {
+        this.score = score;
+    }
+
+    public int getNumReviews() {
+        return numReviews;
+    }
+
+    public void IncrementNumReview() {
+        this.numReviews++;
     }
 }
