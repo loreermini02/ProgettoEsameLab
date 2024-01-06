@@ -8,7 +8,7 @@ public class Hotel {
     private String phone;
     private List<String> services;
     private int rate;
-    private int[] ratings = {0,0,0,0};
+    private Ratings ratings;
 
     public Hotel (int id, String name, String description, String city, String phone, List<String> services, int rate, int[] ratings) {
         this.id = id;
@@ -18,8 +18,21 @@ public class Hotel {
         this.phone = phone;
         this.services = services;
         this.rate = rate;
-        this.ratings = ratings;
+
+        this.ratings = new Ratings();
+        this.ratings.cleaning = ratings[0];
+        this.ratings.position = ratings[1];
+        this.ratings.services = ratings[2];
+        this.ratings.quality = ratings[3];
+
     } 
+
+    class Ratings {
+        int cleaning;
+        int position;
+        int services;
+        int quality;
+    }
 
     public int getId() {
         return id;
@@ -49,7 +62,20 @@ public class Hotel {
         return rate;
     }
 
+    public void setRate(int rate) {
+        this.rate = rate;
+    }
+
     public int[] getRatings() {
-        return ratings;
+        int[] ratingsArray = {ratings.cleaning, ratings.position, ratings.services, ratings.quality};
+
+        return ratingsArray;
+    }
+
+    public void setRatings(int[] ratings) {
+        this.ratings.cleaning = ratings[0];
+        this.ratings.position = ratings[1];
+        this.ratings.services = ratings[2];
+        this.ratings.quality = ratings[3];
     }
 }

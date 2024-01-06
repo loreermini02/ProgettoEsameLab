@@ -23,6 +23,8 @@ public class ClientHandle implements Runnable {
     public void run() {
         String clientCommand = "";
         LoggedUser loggedUser = null;
+
+        loadReview();
     
         try (Scanner inputStream = new Scanner(clientSocket.getInputStream())) {
             while (inputStream.hasNextLine()) {
@@ -122,7 +124,7 @@ public class ClientHandle implements Runnable {
             singleScores[2] = inputStream.nextInt();
             singleScores[3] = inputStream.nextInt();
 
-            reviewManager.addReview(loggedUser, nomeHotel, nomeCitta, globalScore, singleScores);;
+            reviewManager.addReview(loggedUser, hotel.getId(), hotel.getName(), hotel.getCity(), globalScore, singleScores);;
             System.out.println("Nuova recensione effettuata");
             outputStream.println("ACCEPT");        
         }
@@ -180,7 +182,7 @@ public class ClientHandle implements Runnable {
         int[] rating = {0,0,0,0};
 
         nomeCitta = inputStream.nextLine();
-        hotels = hotelManager.searchHotelsByCity(nomeCitta);
+        hotels = hotelManager.searchHotelByCity(nomeCitta);
 
         if (hotels.isEmpty()) {
             outputStream.println("HOTEL_NOT_FOUND");
@@ -217,4 +219,18 @@ public class ClientHandle implements Runnable {
         }
     }
 
+    // Other methods
+    private void loadReview() {
+        List<Hotel> allHotel = null;
+        List<Review> allReviews = null; 
+
+        allHotel = hotelManager.searchAllHotels();
+
+        for (Hotel hotel : allHotel) {
+            allReviews = reviewManager.getAllReviewByHotel(hotel.getId());
+            for (Review review : allReviews) {
+                hotelManager.loadReview(review.getIdHotel(), review.getGlobalScore(), review.getSingleScores());
+            }
+        }
+    }
 }
