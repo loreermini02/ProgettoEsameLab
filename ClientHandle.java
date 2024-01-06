@@ -1,5 +1,8 @@
 import java.io.PrintWriter;
 import java.net.Socket;
+import java.time.Duration;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -271,8 +274,8 @@ public class ClientHandle implements Runnable {
                 hotel.setNumReviews(allReviews.size());
                 hotel.setRate(avgRate);
                 hotel.setRatings(avgSingleRate);
-                hotel.setScore(calcScore(hotel));
                 hotel.setDateLastReview(dateRecensioni.get(dateRecensioni.size() - 1));
+                hotel.setScore(calcScore(hotel));
                 
             } else {
                 hotel.setNumReviews(0);
@@ -287,14 +290,18 @@ public class ClientHandle implements Runnable {
     } 
 
     private double calcScore(Hotel hotel) {
-        double qualitaNormalizzata = 0.0, quantitaNormalizzata = 0.0;
-        
-        qualitaNormalizzata = hotel.getRate() / 5;
+        String dateLastReviewString = hotel.getDateLastReview();
+        double ranking = 0.0;
 
-        int numReviews = hotel.getNumReviews();
-        if (numReviews > 0)
-            quantitaNormalizzata = Math.log(hotel.getNumReviews());
-        
-        return 0.5 * qualitaNormalizzata + 0.5 * quantitaNormalizzata;
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
+            
+        // Converti la stringa in un oggetto LocalDateTime
+        LocalDateTime dateTime = LocalDateTime.parse(dateLastReviewString, formatter);
+    
+        Duration duration = Duration.between(dateTime, LocalDateTime.now());
+    
+        ranking = 0.6 * hotel.getRate() + 0.3 * Math.log(hotel.getNumReviews()) + 0.1 * duration.toDays();
+
+        return ranking;
     }
 }
