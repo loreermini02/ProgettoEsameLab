@@ -1,5 +1,6 @@
 import java.io.PrintWriter;
 import java.net.Socket;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -231,6 +232,8 @@ public class ClientHandle implements Runnable {
         int totRate, avgRate;
         int[] totSingleRate = {0,0,0,0}, avgSingleRate = {0,0,0,0}, defaultRating = {0,0,0,0};
 
+        List<String> dateRecensioni = new ArrayList<>();
+
         allHotel = hotelManager.searchAllHotels();
 
         for (Hotel hotel : allHotel) {
@@ -253,7 +256,9 @@ public class ClientHandle implements Runnable {
                 totSingleRate[0] += review.getSingleScores()[0];
                 totSingleRate[1] += review.getSingleScores()[1];
                 totSingleRate[2] += review.getSingleScores()[2];
-                totSingleRate[3] += review.getSingleScores()[3];    
+                totSingleRate[3] += review.getSingleScores()[3]; 
+                
+                dateRecensioni.add(review.getDateTime());
             }
 
             if (allReviews.size() > 0) {
@@ -267,12 +272,14 @@ public class ClientHandle implements Runnable {
                 hotel.setRate(avgRate);
                 hotel.setRatings(avgSingleRate);
                 hotel.setScore(calcScore(hotel));
+                hotel.setDateLastReview(dateRecensioni.get(dateRecensioni.size() - 1));
                 
             } else {
                 hotel.setNumReviews(0);
                 hotel.setRate(0);
                 hotel.setRatings(defaultRating);
                 hotel.setScore(0.0);
+                hotel.setDateLastReview("");
             }
             
             hotelManager.loadReview(hotel);
@@ -289,5 +296,5 @@ public class ClientHandle implements Runnable {
             quantitaNormalizzata = Math.log(hotel.getNumReviews());
         
         return 0.5 * qualitaNormalizzata + 0.5 * quantitaNormalizzata;
-    }  
+    }
 }

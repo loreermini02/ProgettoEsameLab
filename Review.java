@@ -6,7 +6,7 @@ public class Review {
     private String nomeCitta;
     private int globalScore;
     private int[] singleScores;
-    String dateTime;
+    private String dateTime;
 
     Review(String username, int idHotel, String nomeHotel, String nomeCitta, int globalScore, int[] singleScores, String dateTime) {
         this.username = username;
@@ -41,5 +41,9 @@ public class Review {
 
     public int[] getSingleScores() {
         return singleScores;
+    }
+
+    public String getDateTime() {
+        return dateTime;
     }
 }

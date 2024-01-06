@@ -26,6 +26,7 @@ public class HotelManager {
                     h.setRate(hotel.getRate());
                     h.setRatings(hotel.getRatings());
                     h.setScore(hotel.getScore());
+                    h.setDateLastReview(hotel.getDateLastReview());
                     
                     break;
                 }

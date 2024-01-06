@@ -4026,12 +4026,12 @@
         "Palestra",
         "Cancellazione gratuita"
       ],
-      "rate": 5,
+      "rate": 3,
       "ratings": {
-        "cleaning": 5,
-        "position": 5,
-        "services": 5,
-        "quality": 5
+        "cleaning": 3,
+        "position": 3,
+        "services": 3,
+        "quality": 3
       },
       "score": 0.0,
       "numReviews": 0,

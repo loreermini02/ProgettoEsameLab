@@ -111,4 +111,7 @@ public class Hotel {
         this.dateLastReview = date;
     }
 
+    public String getDateLastReview() {
+        return dateLastReview;
+    }
 }

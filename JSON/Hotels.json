@@ -10,15 +10,16 @@
       "Palestra",
       "Cancellazione gratuita"
     ],
-    "rate": 5,
+    "rate": 3,
     "ratings": {
-      "cleaning": 5,
-      "position": 5,
-      "services": 5,
-      "quality": 5
+      "cleaning": 3,
+      "position": 3,
+      "services": 3,
+      "quality": 3
     },
-    "score": 0.5,
-    "numReviews": 1
+    "score": 0.34657359027997264,
+    "numReviews": 2,
+    "dateLastReview": "06-01-2024 17:54:28"
   },
   {
     "id": 2,
@@ -42,7 +43,8 @@
       "quality": 0
     },
     "score": 0.0,
-    "numReviews": 0
+    "numReviews": 0,
+    "dateLastReview": ""
   },
   {
     "id": 3,
@@ -59,7 +61,8 @@
       "quality": 0
     },
     "score": 0.0,
-    "numReviews": 0
+    "numReviews": 0,
+    "dateLastReview": ""
   },
   {
     "id": 4,
@@ -76,7 +79,8 @@
       "quality": 0
     },
     "score": 0.0,
-    "numReviews": 0
+    "numReviews": 0,
+    "dateLastReview": ""
   },
   {
     "id": 5,
@@ -102,7 +106,8 @@
       "quality": 0
     },
     "score": 0.0,
-    "numReviews": 0
+    "numReviews": 0,
+    "dateLastReview": ""
   },
   {
     "id": 6,
@@ -119,7 +124,8 @@
       "quality": 0
     },
     "score": 0.0,
-    "numReviews": 0
+    "numReviews": 0,
+    "dateLastReview": ""
   },
   {
     "id": 7,
@@ -141,7 +147,8 @@
       "quality": 0
     },
     "score": 0.0,
-    "numReviews": 0
+    "numReviews": 0,
+    "dateLastReview": ""
   },
   {
     "id": 8,
@@ -164,7 +171,8 @@
       "quality": 0
     },
     "score": 0.0,
-    "numReviews": 0
+    "numReviews": 0,
+    "dateLastReview": ""
   },
   {
     "id": 9,
@@ -181,7 +189,8 @@
       "quality": 0
     },
     "score": 0.0,
-    "numReviews": 0
+    "numReviews": 0,
+    "dateLastReview": ""
   },
   {
     "id": 10,
@@ -202,7 +211,8 @@
       "quality": 0
     },
     "score": 0.0,
-    "numReviews": 0
+    "numReviews": 0,
+    "dateLastReview": ""
   },
   {
     "id": 11,
@@ -227,7 +237,8 @@
       "quality": 0
     },
     "score": 0.0,
-    "numReviews": 0
+    "numReviews": 0,
+    "dateLastReview": ""
   },
   {
     "id": 12,
@@ -252,7 +263,8 @@
       "quality": 0
     },
     "score": 0.0,
-    "numReviews": 0
+    "numReviews": 0,
+    "dateLastReview": ""
   },
   {
     "id": 13,
@@ -273,7 +285,8 @@
       "quality": 0
     },
     "score": 0.0,
-    "numReviews": 0
+    "numReviews": 0,
+    "dateLastReview": ""
   },
   {
     "id": 14,
@@ -295,7 +308,8 @@
       "quality": 0
     },
     "score": 0.0,
-    "numReviews": 0
+    "numReviews": 0,
+    "dateLastReview": ""
   },
   {
     "id": 15,
@@ -320,7 +334,8 @@
       "quality": 0
     },
     "score": 0.0,
-    "numReviews": 0
+    "numReviews": 0,
+    "dateLastReview": ""
   },
   {
     "id": 16,
@@ -342,7 +357,8 @@
       "quality": 0
     },
     "score": 0.0,
-    "numReviews": 0
+    "numReviews": 0,
+    "dateLastReview": ""
   },
   {
     "id": 17,
@@ -369,7 +385,8 @@
       "quality": 0
     },
     "score": 0.0,
-    "numReviews": 0
+    "numReviews": 0,
+    "dateLastReview": ""
   },
   {
     "id": 18,
@@ -389,7 +406,8 @@
       "quality": 0
     },
     "score": 0.0,
-    "numReviews": 0
+    "numReviews": 0,
+    "dateLastReview": ""
   },
   {
     "id": 19,
@@ -406,7 +424,8 @@
       "quality": 0
     },
     "score": 0.0,
-    "numReviews": 0
+    "numReviews": 0,
+    "dateLastReview": ""
   },
   {
     "id": 20,
@@ -423,7 +442,8 @@
       "quality": 0
     },
     "score": 0.0,
-    "numReviews": 0
+    "numReviews": 0,
+    "dateLastReview": ""
   },
   {
     "id": 21,
@@ -449,7 +469,8 @@
       "quality": 0
     },
     "score": 0.0,
-    "numReviews": 0
+    "numReviews": 0,
+    "dateLastReview": ""
   },
   {
     "id": 22,
@@ -473,7 +494,8 @@
       "quality": 0
     },
     "score": 0.0,
-    "numReviews": 0
+    "numReviews": 0,
+    "dateLastReview": ""
   },
   {
     "id": 23,
@@ -492,7 +514,8 @@
       "quality": 0
     },
     "score": 0.0,
-    "numReviews": 0
+    "numReviews": 0,
+    "dateLastReview": ""
   },
   {
     "id": 24,
@@ -519,7 +542,8 @@
       "quality": 0
     },
     "score": 0.0,
-    "numReviews": 0
+    "numReviews": 0,
+    "dateLastReview": ""
   },
   {
     "id": 25,
@@ -539,7 +563,8 @@
       "quality": 0
     },
     "score": 0.0,
-    "numReviews": 0
+    "numReviews": 0,
+    "dateLastReview": ""
   },
   {
     "id": 26,
@@ -564,7 +589,8 @@
       "quality": 0
     },
     "score": 0.0,
-    "numReviews": 0
+    "numReviews": 0,
+    "dateLastReview": ""
   },
   {
     "id": 27,
@@ -581,7 +607,8 @@
       "quality": 0
     },
     "score": 0.0,
-    "numReviews": 0
+    "numReviews": 0,
+    "dateLastReview": ""
   },
   {
     "id": 28,
@@ -608,7 +635,8 @@
       "quality": 0
     },
     "score": 0.0,
-    "numReviews": 0
+    "numReviews": 0,
+    "dateLastReview": ""
   },
   {
     "id": 29,
@@ -630,7 +658,8 @@
       "quality": 0
     },
     "score": 0.0,
-    "numReviews": 0
+    "numReviews": 0,
+    "dateLastReview": ""
   },
   {
     "id": 30,
@@ -647,7 +676,8 @@
       "quality": 0
     },
     "score": 0.0,
-    "numReviews": 0
+    "numReviews": 0,
+    "dateLastReview": ""
   },
   {
     "id": 31,
@@ -673,7 +703,8 @@
       "quality": 0
     },
     "score": 0.0,
-    "numReviews": 0
+    "numReviews": 0,
+    "dateLastReview": ""
   },
   {
     "id": 32,
@@ -693,7 +724,8 @@
       "quality": 0
     },
     "score": 0.0,
-    "numReviews": 0
+    "numReviews": 0,
+    "dateLastReview": ""
   },
   {
     "id": 33,
@@ -720,7 +752,8 @@
       "quality": 0
     },
     "score": 0.0,
-    "numReviews": 0
+    "numReviews": 0,
+    "dateLastReview": ""
   },
   {
     "id": 34,
@@ -745,7 +778,8 @@
       "quality": 0
     },
     "score": 0.0,
-    "numReviews": 0
+    "numReviews": 0,
+    "dateLastReview": ""
   },
   {
     "id": 35,
@@ -768,7 +802,8 @@
       "quality": 0
     },
     "score": 0.0,
-    "numReviews": 0
+    "numReviews": 0,
+    "dateLastReview": ""
   },
   {
     "id": 36,
@@ -787,7 +822,8 @@
       "quality": 0
     },
     "score": 0.0,
-    "numReviews": 0
+    "numReviews": 0,
+    "dateLastReview": ""
   },
   {
     "id": 37,
@@ -814,7 +850,8 @@
       "quality": 0
     },
     "score": 0.0,
-    "numReviews": 0
+    "numReviews": 0,
+    "dateLastReview": ""
   },
   {
     "id": 38,
@@ -833,7 +870,8 @@
       "quality": 0
     },
     "score": 0.0,
-    "numReviews": 0
+    "numReviews": 0,
+    "dateLastReview": ""
   },
   {
     "id": 39,
@@ -858,7 +896,8 @@
       "quality": 0
     },
     "score": 0.0,
-    "numReviews": 0
+    "numReviews": 0,
+    "dateLastReview": ""
   },
   {
     "id": 40,
@@ -875,7 +914,8 @@
       "quality": 0
     },
     "score": 0.0,
-    "numReviews": 0
+    "numReviews": 0,
+    "dateLastReview": ""
   },
   {
     "id": 41,
@@ -900,7 +940,8 @@
       "quality": 0
     },
     "score": 0.0,
-    "numReviews": 0
+    "numReviews": 0,
+    "dateLastReview": ""
   },
   {
     "id": 42,
@@ -919,7 +960,8 @@
       "quality": 0
     },
     "score": 0.0,
-    "numReviews": 0
+    "numReviews": 0,
+    "dateLastReview": ""
   },
   {
     "id": 43,
@@ -946,7 +988,8 @@
       "quality": 0
     },
     "score": 0.0,
-    "numReviews": 0
+    "numReviews": 0,
+    "dateLastReview": ""
   },
   {
     "id": 44,
@@ -963,7 +1006,8 @@
       "quality": 0
     },
     "score": 0.0,
-    "numReviews": 0
+    "numReviews": 0,
+    "dateLastReview": ""
   },
   {
     "id": 45,
@@ -987,7 +1031,8 @@
       "quality": 0
     },
     "score": 0.0,
-    "numReviews": 0
+    "numReviews": 0,
+    "dateLastReview": ""
   },
   {
     "id": 46,
@@ -1004,7 +1049,8 @@
       "quality": 0
     },
     "score": 0.0,
-    "numReviews": 0
+    "numReviews": 0,
+    "dateLastReview": ""
   },
   {
     "id": 47,
@@ -1031,7 +1077,8 @@
       "quality": 0
     },
     "score": 0.0,
-    "numReviews": 0
+    "numReviews": 0,
+    "dateLastReview": ""
   },
   {
     "id": 48,
@@ -1056,7 +1103,8 @@
       "quality": 0
     },
     "score": 0.0,
-    "numReviews": 0
+    "numReviews": 0,
+    "dateLastReview": ""
   },
   {
     "id": 49,
@@ -1083,7 +1131,8 @@
       "quality": 0
     },
     "score": 0.0,
-    "numReviews": 0
+    "numReviews": 0,
+    "dateLastReview": ""
   },
   {
     "id": 50,
@@ -1109,7 +1158,8 @@
       "quality": 0
     },
     "score": 0.0,
-    "numReviews": 0
+    "numReviews": 0,
+    "dateLastReview": ""
   },
   {
     "id": 51,
@@ -1131,7 +1181,8 @@
       "quality": 0
     },
     "score": 0.0,
-    "numReviews": 0
+    "numReviews": 0,
+    "dateLastReview": ""
   },
   {
     "id": 52,
@@ -1148,7 +1199,8 @@
       "quality": 0
     },
     "score": 0.0,
-    "numReviews": 0
+    "numReviews": 0,
+    "dateLastReview": ""
   },
   {
     "id": 53,
@@ -1171,7 +1223,8 @@
       "quality": 0
     },
     "score": 0.0,
-    "numReviews": 0
+    "numReviews": 0,
+    "dateLastReview": ""
   },
   {
     "id": 54,
@@ -1197,7 +1250,8 @@
       "quality": 0
     },
     "score": 0.0,
-    "numReviews": 0
+    "numReviews": 0,
+    "dateLastReview": ""
   },
   {
     "id": 55,
@@ -1220,7 +1274,8 @@
       "quality": 0
     },
     "score": 0.0,
-    "numReviews": 0
+    "numReviews": 0,
+    "dateLastReview": ""
   },
   {
     "id": 56,
@@ -1244,7 +1299,8 @@
       "quality": 0
     },
     "score": 0.0,
-    "numReviews": 0
+    "numReviews": 0,
+    "dateLastReview": ""
   },
   {
     "id": 57,
@@ -1269,7 +1325,8 @@
       "quality": 0
     },
     "score": 0.0,
-    "numReviews": 0
+    "numReviews": 0,
+    "dateLastReview": ""
   },
   {
     "id": 58,
@@ -1288,7 +1345,8 @@
       "quality": 0
     },
     "score": 0.0,
-    "numReviews": 0
+    "numReviews": 0,
+    "dateLastReview": ""
   },
   {
     "id": 59,
@@ -1310,7 +1368,8 @@
       "quality": 0
     },
     "score": 0.0,
-    "numReviews": 0
+    "numReviews": 0,
+    "dateLastReview": ""
   },
   {
     "id": 60,
@@ -1335,7 +1394,8 @@
       "quality": 0
     },
     "score": 0.0,
-    "numReviews": 0
+    "numReviews": 0,
+    "dateLastReview": ""
   },
   {
     "id": 61,
@@ -1352,7 +1412,8 @@
       "quality": 0
     },
     "score": 0.0,
-    "numReviews": 0
+    "numReviews": 0,
+    "dateLastReview": ""
   },
   {
     "id": 62,
@@ -1377,7 +1438,8 @@
       "quality": 0
     },
     "score": 0.0,
-    "numReviews": 0
+    "numReviews": 0,
+    "dateLastReview": ""
   },
   {
     "id": 63,
@@ -1396,7 +1458,8 @@
       "quality": 0
     },
     "score": 0.0,
-    "numReviews": 0
+    "numReviews": 0,
+    "dateLastReview": ""
   },
   {
     "id": 64,
@@ -1418,7 +1481,8 @@
       "quality": 0
     },
     "score": 0.0,
-    "numReviews": 0
+    "numReviews": 0,
+    "dateLastReview": ""
   },
   {
     "id": 65,
@@ -1438,7 +1502,8 @@
       "quality": 0
     },
     "score": 0.0,
-    "numReviews": 0
+    "numReviews": 0,
+    "dateLastReview": ""
   },
   {
     "id": 66,
@@ -1460,7 +1525,8 @@
       "quality": 0
     },
     "score": 0.0,
-    "numReviews": 0
+    "numReviews": 0,
+    "dateLastReview": ""
   },
   {
     "id": 67,
@@ -1477,7 +1543,8 @@
       "quality": 0
     },
     "score": 0.0,
-    "numReviews": 0
+    "numReviews": 0,
+    "dateLastReview": ""
   },
   {
     "id": 68,
@@ -1503,7 +1570,8 @@
       "quality": 0
     },
     "score": 0.0,
-    "numReviews": 0
+    "numReviews": 0,
+    "dateLastReview": ""
   },
   {
     "id": 69,
@@ -1524,7 +1592,8 @@
       "quality": 0
     },
     "score": 0.0,
-    "numReviews": 0
+    "numReviews": 0,
+    "dateLastReview": ""
   },
   {
     "id": 70,
@@ -1549,7 +1618,8 @@
       "quality": 0
     },
     "score": 0.0,
-    "numReviews": 0
+    "numReviews": 0,
+    "dateLastReview": ""
   },
   {
     "id": 71,
@@ -1575,7 +1645,8 @@
       "quality": 0
     },
     "score": 0.0,
-    "numReviews": 0
+    "numReviews": 0,
+    "dateLastReview": ""
   },
   {
     "id": 72,
@@ -1592,7 +1663,8 @@
       "quality": 0
     },
     "score": 0.0,
-    "numReviews": 0
+    "numReviews": 0,
+    "dateLastReview": ""
   },
   {
     "id": 73,
@@ -1614,7 +1686,8 @@
       "quality": 0
     },
     "score": 0.0,
-    "numReviews": 0
+    "numReviews": 0,
+    "dateLastReview": ""
   },
   {
     "id": 74,
@@ -1636,7 +1709,8 @@
       "quality": 0
     },
     "score": 0.0,
-    "numReviews": 0
+    "numReviews": 0,
+    "dateLastReview": ""
   },
   {
     "id": 75,
@@ -1655,7 +1729,8 @@
       "quality": 0
     },
     "score": 0.0,
-    "numReviews": 0
+    "numReviews": 0,
+    "dateLastReview": ""
   },
   {
     "id": 76,
@@ -1678,7 +1753,8 @@
       "quality": 0
     },
     "score": 0.0,
-    "numReviews": 0
+    "numReviews": 0,
+    "dateLastReview": ""
   },
   {
     "id": 77,
@@ -1703,7 +1779,8 @@
       "quality": 0
     },
     "score": 0.0,
-    "numReviews": 0
+    "numReviews": 0,
+    "dateLastReview": ""
   },
   {
     "id": 78,
@@ -1726,7 +1803,8 @@
       "quality": 0
     },
     "score": 0.0,
-    "numReviews": 0
+    "numReviews": 0,
+    "dateLastReview": ""
   },
   {
     "id": 79,
@@ -1751,7 +1829,8 @@
       "quality": 0
     },
     "score": 0.0,
-    "numReviews": 0
+    "numReviews": 0,
+    "dateLastReview": ""
   },
   {
     "id": 80,
@@ -1775,7 +1854,8 @@
       "quality": 0
     },
     "score": 0.0,
-    "numReviews": 0
+    "numReviews": 0,
+    "dateLastReview": ""
   },
   {
     "id": 81,
@@ -1796,7 +1876,8 @@
       "quality": 0
     },
     "score": 0.0,
-    "numReviews": 0
+    "numReviews": 0,
+    "dateLastReview": ""
   },
   {
     "id": 82,
@@ -1813,7 +1894,8 @@
       "quality": 0
     },
     "score": 0.0,
-    "numReviews": 0
+    "numReviews": 0,
+    "dateLastReview": ""
   },
   {
     "id": 83,
@@ -1835,7 +1917,8 @@
       "quality": 0
     },
     "score": 0.0,
-    "numReviews": 0
+    "numReviews": 0,
+    "dateLastReview": ""
   },
   {
     "id": 84,
@@ -1852,7 +1935,8 @@
       "quality": 0
     },
     "score": 0.0,
-    "numReviews": 0
+    "numReviews": 0,
+    "dateLastReview": ""
   },
   {
     "id": 85,
@@ -1871,7 +1955,8 @@
       "quality": 0
     },
     "score": 0.0,
-    "numReviews": 0
+    "numReviews": 0,
+    "dateLastReview": ""
   },
   {
     "id": 86,
@@ -1892,7 +1977,8 @@
       "quality": 0
     },
     "score": 0.0,
-    "numReviews": 0
+    "numReviews": 0,
+    "dateLastReview": ""
   },
   {
     "id": 87,
@@ -1912,7 +1998,8 @@
       "quality": 0
     },
     "score": 0.0,
-    "numReviews": 0
+    "numReviews": 0,
+    "dateLastReview": ""
   },
   {
     "id": 88,
@@ -1937,7 +2024,8 @@
       "quality": 0
     },
     "score": 0.0,
-    "numReviews": 0
+    "numReviews": 0,
+    "dateLastReview": ""
   },
   {
     "id": 89,
@@ -1962,7 +2050,8 @@
       "quality": 0
     },
     "score": 0.0,
-    "numReviews": 0
+    "numReviews": 0,
+    "dateLastReview": ""
   },
   {
     "id": 90,
@@ -1986,7 +2075,8 @@
       "quality": 0
     },
     "score": 0.0,
-    "numReviews": 0
+    "numReviews": 0,
+    "dateLastReview": ""
   },
   {
     "id": 91,
@@ -2011,7 +2101,8 @@
       "quality": 0
     },
     "score": 0.0,
-    "numReviews": 0
+    "numReviews": 0,
+    "dateLastReview": ""
   },
   {
     "id": 92,
@@ -2032,7 +2123,8 @@
       "quality": 0
     },
     "score": 0.0,
-    "numReviews": 0
+    "numReviews": 0,
+    "dateLastReview": ""
   },
   {
     "id": 93,
@@ -2059,7 +2151,8 @@
       "quality": 0
     },
     "score": 0.0,
-    "numReviews": 0
+    "numReviews": 0,
+    "dateLastReview": ""
   },
   {
     "id": 94,
@@ -2076,7 +2169,8 @@
       "quality": 0
     },
     "score": 0.0,
-    "numReviews": 0
+    "numReviews": 0,
+    "dateLastReview": ""
   },
   {
     "id": 95,
@@ -2103,7 +2197,8 @@
       "quality": 0
     },
     "score": 0.0,
-    "numReviews": 0
+    "numReviews": 0,
+    "dateLastReview": ""
   },
   {
     "id": 96,
@@ -2127,7 +2222,8 @@
       "quality": 0
     },
     "score": 0.0,
-    "numReviews": 0
+    "numReviews": 0,
+    "dateLastReview": ""
   },
   {
     "id": 97,
@@ -2154,7 +2250,8 @@
       "quality": 0
     },
     "score": 0.0,
-    "numReviews": 0
+    "numReviews": 0,
+    "dateLastReview": ""
   },
   {
     "id": 98,
@@ -2176,7 +2273,8 @@
       "quality": 0
     },
     "score": 0.0,
-    "numReviews": 0
+    "numReviews": 0,
+    "dateLastReview": ""
   },
   {
     "id": 99,
@@ -2195,7 +2293,8 @@
       "quality": 0
     },
     "score": 0.0,
-    "numReviews": 0
+    "numReviews": 0,
+    "dateLastReview": ""
   },
   {
     "id": 100,
@@ -2220,7 +2319,8 @@
       "quality": 0
     },
     "score": 0.0,
-    "numReviews": 0
+    "numReviews": 0,
+    "dateLastReview": ""
   },
   {
     "id": 101,
@@ -2244,7 +2344,8 @@
       "quality": 0
     },
     "score": 0.0,
-    "numReviews": 0
+    "numReviews": 0,
+    "dateLastReview": ""
   },
   {
     "id": 102,
@@ -2271,7 +2372,8 @@
       "quality": 0
     },
     "score": 0.0,
-    "numReviews": 0
+    "numReviews": 0,
+    "dateLastReview": ""
   },
   {
     "id": 103,
@@ -2294,7 +2396,8 @@
       "quality": 0
     },
     "score": 0.0,
-    "numReviews": 0
+    "numReviews": 0,
+    "dateLastReview": ""
   },
   {
     "id": 104,
@@ -2314,7 +2417,8 @@
       "quality": 0
     },
     "score": 0.0,
-    "numReviews": 0
+    "numReviews": 0,
+    "dateLastReview": ""
   },
   {
     "id": 105,
@@ -2338,7 +2442,8 @@
       "quality": 0
     },
     "score": 0.0,
-    "numReviews": 0
+    "numReviews": 0,
+    "dateLastReview": ""
   },
   {
     "id": 106,
@@ -2359,7 +2464,8 @@
       "quality": 0
     },
     "score": 0.0,
-    "numReviews": 0
+    "numReviews": 0,
+    "dateLastReview": ""
   },
   {
     "id": 107,
@@ -2380,7 +2486,8 @@
       "quality": 0
     },
     "score": 0.0,
-    "numReviews": 0
+    "numReviews": 0,
+    "dateLastReview": ""
   },
   {
     "id": 108,
@@ -2397,7 +2504,8 @@
       "quality": 0
     },
     "score": 0.0,
-    "numReviews": 0
+    "numReviews": 0,
+    "dateLastReview": ""
   },
   {
     "id": 109,
@@ -2424,7 +2532,8 @@
       "quality": 0
     },
     "score": 0.0,
-    "numReviews": 0
+    "numReviews": 0,
+    "dateLastReview": ""
   },
   {
     "id": 110,
@@ -2450,7 +2559,8 @@
       "quality": 0
     },
     "score": 0.0,
-    "numReviews": 0
+    "numReviews": 0,
+    "dateLastReview": ""
   },
   {
     "id": 111,
@@ -2469,7 +2579,8 @@
       "quality": 0
     },
     "score": 0.0,
-    "numReviews": 0
+    "numReviews": 0,
+    "dateLastReview": ""
   },
   {
     "id": 112,
@@ -2490,7 +2601,8 @@
       "quality": 0
     },
     "score": 0.0,
-    "numReviews": 0
+    "numReviews": 0,
+    "dateLastReview": ""
   },
   {
     "id": 113,
@@ -2507,7 +2619,8 @@
       "quality": 0
     },
     "score": 0.0,
-    "numReviews": 0
+    "numReviews": 0,
+    "dateLastReview": ""
   },
   {
     "id": 114,
@@ -2531,7 +2644,8 @@
       "quality": 0
     },
     "score": 0.0,
-    "numReviews": 0
+    "numReviews": 0,
+    "dateLastReview": ""
   },
   {
     "id": 115,
@@ -2553,7 +2667,8 @@
       "quality": 0
     },
     "score": 0.0,
-    "numReviews": 0
+    "numReviews": 0,
+    "dateLastReview": ""
   },
   {
     "id": 116,
@@ -2574,7 +2689,8 @@
       "quality": 0
     },
     "score": 0.0,
-    "numReviews": 0
+    "numReviews": 0,
+    "dateLastReview": ""
   },
   {
     "id": 117,
@@ -2591,7 +2707,8 @@
       "quality": 0
     },
     "score": 0.0,
-    "numReviews": 0
+    "numReviews": 0,
+    "dateLastReview": ""
   },
   {
     "id": 118,
@@ -2618,7 +2735,8 @@
       "quality": 0
     },
     "score": 0.0,
-    "numReviews": 0
+    "numReviews": 0,
+    "dateLastReview": ""
   },
   {
     "id": 119,
@@ -2635,7 +2753,8 @@
       "quality": 0
     },
     "score": 0.0,
-    "numReviews": 0
+    "numReviews": 0,
+    "dateLastReview": ""
   },
   {
     "id": 120,
@@ -2657,7 +2776,8 @@
       "quality": 0
     },
     "score": 0.0,
-    "numReviews": 0
+    "numReviews": 0,
+    "dateLastReview": ""
   },
   {
     "id": 121,
@@ -2679,7 +2799,8 @@
       "quality": 0
     },
     "score": 0.0,
-    "numReviews": 0
+    "numReviews": 0,
+    "dateLastReview": ""
   },
   {
     "id": 122,
@@ -2702,7 +2823,8 @@
       "quality": 0
     },
     "score": 0.0,
-    "numReviews": 0
+    "numReviews": 0,
+    "dateLastReview": ""
   },
   {
     "id": 123,
@@ -2728,7 +2850,8 @@
       "quality": 0
     },
     "score": 0.0,
-    "numReviews": 0
+    "numReviews": 0,
+    "dateLastReview": ""
   },
   {
     "id": 124,
@@ -2745,7 +2868,8 @@
       "quality": 0
     },
     "score": 0.0,
-    "numReviews": 0
+    "numReviews": 0,
+    "dateLastReview": ""
   },
   {
     "id": 125,
@@ -2769,7 +2893,8 @@
       "quality": 0
     },
     "score": 0.0,
-    "numReviews": 0
+    "numReviews": 0,
+    "dateLastReview": ""
   },
   {
     "id": 126,
@@ -2796,7 +2921,8 @@
       "quality": 0
     },
     "score": 0.0,
-    "numReviews": 0
+    "numReviews": 0,
+    "dateLastReview": ""
   },
   {
     "id": 127,
@@ -2823,7 +2949,8 @@
       "quality": 0
     },
     "score": 0.0,
-    "numReviews": 0
+    "numReviews": 0,
+    "dateLastReview": ""
   },
   {
     "id": 128,
@@ -2846,7 +2973,8 @@
       "quality": 0
     },
     "score": 0.0,
-    "numReviews": 0
+    "numReviews": 0,
+    "dateLastReview": ""
   },
   {
     "id": 129,
@@ -2869,7 +2997,8 @@
       "quality": 0
     },
     "score": 0.0,
-    "numReviews": 0
+    "numReviews": 0,
+    "dateLastReview": ""
   },
   {
     "id": 130,
@@ -2889,7 +3018,8 @@
       "quality": 0
     },
     "score": 0.0,
-    "numReviews": 0
+    "numReviews": 0,
+    "dateLastReview": ""
   },
   {
     "id": 131,
@@ -2910,7 +3040,8 @@
       "quality": 0
     },
     "score": 0.0,
-    "numReviews": 0
+    "numReviews": 0,
+    "dateLastReview": ""
   },
   {
     "id": 132,
@@ -2933,7 +3064,8 @@
       "quality": 0
     },
     "score": 0.0,
-    "numReviews": 0
+    "numReviews": 0,
+    "dateLastReview": ""
   },
   {
     "id": 133,
@@ -2956,7 +3088,8 @@
       "quality": 0
     },
     "score": 0.0,
-    "numReviews": 0
+    "numReviews": 0,
+    "dateLastReview": ""
   },
   {
     "id": 134,
@@ -2978,7 +3111,8 @@
       "quality": 0
     },
     "score": 0.0,
-    "numReviews": 0
+    "numReviews": 0,
+    "dateLastReview": ""
   },
   {
     "id": 135,
@@ -3003,7 +3137,8 @@
       "quality": 0
     },
     "score": 0.0,
-    "numReviews": 0
+    "numReviews": 0,
+    "dateLastReview": ""
   },
   {
     "id": 136,
@@ -3026,7 +3161,8 @@
       "quality": 0
     },
     "score": 0.0,
-    "numReviews": 0
+    "numReviews": 0,
+    "dateLastReview": ""
   },
   {
     "id": 137,
@@ -3046,7 +3182,8 @@
       "quality": 0
     },
     "score": 0.0,
-    "numReviews": 0
+    "numReviews": 0,
+    "dateLastReview": ""
   },
   {
     "id": 138,
@@ -3073,7 +3210,8 @@
       "quality": 0
     },
     "score": 0.0,
-    "numReviews": 0
+    "numReviews": 0,
+    "dateLastReview": ""
   },
   {
     "id": 139,
@@ -3099,7 +3237,8 @@
       "quality": 0
     },
     "score": 0.0,
-    "numReviews": 0
+    "numReviews": 0,
+    "dateLastReview": ""
   },
   {
     "id": 140,
@@ -3124,7 +3263,8 @@
       "quality": 0
     },
     "score": 0.0,
-    "numReviews": 0
+    "numReviews": 0,
+    "dateLastReview": ""
   },
   {
     "id": 141,
@@ -3146,7 +3286,8 @@
       "quality": 0
     },
     "score": 0.0,
-    "numReviews": 0
+    "numReviews": 0,
+    "dateLastReview": ""
   },
   {
     "id": 142,
@@ -3173,7 +3314,8 @@
       "quality": 0
     },
     "score": 0.0,
-    "numReviews": 0
+    "numReviews": 0,
+    "dateLastReview": ""
   },
   {
     "id": 143,
@@ -3198,7 +3340,8 @@
       "quality": 0
     },
     "score": 0.0,
-    "numReviews": 0
+    "numReviews": 0,
+    "dateLastReview": ""
   },
   {
     "id": 144,
@@ -3220,7 +3363,8 @@
       "quality": 0
     },
     "score": 0.0,
-    "numReviews": 0
+    "numReviews": 0,
+    "dateLastReview": ""
   },
   {
     "id": 145,
@@ -3241,7 +3385,8 @@
       "quality": 0
     },
     "score": 0.0,
-    "numReviews": 0
+    "numReviews": 0,
+    "dateLastReview": ""
   },
   {
     "id": 146,
@@ -3264,7 +3409,8 @@
       "quality": 0
     },
     "score": 0.0,
-    "numReviews": 0
+    "numReviews": 0,
+    "dateLastReview": ""
   },
   {
     "id": 147,
@@ -3285,7 +3431,8 @@
       "quality": 0
     },
     "score": 0.0,
-    "numReviews": 0
+    "numReviews": 0,
+    "dateLastReview": ""
   },
   {
     "id": 148,
@@ -3312,7 +3459,8 @@
       "quality": 0
     },
     "score": 0.0,
-    "numReviews": 0
+    "numReviews": 0,
+    "dateLastReview": ""
   },
   {
     "id": 149,
@@ -3337,7 +3485,8 @@
       "quality": 0
     },
     "score": 0.0,
-    "numReviews": 0
+    "numReviews": 0,
+    "dateLastReview": ""
   },
   {
     "id": 150,
@@ -3354,7 +3503,8 @@
       "quality": 0
     },
     "score": 0.0,
-    "numReviews": 0
+    "numReviews": 0,
+    "dateLastReview": ""
   },
   {
     "id": 151,
@@ -3373,7 +3523,8 @@
       "quality": 0
     },
     "score": 0.0,
-    "numReviews": 0
+    "numReviews": 0,
+    "dateLastReview": ""
   },
   {
     "id": 152,
@@ -3397,7 +3548,8 @@
       "quality": 0
     },
     "score": 0.0,
-    "numReviews": 0
+    "numReviews": 0,
+    "dateLastReview": ""
   },
   {
     "id": 153,
@@ -3423,7 +3575,8 @@
       "quality": 0
     },
     "score": 0.0,
-    "numReviews": 0
+    "numReviews": 0,
+    "dateLastReview": ""
   },
   {
     "id": 154,
@@ -3447,7 +3600,8 @@
       "quality": 0
     },
     "score": 0.0,
-    "numReviews": 0
+    "numReviews": 0,
+    "dateLastReview": ""
   },
   {
     "id": 155,
@@ -3469,7 +3623,8 @@
       "quality": 0
     },
     "score": 0.0,
-    "numReviews": 0
+    "numReviews": 0,
+    "dateLastReview": ""
   },
   {
     "id": 156,
@@ -3492,7 +3647,8 @@
       "quality": 0
     },
     "score": 0.0,
-    "numReviews": 0
+    "numReviews": 0,
+    "dateLastReview": ""
   },
   {
     "id": 157,
@@ -3511,7 +3667,8 @@
       "quality": 0
     },
     "score": 0.0,
-    "numReviews": 0
+    "numReviews": 0,
+    "dateLastReview": ""
   },
   {
     "id": 158,
@@ -3538,7 +3695,8 @@
       "quality": 0
     },
     "score": 0.0,
-    "numReviews": 0
+    "numReviews": 0,
+    "dateLastReview": ""
   },
   {
     "id": 159,
@@ -3564,7 +3722,8 @@
       "quality": 0
     },
     "score": 0.0,
-    "numReviews": 0
+    "numReviews": 0,
+    "dateLastReview": ""
   },
   {
     "id": 160,
@@ -3587,7 +3746,8 @@
       "quality": 0
     },
     "score": 0.0,
-    "numReviews": 0
+    "numReviews": 0,
+    "dateLastReview": ""
   },
   {
     "id": 161,
@@ -3614,7 +3774,8 @@
       "quality": 0
     },
     "score": 0.0,
-    "numReviews": 0
+    "numReviews": 0,
+    "dateLastReview": ""
   },
   {
     "id": 162,
@@ -3638,7 +3799,8 @@
       "quality": 0
     },
     "score": 0.0,
-    "numReviews": 0
+    "numReviews": 0,
+    "dateLastReview": ""
   },
   {
     "id": 163,
@@ -3658,7 +3820,8 @@
       "quality": 0
     },
     "score": 0.0,
-    "numReviews": 0
+    "numReviews": 0,
+    "dateLastReview": ""
   },
   {
     "id": 164,
@@ -3681,7 +3844,8 @@
       "quality": 0
     },
     "score": 0.0,
-    "numReviews": 0
+    "numReviews": 0,
+    "dateLastReview": ""
   },
   {
     "id": 165,
@@ -3700,7 +3864,8 @@
       "quality": 0
     },
     "score": 0.0,
-    "numReviews": 0
+    "numReviews": 0,
+    "dateLastReview": ""
   },
   {
     "id": 166,
@@ -3717,7 +3882,8 @@
       "quality": 0
     },
     "score": 0.0,
-    "numReviews": 0
+    "numReviews": 0,
+    "dateLastReview": ""
   },
   {
     "id": 167,
@@ -3742,7 +3908,8 @@
       "quality": 0
     },
     "score": 0.0,
-    "numReviews": 0
+    "numReviews": 0,
+    "dateLastReview": ""
   },
   {
     "id": 168,
@@ -3762,7 +3929,8 @@
       "quality": 0
     },
     "score": 0.0,
-    "numReviews": 0
+    "numReviews": 0,
+    "dateLastReview": ""
   },
   {
     "id": 169,
@@ -3782,7 +3950,8 @@
       "quality": 0
     },
     "score": 0.0,
-    "numReviews": 0
+    "numReviews": 0,
+    "dateLastReview": ""
   },
   {
     "id": 170,
@@ -3799,7 +3968,8 @@
       "quality": 0
     },
     "score": 0.0,
-    "numReviews": 0
+    "numReviews": 0,
+    "dateLastReview": ""
   },
   {
     "id": 171,
@@ -3824,7 +3994,8 @@
       "quality": 0
     },
     "score": 0.0,
-    "numReviews": 0
+    "numReviews": 0,
+    "dateLastReview": ""
   },
   {
     "id": 172,
@@ -3850,7 +4021,8 @@
       "quality": 0
     },
     "score": 0.0,
-    "numReviews": 0
+    "numReviews": 0,
+    "dateLastReview": ""
   },
   {
     "id": 173,
@@ -3870,7 +4042,8 @@
       "quality": 0
     },
     "score": 0.0,
-    "numReviews": 0
+    "numReviews": 0,
+    "dateLastReview": ""
   },
   {
     "id": 174,
@@ -3894,7 +4067,8 @@
       "quality": 0
     },
     "score": 0.0,
-    "numReviews": 0
+    "numReviews": 0,
+    "dateLastReview": ""
   },
   {
     "id": 175,
@@ -3913,7 +4087,8 @@
       "quality": 0
     },
     "score": 0.0,
-    "numReviews": 0
+    "numReviews": 0,
+    "dateLastReview": ""
   },
   {
     "id": 176,
@@ -3937,7 +4112,8 @@
       "quality": 0
     },
     "score": 0.0,
-    "numReviews": 0
+    "numReviews": 0,
+    "dateLastReview": ""
   },
   {
     "id": 177,
@@ -3954,7 +4130,8 @@
       "quality": 0
     },
     "score": 0.0,
-    "numReviews": 0
+    "numReviews": 0,
+    "dateLastReview": ""
   },
   {
     "id": 178,
@@ -3977,7 +4154,8 @@
       "quality": 0
     },
     "score": 0.0,
-    "numReviews": 0
+    "numReviews": 0,
+    "dateLastReview": ""
   },
   {
     "id": 179,
@@ -3997,7 +4175,8 @@
       "quality": 0
     },
     "score": 0.0,
-    "numReviews": 0
+    "numReviews": 0,
+    "dateLastReview": ""
   },
   {
     "id": 180,
@@ -4021,7 +4200,8 @@
       "quality": 0
     },
     "score": 0.0,
-    "numReviews": 0
+    "numReviews": 0,
+    "dateLastReview": ""
   },
   {
     "id": 181,
@@ -4047,7 +4227,8 @@
       "quality": 0
     },
     "score": 0.0,
-    "numReviews": 0
+    "numReviews": 0,
+    "dateLastReview": ""
   },
   {
     "id": 182,
@@ -4072,7 +4253,8 @@
       "quality": 0
     },
     "score": 0.0,
-    "numReviews": 0
+    "numReviews": 0,
+    "dateLastReview": ""
   },
   {
     "id": 183,
@@ -4095,7 +4277,8 @@
       "quality": 0
     },
     "score": 0.0,
-    "numReviews": 0
+    "numReviews": 0,
+    "dateLastReview": ""
   },
   {
     "id": 184,
@@ -4114,7 +4297,8 @@
       "quality": 0
     },
     "score": 0.0,
-    "numReviews": 0
+    "numReviews": 0,
+    "dateLastReview": ""
   },
   {
     "id": 185,
@@ -4138,7 +4322,8 @@
       "quality": 0
     },
     "score": 0.0,
-    "numReviews": 0
+    "numReviews": 0,
+    "dateLastReview": ""
   },
   {
     "id": 186,
@@ -4155,7 +4340,8 @@
       "quality": 0
     },
     "score": 0.0,
-    "numReviews": 0
+    "numReviews": 0,
+    "dateLastReview": ""
   },
   {
     "id": 187,
@@ -4176,7 +4362,8 @@
       "quality": 0
     },
     "score": 0.0,
-    "numReviews": 0
+    "numReviews": 0,
+    "dateLastReview": ""
   },
   {
     "id": 188,
@@ -4197,7 +4384,8 @@
       "quality": 0
     },
     "score": 0.0,
-    "numReviews": 0
+    "numReviews": 0,
+    "dateLastReview": ""
   },
   {
     "id": 189,
@@ -4223,7 +4411,8 @@
       "quality": 0
     },
     "score": 0.0,
-    "numReviews": 0
+    "numReviews": 0,
+    "dateLastReview": ""
   },
   {
     "id": 190,
@@ -4244,7 +4433,8 @@
       "quality": 0
     },
     "score": 0.0,
-    "numReviews": 0
+    "numReviews": 0,
+    "dateLastReview": ""
   },
   {
     "id": 191,
@@ -4267,7 +4457,8 @@
       "quality": 0
     },
     "score": 0.0,
-    "numReviews": 0
+    "numReviews": 0,
+    "dateLastReview": ""
   },
   {
     "id": 192,
@@ -4287,7 +4478,8 @@
       "quality": 0
     },
     "score": 0.0,
-    "numReviews": 0
+    "numReviews": 0,
+    "dateLastReview": ""
   },
   {
     "id": 193,
@@ -4310,7 +4502,8 @@
       "quality": 0
     },
     "score": 0.0,
-    "numReviews": 0
+    "numReviews": 0,
+    "dateLastReview": ""
   },
   {
     "id": 194,
@@ -4330,7 +4523,8 @@
       "quality": 0
     },
     "score": 0.0,
-    "numReviews": 0
+    "numReviews": 0,
+    "dateLastReview": ""
   },
   {
     "id": 195,
@@ -4354,7 +4548,8 @@
       "quality": 0
     },
     "score": 0.0,
-    "numReviews": 0
+    "numReviews": 0,
+    "dateLastReview": ""
   },
   {
     "id": 196,
@@ -4376,7 +4571,8 @@
       "quality": 0
     },
     "score": 0.0,
-    "numReviews": 0
+    "numReviews": 0,
+    "dateLastReview": ""
   },
   {
     "id": 197,
@@ -4403,7 +4599,8 @@
       "quality": 0
     },
     "score": 0.0,
-    "numReviews": 0
+    "numReviews": 0,
+    "dateLastReview": ""
   },
   {
     "id": 198,
@@ -4423,7 +4620,8 @@
       "quality": 0
     },
     "score": 0.0,
-    "numReviews": 0
+    "numReviews": 0,
+    "dateLastReview": ""
   },
   {
     "id": 199,
@@ -4445,7 +4643,8 @@
       "quality": 0
     },
     "score": 0.0,
-    "numReviews": 0
+    "numReviews": 0,
+    "dateLastReview": ""
   },
   {
     "id": 200,
@@ -4469,6 +4668,7 @@
       "quality": 0
     },
     "score": 0.0,
-    "numReviews": 0
+    "numReviews": 0,
+    "dateLastReview": ""
   }
 ]
