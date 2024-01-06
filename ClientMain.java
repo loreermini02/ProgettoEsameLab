@@ -110,7 +110,8 @@ public class ClientMain {
         int chiave;
         String valore;
 
-        System.out.println("\nComandi Disponibili:");
+        System.out.println("\n--------------------");
+        System.out.println("Comandi Disponibili:");
         System.out.println("--------------------");
 
         // Iterazione attraverso tutte le coppie chiave-valore nel dizionario
@@ -168,18 +169,18 @@ public class ClientMain {
 
         while (inputStream.hasNextLine()) {
             serverResponse = inputStream.nextLine();
-            System.out.println(serverResponse);
-    
+            
             if (serverResponse.equals("END")) {
-                System.out.println("Ricevuto segnale di fine. Terminazione.");
                 break;
             }
+
+            System.out.println(serverResponse);
         }
     }
 
     private static void searchAllHotels(Scanner userInput) {
         String serverResponse = "";
-        System.out.println("\nRICERCA HOTEL DI UNA CITTA':");
+        System.out.println("\nRICERCA DI TUTTI GLI HOTEL DI UNA CITTA':");
 
         int inputChoice;
         boolean tryAgain;
@@ -191,15 +192,15 @@ public class ClientMain {
             System.out.print("\nInserire Nome Città: ");
             nomeCitta = userInput.nextLine();
 
-            outputStream.println("SEARCH_ALL_HOTELS");
+            outputStream.println("SEARCH_ALL_HOTEL");
             outputStream.println(nomeCitta);
 
             serverResponse = inputStream.nextLine();
 
-            if (serverResponse.equals("HOTELS_NOT_FOUND")){
+            if (serverResponse.equals("HOTEL_NOT_FOUND")){
                 System.out.printf("\nQuesta città (%s) non ha Hotel!\n", nomeCitta);
                 try {
-                    System.out.print("\nPremere 0 per riprovare o qualasi numero per uscire: ");
+                    System.out.print("\nPremere 0 per riprovare o qualsiasi altro numero per uscire: ");
                     inputChoice =  userInput.nextInt();
                 } catch (InputMismatchException e) {
                     // Consuma il resto della riga di input errata
@@ -223,7 +224,6 @@ public class ClientMain {
             serverResponse = inputStream.nextLine();
 
             if (serverResponse.equals("END")) {
-                System.out.println("Ricevuto segnale di fine. Terminazione.");
                 break;
             }
 
@@ -318,7 +318,7 @@ public class ClientMain {
             if (serverResponse.equals("HOTEL_NOT_FOUND")){
                 System.out.printf("\nHotel (%s) non trovato!\n", nomeHotel);
                 try {
-                    System.out.print("\nPremere 0 per riprovare o qualasi numero per uscire: ");
+                    System.out.print("\nPremere 0 per riprovare o qualsiasi altro numero per uscire: ");
                     inputChoice =  userInput.nextInt();
                 } catch (InputMismatchException e) {
                     // Consuma il resto della riga di input errata
@@ -367,7 +367,7 @@ public class ClientMain {
                     System.out.printf("\nUsername (%s) già utilizzato!", username);
 
                 try {
-                    System.out.print("\nPremere 0 per riprovare o qualasi numero per uscire: ");
+                    System.out.print("\nPremere 0 per riprovare o qualsiasi altro numero per uscire: ");
                     inputChoice =  userInput.nextInt();
                 } catch (InputMismatchException e) {
                     // Consuma il resto della riga di input errata

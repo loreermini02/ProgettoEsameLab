@@ -50,7 +50,7 @@ public class ClientHandle implements Runnable {
                 else if (clientCommand.equals("SEARCH_HOTEL")) {
                     searchHotel(inputStream);
                 } 
-                else if (clientCommand.equals("SEARCH_ALL_HOTELS")) {
+                else if (clientCommand.equals("SEARCH_ALL_HOTEL")) {
                     searchAllHotels(inputStream);
                 }
             }
@@ -167,8 +167,8 @@ public class ClientHandle implements Runnable {
             outputStream.printf("- Position: %d\n", rating[1]);
             outputStream.printf("- Services: %d\n", rating[2]);
             outputStream.printf("- Quality: %d\n", rating[3]);
+            outputStream.println("END");
             
-            outputStream.print("END");
             System.out.println("Effettuata nuova ricerca di un Hotel");
         }
     }
@@ -182,12 +182,12 @@ public class ClientHandle implements Runnable {
         nomeCitta = inputStream.nextLine();
         hotels = hotelManager.searchHotelsByCity(nomeCitta);
 
-        if (hotels == null) {
-            outputStream.println("HOTELS_NOT_FOUND");
+        if (hotels.isEmpty()) {
+            outputStream.println("HOTEL_NOT_FOUND");
         } else {
-            outputStream.println("HOTELS_FOUND");
+            outputStream.println("HOTEL_FOUND");
 
-            outputStream.printf("\n%d Hotel trovati\n", hotels.size());
+            outputStream.printf("\n\n%d Hotel trovati:\n", hotels.size());
             for (Hotel hotel : hotels) {
                 outputStream.printf("\n----------------\n\n");
                 
@@ -212,7 +212,7 @@ public class ClientHandle implements Runnable {
                 outputStream.printf("- Quality: %d\n", rating[3]);
             }
 
-            outputStream.print("END");            
+            outputStream.println("END");            
             System.out.println("Effettuata nuova ricerca di Hotel di una città");
         }
     }
