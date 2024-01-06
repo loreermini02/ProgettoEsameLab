@@ -10,12 +10,12 @@
       "Palestra",
       "Cancellazione gratuita"
     ],
-    "rate": 1,
+    "rate": 3,
     "ratings": {
-      "cleaning": 1,
-      "position": 3,
-      "services": 3,
-      "quality": 1
+      "cleaning": 3,
+      "position": 4,
+      "services": 4,
+      "quality": 3
     }
   },
   {

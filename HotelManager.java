@@ -242,7 +242,6 @@ public class HotelManager {
     }
 
     // Other methods
-
     private static List<String> readStringList(JsonReader jsonReader) throws IOException {
         List<String> list = new ArrayList<>();
 

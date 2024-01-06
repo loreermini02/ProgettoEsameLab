@@ -224,13 +224,43 @@ public class ClientHandle implements Runnable {
         List<Hotel> allHotel = null;
         List<Review> allReviews = null; 
 
+        int totRate, avgRate;
+        int[] totSingleRate = {0,0,0,0}, avgSingleRate = {0,0,0,0};
+
         allHotel = hotelManager.searchAllHotels();
 
         for (Hotel hotel : allHotel) {
+            totRate = 0;
+            avgRate = 0;
+            
+            totSingleRate[0] = 0;
+            totSingleRate[1] = 0;
+            totSingleRate[2] = 0;
+            totSingleRate[3] = 0;
+
+            avgSingleRate[0] = 0;
+            avgSingleRate[1] = 0;
+            avgSingleRate[2] = 0;
+            avgSingleRate[3] = 0;
+
             allReviews = reviewManager.getAllReviewByHotel(hotel.getId());
             for (Review review : allReviews) {
-                hotelManager.loadReview(review.getIdHotel(), review.getGlobalScore(), review.getSingleScores());
+                totRate += review.getGlobalScore();
+                totSingleRate[0] += review.getSingleScores()[0];
+                totSingleRate[1] += review.getSingleScores()[1];
+                totSingleRate[2] += review.getSingleScores()[2];
+                totSingleRate[3] += review.getSingleScores()[3];    
             }
+
+            if (allReviews.size() > 0) {
+                avgRate = Math.round(totRate/allReviews.size());
+                avgSingleRate[0] = Math.round(totSingleRate[0] / allReviews.size());
+                avgSingleRate[1] = Math.round(totSingleRate[1] / allReviews.size());
+                avgSingleRate[2] = Math.round(totSingleRate[2] / allReviews.size());
+                avgSingleRate[3] = Math.round(totSingleRate[3] / allReviews.size());        
+            }
+            
+            hotelManager.loadReview(hotel.getId(), avgRate, avgSingleRate);
         }
     }
 }
