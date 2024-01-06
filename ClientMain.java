@@ -24,7 +24,8 @@ public class ClientMain {
         comandiDisponibili.put(2, "Log-In");
         comandiDisponibili.put(3, "Search All Hotels");  
         comandiDisponibili.put(4, "Search Specific Hotel");
-        comandiDisponibili.put(8, "Exit");    
+        comandiDisponibili.put(8, "Clear Monitor");    
+        comandiDisponibili.put(9, "Exit");    
  
         
         try (Socket socket = new Socket("localhost", port);
@@ -94,8 +95,12 @@ public class ClientMain {
                     case 7: // Log-Out
                         logOut();
                         break;
+
+                    case 8: // Clear
+                        clearTerminal();
+                        break;
                     
-                    case 8: //Exit
+                    case 9: //Exit
                         exit = true;
                         break;
 
@@ -390,4 +395,22 @@ public class ClientMain {
         return true;
     }
 
+    private static void clearTerminal() {
+        String os = System.getProperty("os.name").toLowerCase();
+
+        try {
+            if (os.contains("nix") || os.contains("nux") || os.contains("mac")) {
+                // Sistemi Unix/Linux/Mac
+                new ProcessBuilder("clear").inheritIO().start().waitFor();
+            } else if (os.contains("win")) {
+                // Sistemi Windows
+                new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+            } else {
+                // Altri sistemi operativi, gestione in modo generico
+                System.out.println("Impossibile eseguire il clear del terminale su questo sistema operativo.");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }
