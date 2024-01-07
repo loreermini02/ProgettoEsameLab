@@ -6,6 +6,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class ClientHandle implements Runnable {
     private Socket clientSocket;
@@ -13,9 +14,12 @@ public class ClientHandle implements Runnable {
     private UserManager userManager;
     private HotelManager hotelManager;
     private ReviewManager reviewManager;
+    private ConcurrentHashMap<String, Socket> allLoggedUsers;
 
-    ClientHandle(Socket s) throws Exception {
+    ClientHandle(Socket s, ConcurrentHashMap<String, Socket> loggedUsers) throws Exception {
         this.clientSocket = s;
+        this.allLoggedUsers = loggedUsers;
+
         this.outputStream = new PrintWriter(clientSocket.getOutputStream(), true);
 
         this.userManager = new UserManager();
@@ -45,25 +49,38 @@ public class ClientHandle implements Runnable {
                     if (loggedUser != null)
                         // Controlla se ci sono già delle recensioni fatte dall'Utente e aggiorna il contatore
                         loggedUser.setNumReview(reviewManager.getNumReviewByUsername(loggedUser.getUsername()));
+
+                    allLoggedUsers.putIfAbsent(loggedUser.getUsername(), clientSocket); 
                 }
                 // INSERT REVIEW
                 else if (clientCommand.equals("INSERT_REVIEW")) {
                     insertReview(inputStream, loggedUser);
                     reloadReview();
+                    checkRanking();
                 }
+                // SHOW BADGE
                 else if (clientCommand.equals("SHOW_BADGE")) {
                     showBadge(inputStream, loggedUser);
                 }
+                // SEARCH HOTEL
                 else if (clientCommand.equals("SEARCH_HOTEL")) {
                     searchHotel(inputStream);
                 } 
+                // SEARCH ALL HOTEL by City
                 else if (clientCommand.equals("SEARCH_ALL_HOTEL")) {
                     searchAllHotels(inputStream);
+                }
+                // LOGOUT
+                else if (clientCommand.equals("LOGOUT")) {
+                    allLoggedUsers.remove(loggedUser.getUsername());
                 }
             }
         } catch (Exception e) {
             System.out.println("Error:" + clientSocket);
         } finally {
+            if (loggedUser != null)
+                allLoggedUsers.remove(loggedUser.getUsername());
+            
             // Chiusura della comunicazione con il client
             System.out.printf("%s: Comunicazione CHIUSA con il client %s\n", Thread.currentThread().getName(), clientSocket.getInetAddress());
             outputStream.close();
@@ -303,5 +320,9 @@ public class ClientHandle implements Runnable {
         ranking = 0.6 * hotel.getRate() + 0.3 * Math.log(hotel.getNumReviews()) + 0.1 * duration.toDays();
 
         return ranking;
+    }
+
+    private synchronized void checkRanking() {
+    
     }
 }

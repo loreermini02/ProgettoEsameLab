@@ -1,3 +1,4 @@
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Writer;
@@ -8,11 +9,12 @@ import java.util.Map;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.stream.JsonReader;
 
 public class RankingManager {
     private static final String RANKING_FILE_PATH = "JSON/Ranking.json";
     
-    public void rankHotels(List<Hotel> allHotel) throws IOException {
+    public synchronized void rankHotels(List<Hotel> allHotel) throws IOException {
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         Map <String, List<Hotel>> cityToHotel = new HashMap<>();
 
@@ -32,5 +34,42 @@ public class RankingManager {
         try (Writer writer = new FileWriter(RANKING_FILE_PATH)) {
             gson.toJson(cityToRankedHotels, writer);
         }
+    }
+
+    public synchronized Map<String, String> readFirstInRank() {
+        Map<String, String> firstInCity = new HashMap<>();
+        String nomeCitta, fieldName, nomeHotel = "";
+
+        try(JsonReader jsonReader = new JsonReader(new FileReader(RANKING_FILE_PATH))) {
+            jsonReader.beginObject();
+           
+            while(jsonReader.hasNext()) {
+                nomeCitta = jsonReader.nextName();  
+                
+                jsonReader.beginObject();
+                while (jsonReader.hasNext()) {
+                    fieldName = jsonReader.nextName();
+                    switch (fieldName) {
+                        case "name":
+                            nomeHotel = jsonReader.nextString();
+                            break;
+                   
+                        default:
+                            jsonReader.skipValue();
+                            break;
+                    } 
+                }
+
+                jsonReader.endObject();
+
+                firstInCity.putIfAbsent(nomeCitta, nomeHotel);
+            }
+
+            jsonReader.endObject();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return firstInCity;
     }
 }

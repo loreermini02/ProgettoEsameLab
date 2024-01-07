@@ -17,6 +17,7 @@ public class ClientMain {
     public static void main(String[] args) throws UnknownHostException, IOException {
         int comandoScelto = -1;
         Boolean exit = false, tryAgain;
+        String serverNotification;
 
         System.out.println("\nBENVENUT* IN HOTELIER!");
         
@@ -36,6 +37,11 @@ public class ClientMain {
             inputStream = new Scanner(socket.getInputStream());
 
             while (!exit) {
+                if (inputStream.hasNextLine()) {
+                    serverNotification = inputStream.nextLine(); 
+                    System.out.printf("\n%s\n", serverNotification);
+                }
+
                 showAllCommands(comandiDisponibili);
 
                 do {
@@ -155,6 +161,8 @@ public class ClientMain {
     }
     
     private static void logOut() {
+        outputStream.println("LOGOUT");
+
         comandiDisponibili.put(1, "Register");
         comandiDisponibili.put(2, "Log-In");
         comandiDisponibili.remove(5); // Elimino 'Insert Review' dai comandi disponibili
