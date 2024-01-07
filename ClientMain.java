@@ -262,6 +262,12 @@ public class ClientMain {
         
         // Controllo se l'hotel, se ritorno false vuol dire che l'utente ha sbagliato input e non vuole ritentare la ricerca
         if (!searchHotelCheck(userInput, "INSERT_REVIEW")) return;
+
+        serverResponse = inputStream.nextLine();
+        if (serverResponse.equals("REQUEST_REJECTED")) {
+            System.out.println("\nDevono passare almeno 30 giorni prima di poter fare una nuova recensione a questo hotel!");
+            return;
+        }
         
         globalScore = inputCheck(userInput, "Inserire Global Score (0-5): ", 0, 5);
         singleScores[1] = inputCheck(userInput, "Inserire Single Score per Pulizia (0-5): ", 0, 5);

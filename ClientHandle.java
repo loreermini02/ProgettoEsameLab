@@ -38,41 +38,44 @@ public class ClientHandle implements Runnable {
             while (inputStream.hasNextLine()) {
                 clientCommand = inputStream.nextLine();
 
-                // REGISTRAZIONE
-                if (clientCommand.equals("REGISTER")) {
-                    register(inputStream);
-                } 
-                // LOG-IN
-                else if (clientCommand.equals("LOGIN")) {
-                    loggedUser = login(inputStream);
+                switch (clientCommand) {
+                    case "REGISTER":
+                        register(inputStream);
+                        
+                        break;
+                    case "LOGIN":
+                        loggedUser = login(inputStream);
+        
+                        if (loggedUser != null)
+                            // Controlla se ci sono già delle recensioni fatte dall'Utente e aggiorna il contatore
+                            loggedUser.setNumReview(reviewManager.getNumReviewByUsername(loggedUser.getUsername()));
+        
+                        allLoggedUsers.putIfAbsent(loggedUser.getUsername(), clientSocket); 
 
-                    if (loggedUser != null)
-                        // Controlla se ci sono già delle recensioni fatte dall'Utente e aggiorna il contatore
-                        loggedUser.setNumReview(reviewManager.getNumReviewByUsername(loggedUser.getUsername()));
+                        break;
+                    case "INSERT_REVIEW":
+                        insertReview(inputStream, loggedUser);
+                        reloadReview();
 
-                    allLoggedUsers.putIfAbsent(loggedUser.getUsername(), clientSocket); 
-                }
-                // INSERT REVIEW
-                else if (clientCommand.equals("INSERT_REVIEW")) {
-                    insertReview(inputStream, loggedUser);
-                    reloadReview();
-                    checkRanking();
-                }
-                // SHOW BADGE
-                else if (clientCommand.equals("SHOW_BADGE")) {
-                    showBadge(inputStream, loggedUser);
-                }
-                // SEARCH HOTEL
-                else if (clientCommand.equals("SEARCH_HOTEL")) {
-                    searchHotel(inputStream);
-                } 
-                // SEARCH ALL HOTEL by City
-                else if (clientCommand.equals("SEARCH_ALL_HOTEL")) {
-                    searchAllHotels(inputStream);
-                }
-                // LOGOUT
-                else if (clientCommand.equals("LOGOUT")) {
-                    allLoggedUsers.remove(loggedUser.getUsername());
+                        break;
+                    case "SHOW_BADGE":
+                        showBadge(inputStream, loggedUser);
+
+                        break;
+                    case "SEARCH_HOTEL":
+                        searchHotel(inputStream);
+
+                        break;
+                    case "SEARCH_ALL_HOTEL":
+                        searchAllHotels(inputStream);
+
+                        break;
+                    case "LOGOUT":
+                        allLoggedUsers.remove(loggedUser.getUsername());
+
+                        break;
+                    default:
+                        break;
                 }
             }
         } catch (Exception e) {
@@ -91,10 +94,11 @@ public class ClientHandle implements Runnable {
         String username = "", password = "";
 
         username = inputStream.nextLine();
+        
         password = inputStream.nextLine();
         System.out.printf("%s: Messaggio dal client %s: Username: %s, Password: %s\n", Thread.currentThread().getName(), clientSocket.getInetAddress(), username, password);
-
-        if (!userManager.checkUsername(username)[0].isEmpty()) {
+        
+        if ((username.isBlank() || password.isBlank()) || !userManager.checkUsername(username)[0].isEmpty()) {
             //System.out.printf("%s già registrato\n", username);
             outputStream.println("DENIED");
         } else {
@@ -113,7 +117,7 @@ public class ClientHandle implements Runnable {
 
         System.out.printf("%s: Messaggio dal client %s: Username: %s, Password: %s\n", Thread.currentThread().getName(), clientSocket.getInetAddress(), username, password);
 
-        if (userManager.checkUsername(username, password)) {
+        if (!(username.isBlank() && password.isBlank()) && userManager.checkUsername(username, password)) {
             loggedUser = new LoggedUser(username, password);
 
             System.out.printf("Nuovo Accesso (%s)\n", username);
@@ -126,10 +130,11 @@ public class ClientHandle implements Runnable {
     }
 
     private void insertReview(Scanner inputStream, LoggedUser loggedUser) {
-        String nomeHotel = "", nomeCitta = "";
+        String nomeHotel = "", nomeCitta = "", dateLastReview;
         int globalScore = 0;
         int[] singleScores = {0,0,0,0};
         Hotel hotel = null;
+
 
         nomeHotel = inputStream.nextLine();
         nomeCitta = inputStream.nextLine();
@@ -140,18 +145,26 @@ public class ClientHandle implements Runnable {
         }
         else {
             outputStream.println("HOTEL_FOUND");
-            globalScore = inputStream.nextInt();
-            singleScores[0] = inputStream.nextInt();
-            singleScores[1] = inputStream.nextInt();
-            singleScores[2] = inputStream.nextInt();
-            singleScores[3] = inputStream.nextInt();
 
-            
-            outputStream.println("ACCEPT");
-            reviewManager.addReview(loggedUser, hotel.getId(), hotel.getName(), hotel.getCity(), globalScore, singleScores);
-            System.out.println("Nuova recensione effettuata");
+            dateLastReview = reviewManager.getDateLastReviewByUser(loggedUser.getUsername(), hotel.getId());
 
-            hotel.IncrementNumReview();
+            if (!dateLastReview.isBlank() && checkDate(dateLastReview)) {
+                outputStream.println("REQUEST_ACCEPTED");
+                globalScore = inputStream.nextInt();
+                singleScores[0] = inputStream.nextInt();
+                singleScores[1] = inputStream.nextInt();
+                singleScores[2] = inputStream.nextInt();
+                singleScores[3] = inputStream.nextInt();
+
+                
+                outputStream.println("ACCEPT");
+                reviewManager.addReview(loggedUser, hotel.getId(), hotel.getName(), hotel.getCity(), globalScore, singleScores);
+                System.out.println("Nuova recensione effettuata");
+
+                hotel.IncrementNumReview();
+            } else {
+                outputStream.println("REQUEST_REJECTED");
+            }
         }
     }
 
@@ -322,7 +335,15 @@ public class ClientHandle implements Runnable {
         return ranking;
     }
 
-    private synchronized void checkRanking() {
-    
+    private boolean checkDate(String date) {   
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
+        
+        // Converti la stringa in un oggetto LocalDateTime
+        LocalDateTime dateTime = LocalDateTime.parse(date, formatter);
+
+        Duration duration = Duration.between(dateTime, LocalDateTime.now());
+
+        // E' possibile fare una recensione dello stesso hotel solo se sono passati 30 giorni dall'ultima
+        return (duration.toDays() > 30);
     }
 }

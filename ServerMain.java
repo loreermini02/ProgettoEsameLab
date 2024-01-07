@@ -20,7 +20,6 @@ public class ServerMain {
     static HotelManager hotelManager = new HotelManager();
     static ConcurrentHashMap<String, Socket> loggedUsers = new ConcurrentHashMap<>();
 
-
     public static void main(String[] args) throws Exception {
 
         if (args.length != 1) {
@@ -86,7 +85,6 @@ public class ServerMain {
 
         System.out.println("Ranking Aggiornato!");
     }   
-
 
     private static void checkRanking(Map<String,String> hashMap1, Map<String,String> hashMap2) {
         Set<String> citta = hashMap1.keySet();
