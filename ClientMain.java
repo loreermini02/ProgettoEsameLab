@@ -329,8 +329,8 @@ public class ClientMain {
             nomeCitta = userInput.nextLine();
 
             outputStream.println(searchType);
-            outputStream.println(nomeHotel);
-            outputStream.println(nomeCitta);
+            outputStream.println(nomeHotel.trim()); // Elimino gli spazi iniziali e finali
+            outputStream.println(nomeCitta.trim()); // Elimino gli spazi iniziali e finali
 
             serverResponse = inputStream.nextLine();
 
@@ -375,8 +375,8 @@ public class ClientMain {
             password = userInput.nextLine();
 
             outputStream.println(searchType);
-            outputStream.println(username);
-            outputStream.println(password);
+            outputStream.println(username.trim()); // Elimino gli spazi iniziali e finali
+            outputStream.println(password.trim()); // Elimino gli spazi iniziali e finali
 
             serverResponse = inputStream.nextLine();
             if (serverResponse.equals("DENIED")){ 
