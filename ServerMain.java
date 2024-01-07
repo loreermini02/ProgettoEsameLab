@@ -16,25 +16,15 @@ public class ServerMain {
     static int numThreads = 20;
     // Porta su cui il server è in ascolto
     static int port = 8080;
+
+    static Config config;
     static RankingManager rankingManager = new RankingManager();
     static HotelManager hotelManager = new HotelManager();
     static ConcurrentHashMap<String, Socket> loggedUsers = new ConcurrentHashMap<>();
 
     public static void main(String[] args) throws Exception {
 
-        if (args.length != 1) {
-            System.out.println("Numero errato di parametri!");
-            return;
-        }
-
-        int numSec;
-
-        try {
-            numSec = Integer.parseInt(args[0]);
-        } catch (NumberFormatException e) {
-            System.out.println("Errore: il parametro deve essere un intero!");
-            return;
-        }
+        config = readConfigFile();
 
         Timer timer = new Timer();
         TimerTask task = new TimerTask() {
@@ -70,6 +60,10 @@ public class ServerMain {
     }
 
     //Other Methods
+    private static Config readConfigFile() {
+
+    }
+
     private static void reloadRanking() throws IOException {
         List<Hotel> allHotel;
         Map<String, String> rankBeforeUpdate, rankAfterUpdate;
