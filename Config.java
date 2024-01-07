@@ -1,14 +1,16 @@
 public class Config {
     private String serverName;
     private int serverPort;
-    private int numThread;
+    private int notificationPort;
+    private int numThreads;
     private int timer; // In secondi
     private int numDay;
 
-    public Config(String serverName, int serverPort, int numThread, int timer, int numDay) {
+    public Config(String serverName, int serverPort, int notificationPort, int numThreads, int timer, int numDay) {
         this.serverName = serverName;
         this.serverPort = serverPort;
-        this.numThread = numThread;
+        this.notificationPort = notificationPort;
+        this.numThreads = numThreads;
         this.timer = timer;
         this.numDay = numDay;
     }
@@ -17,19 +19,23 @@ public class Config {
         return this.serverName;
     }
 
-    public int getsServerPort() {
+    public int getServerPort() {
         return this.serverPort;
     }
 
-    public int getNumThread() {
-        return this.numThread;
+    public int getnNotificationPort() {
+        return this.notificationPort;
     }
 
-    public int getTimer() {
+    public int getNumThreads() {
+        return this.numThreads;
+    }
+
+    public int getTimerReloadRanking() {
         return this.timer;
     }
     
-    public int getNumDay() {
+    public int getDaysForNewReview() {
         return this.numDay;
     }    
 }

@@ -42,25 +42,29 @@ public class RankingManager {
 
         try(JsonReader jsonReader = new JsonReader(new FileReader(RANKING_FILE_PATH))) {
             jsonReader.beginObject();
-           
             while(jsonReader.hasNext()) {
                 nomeCitta = jsonReader.nextName();  
                 
-                jsonReader.beginObject();
+                jsonReader.beginArray();
                 while (jsonReader.hasNext()) {
-                    fieldName = jsonReader.nextName();
-                    switch (fieldName) {
-                        case "name":
-                            nomeHotel = jsonReader.nextString();
-                            break;
-                   
-                        default:
-                            jsonReader.skipValue();
-                            break;
-                    } 
-                }
 
-                jsonReader.endObject();
+                    jsonReader.beginObject();
+                    while(jsonReader.hasNext()) {
+                        fieldName = jsonReader.nextName();
+                        switch (fieldName) {
+                            case "name":
+                                nomeHotel = jsonReader.nextString();
+                                break;
+                       
+                            default:
+                                jsonReader.skipValue();
+                                break;
+                        } 
+                    }
+                    jsonReader.endObject();
+                    
+                }
+                jsonReader.endArray();
 
                 firstInCity.putIfAbsent(nomeCitta, nomeHotel);
             }

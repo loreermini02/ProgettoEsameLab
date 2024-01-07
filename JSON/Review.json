@@ -1,1 +1,16 @@
-[]
+[
+  {
+    "username": "Lorenzo",
+    "idHotel": 1,
+    "nomeHotel": "Hotel Aosta 1",
+    "nomeCitta": "Aosta",
+    "globalScore": 3,
+    "singleScores": [
+      3,
+      3,
+      3,
+      3
+    ],
+    "dateTime": "07-01-2024 19:27:26"
+  }
+]

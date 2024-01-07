@@ -1,7 +1,8 @@
 {
     "serverName": "localhost",
     "serverPort": 8080,
+    "notificationPort": 1111,
     "numThread": 20,
-    "timer":40,
-    "numDay":30
+    "timerReloadRanking": 40,
+    "daysForNewReview": 30
 }

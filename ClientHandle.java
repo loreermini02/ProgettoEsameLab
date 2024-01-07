@@ -9,22 +9,38 @@ import java.util.Scanner;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class ClientHandle implements Runnable {
+
+    private ConfigManager configManager;
     private Socket clientSocket;
+    private Socket notificationSocket;
+
     private PrintWriter outputStream = null;
     private UserManager userManager;
     private HotelManager hotelManager;
     private ReviewManager reviewManager;
     private ConcurrentHashMap<String, Socket> allLoggedUsers;
 
-    ClientHandle(Socket s, ConcurrentHashMap<String, Socket> loggedUsers) throws Exception {
-        this.clientSocket = s;
+    private int daysForNewReview;
+
+    ClientHandle(Socket clientSocket, Socket notificationSocket, ConcurrentHashMap<String, Socket> loggedUsers) throws Exception {
+        this.clientSocket = clientSocket;
+        this.notificationSocket = notificationSocket;
+
         this.allLoggedUsers = loggedUsers;
 
         this.outputStream = new PrintWriter(clientSocket.getOutputStream(), true);
 
+        this.configManager = new ConfigManager();
         this.userManager = new UserManager();
         this.hotelManager = new HotelManager();
         this.reviewManager = new ReviewManager();
+
+
+        /* Variabili di Config */
+        Config configFile = configManager.readConfigFile();
+        this.daysForNewReview = configFile.getDaysForNewReview();
+        /* ------------------ */
+
     }
 
     @Override
@@ -50,7 +66,7 @@ public class ClientHandle implements Runnable {
                             // Controlla se ci sono già delle recensioni fatte dall'Utente e aggiorna il contatore
                             loggedUser.setNumReview(reviewManager.getNumReviewByUsername(loggedUser.getUsername()));
         
-                        allLoggedUsers.putIfAbsent(loggedUser.getUsername(), clientSocket); 
+                        allLoggedUsers.putIfAbsent(loggedUser.getUsername(), notificationSocket); 
 
                         break;
                     case "INSERT_REVIEW":
@@ -148,7 +164,7 @@ public class ClientHandle implements Runnable {
 
             dateLastReview = reviewManager.getDateLastReviewByUser(loggedUser.getUsername(), hotel.getId());
 
-            if (!dateLastReview.isBlank() && checkDate(dateLastReview)) {
+            if (dateLastReview.isBlank() || checkDate(dateLastReview)) {
                 outputStream.println("REQUEST_ACCEPTED");
                 globalScore = inputStream.nextInt();
                 singleScores[0] = inputStream.nextInt();
@@ -343,7 +359,7 @@ public class ClientHandle implements Runnable {
 
         Duration duration = Duration.between(dateTime, LocalDateTime.now());
 
-        // E' possibile fare una recensione dello stesso hotel solo se sono passati 30 giorni dall'ultima
-        return (duration.toDays() > 30);
+        // E' possibile fare una recensione dello stesso hotel solo se sono passati daysForNewReview giorni dall'ultima
+        return (duration.toDays() > daysForNewReview);
     }
 }

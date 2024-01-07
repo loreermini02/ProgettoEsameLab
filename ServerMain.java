@@ -11,20 +11,23 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-public class ServerMain {
-    // Numero massimo di thread nel pool
-    static int numThreads = 20;
-    // Porta su cui il server è in ascolto
-    static int port = 8080;
 
-    static Config config;
+public class ServerMain {
+
+    static ConfigManager configManager = new ConfigManager();
     static RankingManager rankingManager = new RankingManager();
     static HotelManager hotelManager = new HotelManager();
     static ConcurrentHashMap<String, Socket> loggedUsers = new ConcurrentHashMap<>();
 
     public static void main(String[] args) throws Exception {
-
-        config = readConfigFile();
+        
+        /* Variabili di Config */
+        Config configFile = configManager.readConfigFile();
+        int port = configFile.getServerPort();
+        int notificationPort = configFile.getnNotificationPort();
+        int timerReloadRanking = configFile.getTimerReloadRanking();
+        int numThreads = configFile.getNumThreads();
+        /* ------------------ */
 
         Timer timer = new Timer();
         TimerTask task = new TimerTask() {
@@ -38,31 +41,30 @@ public class ServerMain {
             }
         };
 
-        timer.schedule(task, 0, numSec * 1000); // Esegue il metodo ogni numSec secondi
+        timer.schedule(task, 0, timerReloadRanking * 1000); // Esegue il metodo ogni timer secondi
 
         ExecutorService threadPool = Executors.newFixedThreadPool(numThreads);
 
         // Creazione di un server socket sulla porta specificata
-        try (ServerSocket serverSocket = new ServerSocket(port)) {
+        try (ServerSocket serverSocket = new ServerSocket(port);
+            ServerSocket notificationServerSocket = new ServerSocket(notificationPort)) {
             System.out.printf("Server in ascolto sulla Porta %d\n", port);
 
             // Ciclo infinito per accettare connessioni da client
             while (true) {
-                // Accetta una connessione da un client
+                // Accettazione delle connessioni dei client
                 Socket clientSocket = serverSocket.accept();
+                Socket notificationSocket = notificationServerSocket.accept();
 
                 System.out.printf("Nuova connessione da %s\n", clientSocket.getInetAddress());
 
                 // Creazione di un nuovo thread per gestire il client
-                threadPool.execute(new ClientHandle(clientSocket, loggedUsers));
+                threadPool.execute(new ClientHandle(clientSocket, notificationSocket, loggedUsers));
             }
         }
     }
 
     //Other Methods
-    private static Config readConfigFile() {
-
-    }
 
     private static void reloadRanking() throws IOException {
         List<Hotel> allHotel;
@@ -91,15 +93,20 @@ public class ServerMain {
     }
 
     private static void notifyLoggedUser(String city, String nomeHotel) {
-        String message = "Ranking Aggiornato! A " + city + " l'hotel in 1° posizione è ' " + nomeHotel + "'";
+        String message = "NOTIFICA: Ranking Aggiornato! A " + city + " l'hotel in 1° posizione è ' " + nomeHotel + "'";
 
+        // ExecutorService per gestire le notifiche in modo asincrono
+        ExecutorService executor = Executors.newFixedThreadPool(10); // 10 threads
+        
         for (Socket userSocket : loggedUsers.values()) {
-            try {
-                PrintWriter writer = new PrintWriter(userSocket.getOutputStream(), true);
-                writer.println(message);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+            executor.submit(() -> {
+                try {
+                    PrintWriter out = new PrintWriter(userSocket.getOutputStream(), true);
+                    out.println(message);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            });
         }
     }
 }

@@ -10,16 +10,16 @@
       "Palestra",
       "Cancellazione gratuita"
     ],
-    "rate": 0,
+    "rate": 3,
     "ratings": {
-      "cleaning": 0,
-      "position": 0,
-      "services": 0,
-      "quality": 0
+      "cleaning": 3,
+      "position": 3,
+      "services": 3,
+      "quality": 3
     },
-    "score": 0.0,
-    "numReviews": 0,
-    "dateLastReview": ""
+    "score": 1.7999999999999998,
+    "numReviews": 1,
+    "dateLastReview": "07-01-2024 19:27:26"
   },
   {
     "id": 2,

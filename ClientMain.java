@@ -8,16 +8,24 @@ import java.util.Map;
 import java.util.Scanner;
 
 public class ClientMain {
-    static int port = 8080;
+    static ConfigManager configManager = new ConfigManager();
     static Map <Integer, String> comandiDisponibili = new HashMap<>();
+    
     // Ottiene gli stream di input e output dalla connessione
     static Scanner inputStream;
     static PrintWriter outputStream;
 
     public static void main(String[] args) throws UnknownHostException, IOException {
+
+        /* Variabili di Config */
+        Config configFile = configManager.readConfigFile();
+        String serverName = configFile.getServerName();
+        int port = configFile.getServerPort();
+        int notificationPort = configFile.getnNotificationPort();
+        /* ------------------ */
+
         int comandoScelto = -1;
         Boolean exit = false, tryAgain;
-        String serverNotification;
 
         System.out.println("\nBENVENUT* IN HOTELIER!");
         
@@ -29,19 +37,17 @@ public class ClientMain {
         comandiDisponibili.put(9, "Exit");    
  
         
-        try (Socket socket = new Socket("localhost", port);
+        try (Socket socket = new Socket(serverName, port);
+            Socket notificationSocket = new Socket(serverName, notificationPort);
             Scanner userInput = new Scanner(System.in);
             ){
                 
             outputStream = new PrintWriter(socket.getOutputStream(), true);
             inputStream = new Scanner(socket.getInputStream());
 
-            while (!exit) {
-                if (inputStream.hasNextLine()) {
-                    serverNotification = inputStream.nextLine(); 
-                    System.out.printf("\n%s\n", serverNotification);
-                }
+            startListeningForNotifications(notificationSocket);
 
+            while (!exit) {
                 showAllCommands(comandiDisponibili);
 
                 do {
@@ -287,6 +293,23 @@ public class ClientMain {
     }
 
     // Other Methods
+    private static void startListeningForNotifications(Socket socket) {
+        new Thread(() -> {
+            try (Scanner inputStream = new Scanner(socket.getInputStream());
+                ){
+                String serverNotification;
+
+                serverNotification = inputStream.nextLine();
+
+                if (serverNotification.contains("NOTIFICATION")) {
+                    System.out.println(serverNotification);
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }).start();
+    }
+
     private static int inputCheck(Scanner userInput, String msg, int min, int max) {
         int value = -1;
         boolean tryAgain;
