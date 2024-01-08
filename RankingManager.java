@@ -38,7 +38,7 @@ public class RankingManager {
 
     public synchronized Map<String, String> readFirstInRank() {
         Map<String, String> firstInCity = new HashMap<>();
-        String nomeCitta, fieldName, nomeHotel = "";
+        String nomeCitta = "", fieldName, nomeHotel = "";
 
         try(JsonReader jsonReader = new JsonReader(new FileReader(RANKING_FILE_PATH))) {
             jsonReader.beginObject();
@@ -49,6 +49,7 @@ public class RankingManager {
                 while (jsonReader.hasNext()) {
 
                     jsonReader.beginObject();
+
                     while(jsonReader.hasNext()) {
                         fieldName = jsonReader.nextName();
                         switch (fieldName) {
@@ -63,10 +64,11 @@ public class RankingManager {
                     }
                     jsonReader.endObject();
                     
+                    if (!firstInCity.containsKey(nomeCitta)) 
+                        firstInCity.put(nomeCitta, nomeHotel);
                 }
                 jsonReader.endArray();
 
-                firstInCity.putIfAbsent(nomeCitta, nomeHotel);
             }
 
             jsonReader.endObject();

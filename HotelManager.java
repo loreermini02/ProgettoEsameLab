@@ -45,9 +45,9 @@ public class HotelManager {
         String fieldName = "";
 
         // Proprietà Hotel
-        int id = 0, rate = 0;
+        int id = 0, rate = 0, numReviews = 0;
         Double score = 0.0;
-        String name = null, description = "", city = "", phone = "";
+        String name = "", description = "", city = "", phone = "", dateLastReview = "";
         List<String> services = null;
         int[] ratings = {0,0,0,0};
 
@@ -89,6 +89,12 @@ public class HotelManager {
                         case "score":
                             score = jsonReader.nextDouble();
                             break;
+                        case "numReviews":
+                            numReviews = jsonReader.nextInt();
+                            break;
+                        case "dateLastReview":
+                            dateLastReview = jsonReader.nextString();
+                            break;
                         default:
                             jsonReader.skipValue(); // Ignora il valore di altri campi
                             break;                        
@@ -98,8 +104,8 @@ public class HotelManager {
                 jsonReader.endObject(); // Fine dell'oggetto
 
                 // Controlla se l'hotel corrente ha il nome cercato ed è nella città richiesta
-                if (name != null && name.equalsIgnoreCase(nomeHotel) && city.equalsIgnoreCase(citta)) {
-                    return new Hotel(id, name, description, city, phone, services, rate, ratings, score);
+                if (!name.isBlank() && name.equalsIgnoreCase(nomeHotel) && city.equalsIgnoreCase(citta)) {
+                    return new Hotel(id, name, description, city, phone, services, rate, ratings, score, numReviews, dateLastReview);
                 }
             }
             
@@ -117,9 +123,9 @@ public class HotelManager {
         String fieldName = "";
 
         // Proprietà Hotel
-        int id = 0, rate = 0;
+        int id = 0, rate = 0, numReviews = 0;
         Double score = 0.0;
-        String name = "", description = "", city = "", phone = "";
+        String name = "", description = "", city = "", phone = "",  dateLastReview = "";
         List<String> services = null;
         int[] ratings = {0,0,0,0};
 
@@ -161,6 +167,12 @@ public class HotelManager {
                         case "score":
                             score = jsonReader.nextDouble();
                             break;
+                        case "numReviews":
+                            numReviews = jsonReader.nextInt();
+                            break;
+                        case "dateLastReview":
+                            dateLastReview = jsonReader.nextString();
+                            break;
                         default:
                             jsonReader.skipValue(); // Ignora il valore di altri campi
                             break;                        
@@ -171,7 +183,7 @@ public class HotelManager {
 
                 // Controlla se l'hotel corrente è nella città richiesta
                 if (!name.isBlank() && city.equalsIgnoreCase(citta)) {
-                    resultHotels.add(new Hotel(id, name, description, city, phone, services, rate, ratings, score));
+                    resultHotels.add(new Hotel(id, name, description, city, phone, services, rate, ratings, score, numReviews, dateLastReview));
                 }
             }
             
@@ -189,9 +201,9 @@ public class HotelManager {
         String fieldName = "";
 
         // Proprietà Hotel
-        int id = 0, rate = 0;
+        int id = 0, rate = 0, numReviews = 0;
         Double score = 0.0;
-        String name = "", description = "", city = "", phone = "";
+        String name = "", description = "", city = "", phone = "", dateLastReview = "";
         List<String> services = null;
         int[] ratings = {0,0,0,0};
 
@@ -233,6 +245,12 @@ public class HotelManager {
                         case "score":
                             score = jsonReader.nextDouble();
                             break;
+                        case "numReviews":
+                            numReviews = jsonReader.nextInt();
+                            break;
+                        case "dateLastReview":
+                            dateLastReview = jsonReader.nextString();
+                            break;                            
                         default:
                             jsonReader.skipValue(); // Ignora il valore di altri campi
                             break;                        
@@ -243,7 +261,7 @@ public class HotelManager {
 
                 // Controlla se l'hotel corrente esiste
                 if (!name.isBlank()) {
-                    resultHotels.add(new Hotel(id, name, description, city, phone, services, rate, ratings, score));
+                    resultHotels.add(new Hotel(id, name, description, city, phone, services, rate, ratings, score, numReviews, dateLastReview));
                 }
             }
             

@@ -4016,6 +4016,24 @@
   ],
   "Aosta": [
     {
+      "id": 3,
+      "name": "Hotel Aosta 3",
+      "description": "Un grazioso hotel a Aosta, in Via Leonardo da Vinci, 87",
+      "city": "Aosta",
+      "phone": "393-2959804",
+      "services": [],
+      "rate": 5,
+      "ratings": {
+        "cleaning": 5,
+        "position": 5,
+        "services": 5,
+        "quality": 5
+      },
+      "score": 3.0,
+      "numReviews": 1,
+      "dateLastReview": "08-01-2024 17:56:23"
+    },
+    {
       "id": 2,
       "name": "Hotel Aosta 2",
       "description": "Un ridente hotel a Aosta, in Via della libertà, 96",
@@ -4029,16 +4047,16 @@
         "Frigo in camera",
         "TV in camera"
       ],
-      "rate": 5,
+      "rate": 1,
       "ratings": {
-        "cleaning": 5,
-        "position": 5,
-        "services": 5,
-        "quality": 5
+        "cleaning": 1,
+        "position": 1,
+        "services": 1,
+        "quality": 1
       },
-      "score": 3.0,
-      "numReviews": 0,
-      "dateLastReview": ""
+      "score": 0.6,
+      "numReviews": 1,
+      "dateLastReview": "08-01-2024 17:55:42"
     },
     {
       "id": 1,
@@ -4051,24 +4069,6 @@
         "Palestra",
         "Cancellazione gratuita"
       ],
-      "rate": 0,
-      "ratings": {
-        "cleaning": 0,
-        "position": 0,
-        "services": 0,
-        "quality": 0
-      },
-      "score": 0.0,
-      "numReviews": 0,
-      "dateLastReview": ""
-    },
-    {
-      "id": 3,
-      "name": "Hotel Aosta 3",
-      "description": "Un grazioso hotel a Aosta, in Via Leonardo da Vinci, 87",
-      "city": "Aosta",
-      "phone": "393-2959804",
-      "services": [],
       "rate": 0,
       "ratings": {
         "cleaning": 0,

@@ -36,7 +36,7 @@ public class ClientMain {
         comandiDisponibili.put(3, "Search All Hotels");  
         comandiDisponibili.put(4, "Search Specific Hotel");
         comandiDisponibili.put(8, "Clear Monitor");    
-        comandiDisponibili.put(9, "Exit");    
+        comandiDisponibili.put(10, "Exit");    
  
         
         try (Socket socket = new Socket(serverName, port);
@@ -110,14 +110,15 @@ public class ClientMain {
                     case 8: // Clear
                         clearTerminal();
                         break;
-                    
-                    case 9: //Exit
+                        
+                    case 9: // Mostra notifica
+                        showNotify();
+                        break;
+
+                    case 10: //Exit
                         exit = true;
                         break;
 
-                    case 10: // Mostra notifica
-                        showNotify();
-                        break;
                     default:
                         break;
                 }
@@ -315,8 +316,8 @@ public class ClientMain {
                 while (inputStream.hasNextLine()) {
                     serverNotification = inputStream.nextLine();
     
-                    if (serverNotification.contains("NOTIFICATION")) {
-                        comandiDisponibili.put(10, "Mostra notifica");
+                    if (serverNotification.contains("NOTIFICA")) {
+                        comandiDisponibili.put(9, "Mostra notifica dal Server");
                         notify = serverNotification;
                     }
                 }
@@ -327,8 +328,8 @@ public class ClientMain {
     }
 
     private static void showNotify() {
-        System.out.println(notify);
-        comandiDisponibili.remove(10);
+        System.out.println("\n" + notify);
+        comandiDisponibili.remove(9);
     }
 
     private static int inputCheck(Scanner userInput, String msg, int min, int max) {

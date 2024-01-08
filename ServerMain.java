@@ -93,7 +93,7 @@ public class ServerMain {
     }
 
     private static void notifyLoggedUser(String city, String nomeHotel) {
-        String message = "NOTIFICA: Ranking Aggiornato! A " + city + " l'hotel in 1° posizione è ' " + nomeHotel + "'";
+        String message = "NOTIFICA: Ranking Aggiornato! A '" + city + "' l'hotel in 1° posizione è diventato '" + nomeHotel + "'";
 
         // ExecutorService per gestire le notifiche in modo asincrono
         ExecutorService executor = Executors.newFixedThreadPool(10); // 10 threads
