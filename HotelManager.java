@@ -319,5 +319,4 @@ public class HotelManager {
         jsonReader.endObject(); // Fine dell'oggetto delle valutazioni
         return ratings;        
     } 
-
 }

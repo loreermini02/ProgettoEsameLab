@@ -207,5 +207,4 @@ public class ReviewManager {
         jsonReader.endArray(); // Fine dell'array delle valutazioni
         return ratings;  
     }
-
 }
