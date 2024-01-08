@@ -14,6 +14,7 @@ public class ClientMain {
     // Ottiene gli stream di input e output dalla connessione
     static Scanner inputStream;
     static PrintWriter outputStream;
+    static String notify = "";
 
     public static void main(String[] args) throws UnknownHostException, IOException {
 
@@ -22,6 +23,7 @@ public class ClientMain {
         String serverName = configFile.getServerName();
         int port = configFile.getServerPort();
         int notificationPort = configFile.getnNotificationPort();
+
         /* ------------------ */
 
         int comandoScelto = -1;
@@ -79,12 +81,10 @@ public class ClientMain {
                 switch (comandoScelto) {
                     case 1: // Sign-Up
                         register(userInput);
-                        
                         break;
 
                     case 2: // Log-In
                         login(userInput);
-
                         break;
 
                     case 3: // Search All Hotels
@@ -97,7 +97,6 @@ public class ClientMain {
                     
                     case 5: // Insert Review
                         insertReview(userInput);
-
                         break;
                     
                     case 6: // Show My Badges
@@ -116,6 +115,9 @@ public class ClientMain {
                         exit = true;
                         break;
 
+                    case 10: // Mostra notifica
+                        showNotify();
+                        break;
                     default:
                         break;
                 }
@@ -182,7 +184,12 @@ public class ClientMain {
         System.out.println("\nRICERCA HOTEL:");
         
         // Controllo se l'hotel, se ritorno false vuol dire che l'utente ha sbagliato input e non vuole ritentare la ricerca
-        if (!searchHotelCheck(userInput, "SEARCH_HOTEL")) return;
+        if (!searchHotelCheck(userInput, "SEARCH_HOTEL")) {
+            outputStream.println("USER_EXIT");
+            return;
+        }
+
+        outputStream.println("REQUEST_SEARCH");
 
         System.out.println("\nHotel trovato\n-------------");
 
@@ -220,24 +227,25 @@ public class ClientMain {
                 System.out.printf("\nQuesta città (%s) non ha Hotel!\n", nomeCitta);
                 try {
                     System.out.print("\nPremere 0 per riprovare o qualsiasi altro numero per uscire: ");
-                    inputChoice =  userInput.nextInt();
+                    inputChoice = Integer.parseInt(userInput.nextLine());
                 } catch (InputMismatchException e) {
-                    // Consuma il resto della riga di input errata
-                    userInput.nextLine();
+                    outputStream.println("USER_EXIT");
 
                     return;
                 }
-                
-                // Consuma il carattere di nuova linea nel buffer
-                userInput.nextLine();
+
                 if (inputChoice == 0) {
                     tryAgain = true;
                 } else {
+                    outputStream.println("USER_EXIT");
+
                     return;
                 }
             }
 
         }while(tryAgain);
+
+        outputStream.println("REQUEST_SEARCH");
 
         while (inputStream.hasNextLine()) {
             serverResponse = inputStream.nextLine();
@@ -267,28 +275,33 @@ public class ClientMain {
         System.out.println("\nRECENSIONE:");
         
         // Controllo se l'hotel, se ritorno false vuol dire che l'utente ha sbagliato input e non vuole ritentare la ricerca
-        if (!searchHotelCheck(userInput, "INSERT_REVIEW")) return;
-
+        if (!searchHotelCheck(userInput, "INSERT_REVIEW")) {
+            outputStream.println("USER_EXIT");
+            return;
+        }
+        outputStream.println("REQUEST_REVIEW");
         serverResponse = inputStream.nextLine();
+
         if (serverResponse.equals("REQUEST_REJECTED")) {
             System.out.println("\nDevono passare almeno 30 giorni prima di poter fare una nuova recensione a questo hotel!");
             return;
-        }
-        
-        globalScore = inputCheck(userInput, "Inserire Global Score (0-5): ", 0, 5);
-        singleScores[1] = inputCheck(userInput, "Inserire Single Score per Pulizia (0-5): ", 0, 5);
-        singleScores[0] = inputCheck(userInput, "Inserire Single Score per Posizione (0-5): ", 0, 5);
-        singleScores[2] = inputCheck(userInput, "Inserire Single Score per Servizio (0-5): ", 0, 5);
-        singleScores[3] = inputCheck(userInput, "Inserire Single Score per Qualità (0-5): ", 0, 5);
-        outputStream.println(globalScore);
-        outputStream.println(singleScores[0]);
-        outputStream.println(singleScores[1]);
-        outputStream.println(singleScores[2]);
-        outputStream.println(singleScores[3]);
-        
-        serverResponse = inputStream.nextLine();
-        if (serverResponse.equals("ACCEPT")) {
-            System.out.println("\nNuova recensione aggiunta con successo!");
+
+        } else if (serverResponse.equals("REQUEST_ACCEPTED")) {
+            globalScore = inputCheck(userInput, "Inserire Global Score (0-5): ", 0, 5);
+            singleScores[1] = inputCheck(userInput, "Inserire Single Score per Pulizia (0-5): ", 0, 5);
+            singleScores[0] = inputCheck(userInput, "Inserire Single Score per Posizione (0-5): ", 0, 5);
+            singleScores[2] = inputCheck(userInput, "Inserire Single Score per Servizio (0-5): ", 0, 5);
+            singleScores[3] = inputCheck(userInput, "Inserire Single Score per Qualità (0-5): ", 0, 5);
+            outputStream.println(globalScore);
+            outputStream.println(singleScores[0]);
+            outputStream.println(singleScores[1]);
+            outputStream.println(singleScores[2]);
+            outputStream.println(singleScores[3]);
+            
+            serverResponse = inputStream.nextLine();
+            if (serverResponse.equals("ACCEPT")) {
+                System.out.println("\nNuova recensione aggiunta con successo!");
+            }
         }
     }
 
@@ -299,15 +312,23 @@ public class ClientMain {
                 ){
                 String serverNotification;
 
-                serverNotification = inputStream.nextLine();
-
-                if (serverNotification.contains("NOTIFICATION")) {
-                    System.out.println(serverNotification);
+                while (inputStream.hasNextLine()) {
+                    serverNotification = inputStream.nextLine();
+    
+                    if (serverNotification.contains("NOTIFICATION")) {
+                        comandiDisponibili.put(10, "Mostra notifica");
+                        notify = serverNotification;
+                    }
                 }
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }).start();
+    }
+
+    private static void showNotify() {
+        System.out.println(notify);
+        comandiDisponibili.remove(10);
     }
 
     private static int inputCheck(Scanner userInput, String msg, int min, int max) {
@@ -361,25 +382,19 @@ public class ClientMain {
                 System.out.printf("\nHotel (%s) non trovato!\n", nomeHotel);
                 try {
                     System.out.print("\nPremere 0 per riprovare o qualsiasi altro numero per uscire: ");
-                    inputChoice =  userInput.nextInt();
+                    inputChoice =  Integer.parseInt(userInput.nextLine());
                 } catch (InputMismatchException e) {
-                    // Consuma il resto della riga di input errata
-                    userInput.nextLine();
-
                     return false;
                 }
                 
-                // Consuma il carattere di nuova linea nel buffer
-                userInput.nextLine();
                 if (inputChoice == 0) {
                     tryAgain = true;
                 } else {
                     return false;
                 }
             }
-
         }while(tryAgain);
-
+                
         return true;
     }
 

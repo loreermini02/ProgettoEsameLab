@@ -1,5 +1,5 @@
-import java.io.PrintWriter;
 import java.net.Socket;
+import java.io.PrintWriter;
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -62,11 +62,11 @@ public class ClientHandle implements Runnable {
                     case "LOGIN":
                         loggedUser = login(inputStream);
         
-                        if (loggedUser != null)
+                        if (loggedUser != null) {
                             // Controlla se ci sono già delle recensioni fatte dall'Utente e aggiorna il contatore
                             loggedUser.setNumReview(reviewManager.getNumReviewByUsername(loggedUser.getUsername()));
-        
-                        allLoggedUsers.putIfAbsent(loggedUser.getUsername(), notificationSocket); 
+                            allLoggedUsers.putIfAbsent(loggedUser.getUsername(), notificationSocket);
+                        }
 
                         break;
                     case "INSERT_REVIEW":
@@ -131,7 +131,7 @@ public class ClientHandle implements Runnable {
         username = inputStream.nextLine();
         password = inputStream.nextLine();
 
-        System.out.printf("%s: Messaggio dal client %s: Username: %s, Password: %s\n", Thread.currentThread().getName(), clientSocket.getInetAddress(), username, password);
+        System.out.printf("%s: Nuovo acccesso dal client %s\n", Thread.currentThread().getName(), clientSocket.getInetAddress());
 
         if (!(username.isBlank() && password.isBlank()) && userManager.checkUsername(username, password)) {
             loggedUser = new LoggedUser(username, password);
@@ -161,25 +161,27 @@ public class ClientHandle implements Runnable {
         }
         else {
             outputStream.println("HOTEL_FOUND");
+            
+            if (inputStream.nextLine().equals("REQUEST_REVIEW")) {
+                dateLastReview = reviewManager.getDateLastReviewByUser(loggedUser.getUsername(), hotel.getId());
 
-            dateLastReview = reviewManager.getDateLastReviewByUser(loggedUser.getUsername(), hotel.getId());
-
-            if (dateLastReview.isBlank() || checkDate(dateLastReview)) {
-                outputStream.println("REQUEST_ACCEPTED");
-                globalScore = inputStream.nextInt();
-                singleScores[0] = inputStream.nextInt();
-                singleScores[1] = inputStream.nextInt();
-                singleScores[2] = inputStream.nextInt();
-                singleScores[3] = inputStream.nextInt();
-
-                
-                outputStream.println("ACCEPT");
-                reviewManager.addReview(loggedUser, hotel.getId(), hotel.getName(), hotel.getCity(), globalScore, singleScores);
-                System.out.println("Nuova recensione effettuata");
-
-                hotel.IncrementNumReview();
-            } else {
-                outputStream.println("REQUEST_REJECTED");
+                if (dateLastReview.isBlank() || checkDate(dateLastReview)) { 
+                    outputStream.println("REQUEST_ACCEPTED");
+    
+                    globalScore = Integer.parseInt(inputStream.nextLine());
+                    singleScores[0] = Integer.parseInt(inputStream.nextLine());
+                    singleScores[1] = Integer.parseInt(inputStream.nextLine());
+                    singleScores[2] = Integer.parseInt(inputStream.nextLine());
+                    singleScores[3] = Integer.parseInt(inputStream.nextLine());
+                    
+                    outputStream.println("ACCEPT");
+                    reviewManager.addReview(loggedUser, hotel.getId(), hotel.getName(), hotel.getCity(), globalScore, singleScores);
+                    System.out.println("Nuova recensione effettuata");
+    
+                    hotel.IncrementNumReview();
+                } else {
+                    outputStream.println("REQUEST_REJECTED");
+                }
             }
         }
     }
@@ -204,49 +206,10 @@ public class ClientHandle implements Runnable {
             outputStream.println("HOTEL_NOT_FOUND");
         } else {
             outputStream.println("HOTEL_FOUND");
-            outputStream.printf("Nome: %s\n", hotel.getName());
-            outputStream.printf("Descrizione: %s\n", hotel.getDescription());
-            outputStream.printf("Città: %s\n", hotel.getCity());
-            outputStream.printf("Telefono: %s\n", hotel.getPhone());
-            
-            outputStream.print("Servizi Offerti:\n");
-            services = hotel.getServices();
-            for (String s : services) {
-                outputStream.printf("- %s\n", s);
-            }
-            
-            outputStream.printf("Rate: %d\n", hotel.getRate());
-            
-            outputStream.printf("Rating:\n");
-            rating = hotel.getRatings();
-            outputStream.printf("- Cleaning: %d\n", rating[0]);
-            outputStream.printf("- Position: %d\n", rating[1]);
-            outputStream.printf("- Services: %d\n", rating[2]);
-            outputStream.printf("- Quality: %d\n", rating[3]);
-            outputStream.println("END");
-            
-            System.out.println("Effettuata nuova ricerca di un Hotel");
-        }
-    }
 
-    private void searchAllHotels(Scanner inputStream) {
-        String nomeCitta = "";
-        List <Hotel> hotels = null;
-        List<String> services;
-        int[] rating = {0,0,0,0};
+            System.out.println("Hotel Trovato");
 
-        nomeCitta = inputStream.nextLine();
-        hotels = hotelManager.searchHotelByCity(nomeCitta);
-
-        if (hotels.isEmpty()) {
-            outputStream.println("HOTEL_NOT_FOUND");
-        } else {
-            outputStream.println("HOTEL_FOUND");
-
-            outputStream.printf("\n\n%d Hotel trovati:\n", hotels.size());
-            for (Hotel hotel : hotels) {
-                outputStream.printf("\n----------------\n\n");
-                
+            if (inputStream.nextLine().equals("REQUEST_SEARCH")) {
                 outputStream.printf("Nome: %s\n", hotel.getName());
                 outputStream.printf("Descrizione: %s\n", hotel.getDescription());
                 outputStream.printf("Città: %s\n", hotel.getCity());
@@ -266,15 +229,64 @@ public class ClientHandle implements Runnable {
                 outputStream.printf("- Position: %d\n", rating[1]);
                 outputStream.printf("- Services: %d\n", rating[2]);
                 outputStream.printf("- Quality: %d\n", rating[3]);
+                outputStream.println("END");
+                
+                System.out.println("Effettuata nuova ricerca di un Hotel");
             }
 
-            outputStream.println("END");            
-            System.out.println("Effettuata nuova ricerca di Hotel di una città");
+        }
+    }
+
+    private void searchAllHotels(Scanner inputStream) {
+        String nomeCitta = "";
+        List <Hotel> hotels = null;
+        List<String> services;
+        int[] rating = {0,0,0,0};
+
+        nomeCitta = inputStream.nextLine();
+        hotels = hotelManager.searchHotelByCity(nomeCitta);
+
+        if (hotels.isEmpty()) {
+            outputStream.println("HOTEL_NOT_FOUND");
+        } else {
+            outputStream.println("HOTEL_FOUND");
+
+            if (inputStream.nextLine().equals("REQUEST_SEARCH")) {
+    
+                outputStream.printf("\n\n%d Hotel trovati:\n", hotels.size());
+                for (Hotel hotel : hotels) {
+                    outputStream.printf("\n----------------\n\n");
+                    
+                    outputStream.printf("Nome: %s\n", hotel.getName());
+                    outputStream.printf("Descrizione: %s\n", hotel.getDescription());
+                    outputStream.printf("Città: %s\n", hotel.getCity());
+                    outputStream.printf("Telefono: %s\n", hotel.getPhone());
+                    
+                    outputStream.print("Servizi Offerti:\n");
+                    services = hotel.getServices();
+                    for (String s : services) {
+                        outputStream.printf("- %s\n", s);
+                    }
+                    
+                    outputStream.printf("Rate: %d\n", hotel.getRate());
+                    
+                    outputStream.printf("Rating:\n");
+                    rating = hotel.getRatings();
+                    outputStream.printf("- Cleaning: %d\n", rating[0]);
+                    outputStream.printf("- Position: %d\n", rating[1]);
+                    outputStream.printf("- Services: %d\n", rating[2]);
+                    outputStream.printf("- Quality: %d\n", rating[3]);
+                }
+    
+                outputStream.println("END");            
+                System.out.println("Effettuata nuova ricerca di Hotel di una città");
+            }
+
         }
     }
 
     //Other Methods
-    private synchronized void reloadReview() {
+    private void reloadReview() {
         List<Hotel> allHotel = null;
         List<Review> allReviews = null; 
 

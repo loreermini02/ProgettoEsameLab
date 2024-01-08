@@ -14,7 +14,7 @@ import com.google.gson.stream.JsonReader;
 public class RankingManager {
     private static final String RANKING_FILE_PATH = "JSON/Ranking.json";
     
-    public synchronized void rankHotels(List<Hotel> allHotel) throws IOException {
+    public void rankHotels(List<Hotel> allHotel) throws IOException {
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         Map <String, List<Hotel>> cityToHotel = new HashMap<>();
 

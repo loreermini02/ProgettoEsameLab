@@ -1,16 +1,16 @@
 [
   {
     "username": "Lorenzo",
-    "idHotel": 1,
-    "nomeHotel": "Hotel Aosta 1",
+    "idHotel": 2,
+    "nomeHotel": "Hotel Aosta 2",
     "nomeCitta": "Aosta",
-    "globalScore": 3,
+    "globalScore": 5,
     "singleScores": [
-      3,
-      3,
-      3,
-      3
+      5,
+      5,
+      5,
+      5
     ],
-    "dateTime": "07-01-2024 19:27:26"
+    "dateTime": "08-01-2024 15:52:51"
   }
 ]

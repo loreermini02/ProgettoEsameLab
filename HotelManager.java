@@ -46,6 +46,7 @@ public class HotelManager {
 
         // Proprietà Hotel
         int id = 0, rate = 0;
+        Double score = 0.0;
         String name = null, description = "", city = "", phone = "";
         List<String> services = null;
         int[] ratings = {0,0,0,0};
@@ -85,6 +86,9 @@ public class HotelManager {
                         case "ratings":
                             ratings = readRatingList(jsonReader);
                             break;
+                        case "score":
+                            score = jsonReader.nextDouble();
+                            break;
                         default:
                             jsonReader.skipValue(); // Ignora il valore di altri campi
                             break;                        
@@ -95,7 +99,7 @@ public class HotelManager {
 
                 // Controlla se l'hotel corrente ha il nome cercato ed è nella città richiesta
                 if (name != null && name.equalsIgnoreCase(nomeHotel) && city.equalsIgnoreCase(citta)) {
-                    return new Hotel(id, name, description, city, phone, services, rate, ratings);
+                    return new Hotel(id, name, description, city, phone, services, rate, ratings, score);
                 }
             }
             
@@ -114,7 +118,8 @@ public class HotelManager {
 
         // Proprietà Hotel
         int id = 0, rate = 0;
-        String name = null, description = "", city = "", phone = "";
+        Double score = 0.0;
+        String name = "", description = "", city = "", phone = "";
         List<String> services = null;
         int[] ratings = {0,0,0,0};
 
@@ -151,8 +156,10 @@ public class HotelManager {
                             rate = jsonReader.nextInt();
                             break;
                         case "ratings":
-                            jsonReader.beginObject();
                             ratings = readRatingList(jsonReader);
+                            break;
+                        case "score":
+                            score = jsonReader.nextDouble();
                             break;
                         default:
                             jsonReader.skipValue(); // Ignora il valore di altri campi
@@ -162,9 +169,9 @@ public class HotelManager {
 
                 jsonReader.endObject(); // Fine dell'oggetto
 
-                // Controlla se l'hotel corrente ha il nome cercato ed è nella città richiesta
-                if (name != null && city.equalsIgnoreCase(citta)) {
-                    resultHotels.add(new Hotel(id, name, description, city, phone, services, rate, ratings));
+                // Controlla se l'hotel corrente è nella città richiesta
+                if (!name.isBlank() && city.equalsIgnoreCase(citta)) {
+                    resultHotels.add(new Hotel(id, name, description, city, phone, services, rate, ratings, score));
                 }
             }
             
@@ -183,7 +190,8 @@ public class HotelManager {
 
         // Proprietà Hotel
         int id = 0, rate = 0;
-        String name = null, description = "", city = "", phone = "";
+        Double score = 0.0;
+        String name = "", description = "", city = "", phone = "";
         List<String> services = null;
         int[] ratings = {0,0,0,0};
 
@@ -222,6 +230,9 @@ public class HotelManager {
                         case "ratings":
                             ratings = readRatingList(jsonReader);
                             break;
+                        case "score":
+                            score = jsonReader.nextDouble();
+                            break;
                         default:
                             jsonReader.skipValue(); // Ignora il valore di altri campi
                             break;                        
@@ -231,8 +242,8 @@ public class HotelManager {
                 jsonReader.endObject(); // Fine dell'oggetto
 
                 // Controlla se l'hotel corrente esiste
-                if (name != null) {
-                    resultHotels.add(new Hotel(id, name, description, city, phone, services, rate, ratings));
+                if (!name.isBlank()) {
+                    resultHotels.add(new Hotel(id, name, description, city, phone, services, rate, ratings, score));
                 }
             }
             

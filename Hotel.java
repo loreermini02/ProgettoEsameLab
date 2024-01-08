@@ -13,7 +13,7 @@ public class Hotel {
     private int numReviews;
     private String dateLastReview;
 
-    public Hotel (int id, String name, String description, String city, String phone, List<String> services, int rate, int[] ratings) {
+    public Hotel (int id, String name, String description, String city, String phone, List<String> services, int rate, int[] ratings, double score) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -28,11 +28,10 @@ public class Hotel {
         this.ratings.services = ratings[2];
         this.ratings.quality = ratings[3];
 
-        this.score = 0.0;
+        this.score = score;
         this.numReviews = 0;
 
         this.dateLastReview = "";
-
     } 
 
     class Ratings {

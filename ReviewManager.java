@@ -149,16 +149,16 @@ public class ReviewManager {
     }
 
     public String getDateLastReviewByUser(String username, int idHotel) {
-        String existingDate = "", existingUsername = "", fieldName = ""; 
+        String existingDate = "", existingUsername = "", fieldName = "";
         int existingIdHotel = -1;
-        
+    
         try (JsonReader jsonReader = new JsonReader(new FileReader(REVIEW_FILE_PATH))) {
             jsonReader.beginArray();
-            
-            while(jsonReader.hasNext()) {
+    
+            while (jsonReader.hasNext()) {
                 jsonReader.beginObject();
-
-                while(jsonReader.hasNext()) {
+    
+                while (jsonReader.hasNext()) {
                     fieldName = jsonReader.nextName();
                     switch (fieldName) {
                         case "username":
@@ -168,26 +168,31 @@ public class ReviewManager {
                             existingIdHotel = jsonReader.nextInt();
                             break;
                         case "dateTime":
-                            if (existingUsername.equalsIgnoreCase(username) && idHotel == existingIdHotel)
+                            if (existingUsername.equalsIgnoreCase(username) && idHotel == existingIdHotel) {
                                 existingDate = jsonReader.nextString();
+                            } else {
+                                jsonReader.skipValue();
+                            }
                             break;
                         default:
+                            jsonReader.skipValue();
                             break;
                     }
                 }
-
+    
                 jsonReader.endObject();
             }
-
+    
             jsonReader.endArray();
-
+    
         } catch (IOException e) {
             e.printStackTrace();
         }
-
+    
         // Ritorna la data più recente
         return existingDate;
     }
+    
     // Other methods
     private int[] readRatingList(JsonReader jsonReader) throws IOException {
         int[] ratings = {0,0,0,0};

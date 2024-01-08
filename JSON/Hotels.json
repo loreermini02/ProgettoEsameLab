@@ -10,16 +10,16 @@
       "Palestra",
       "Cancellazione gratuita"
     ],
-    "rate": 3,
+    "rate": 0,
     "ratings": {
-      "cleaning": 3,
-      "position": 3,
-      "services": 3,
-      "quality": 3
+      "cleaning": 0,
+      "position": 0,
+      "services": 0,
+      "quality": 0
     },
-    "score": 1.7999999999999998,
-    "numReviews": 1,
-    "dateLastReview": "07-01-2024 19:27:26"
+    "score": 0.0,
+    "numReviews": 0,
+    "dateLastReview": ""
   },
   {
     "id": 2,
@@ -35,16 +35,16 @@
       "Frigo in camera",
       "TV in camera"
     ],
-    "rate": 0,
+    "rate": 5,
     "ratings": {
-      "cleaning": 0,
-      "position": 0,
-      "services": 0,
-      "quality": 0
+      "cleaning": 5,
+      "position": 5,
+      "services": 5,
+      "quality": 5
     },
-    "score": 0.0,
-    "numReviews": 0,
-    "dateLastReview": ""
+    "score": 3.0,
+    "numReviews": 1,
+    "dateLastReview": "08-01-2024 15:52:51"
   },
   {
     "id": 3,
