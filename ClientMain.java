@@ -18,14 +18,14 @@ public class ClientMain {
 
     public static void main(String[] args) throws UnknownHostException, IOException {
 
-        /* Variabili di Config */
+        /** Variabili di Config */
         Config configFile = configManager.readConfigFile();
         String serverName = configFile.getServerName();
         int port = configFile.getServerPort();
         int notificationPort = configFile.getnNotificationPort();
+        /** ------------------ */
 
-        /* ------------------ */
-
+        // Variabili che gestiscono la selezione dei comandi e il flusso del programma
         int comandoScelto = -1;
         Boolean exit = false, tryAgain;
 
@@ -47,21 +47,25 @@ public class ClientMain {
             outputStream = new PrintWriter(socket.getOutputStream(), true);
             inputStream = new Scanner(socket.getInputStream());
 
+            // Avvia un listener per eventuali notifiche dal server
             startListeningForNotifications(notificationSocket);
 
+            // Loop principale
             while (!exit) {
                 showAllCommands(comandiDisponibili);
 
                 do {
-                    tryAgain = false;
+                    // Reset del flag per i nuovi tentativi
+                    tryAgain = false; 
 
                     System.out.print("\nInserire un Comando (o premere 0 per mostrare i comandi disponibili): ");
                     try {
-                        comandoScelto = userInput.nextInt();
-    
+                        comandoScelto = Integer.parseInt(userInput.nextLine());
+
+                        // Gestione della selezione del comando
                         if (comandoScelto == 0) {
                             showAllCommands(comandiDisponibili);
-                            tryAgain = true;
+                            tryAgain = true; // Imposta il flag per riprovare
     
                         } else if (!comandiDisponibili.containsKey(comandoScelto)) {
                             System.out.printf("\nERRORE: Il comando %d non esiste!\n", comandoScelto);
@@ -70,13 +74,9 @@ public class ClientMain {
                     } catch (InputMismatchException e) {
                         System.out.printf("\nERRORE: Il comando inserito non esiste!\n");
                         tryAgain = true;
-                        
-                        // Consuma il resto della riga di input errata
-                        userInput.nextLine();
                     }
 
                 } while(tryAgain);
-                userInput.nextLine(); // Consuma il carattere di newline residuo nel buffer
 
                 switch (comandoScelto) {
                     case 1: // Sign-Up
@@ -126,6 +126,11 @@ public class ClientMain {
         }
     }
 
+    /** 
+     * Visualizza tutti i comandi disponibili
+     * 
+     * @param comandiDisponibili Una mappa che associa un intero (tasto) a una stringa descrittiva di un comando
+    */
     private static void showAllCommands (Map <Integer, String> comandiDisponibili) {
         int chiave;
         String valore;
@@ -142,61 +147,85 @@ public class ClientMain {
             System.out.printf("[Tasto %d] %s\n", chiave, valore);
         }       
     }
-
+    
+    /** 
+     * Gestisce il processo di registrazione dell'utente
+     * 
+     * @param userInput Scanner per ricevere l'input dell'utente
+    */
     private static void register(Scanner userInput) throws IOException{
         System.out.println("\nREGISTRAZIONE:");
 
-        // Controllo se l'user è presente, se ritorno false vuol dire che l'utente ha sbagliato input e non vuole ritentare l'accesso
+        // Tenta di registrare l’utente. Se il metodo ritorna false, l’utente ha scelto di non riprovare dopo un input errato.
         if (!searchUserCheck(userInput, "REGISTER")) return;
         
         System.out.println("\nRegistrazione avvenuta con successo!");
 
-        comandiDisponibili.remove(1); // Elimino 'Register' dai comandi disponibili
+        // Rimuove l’opzione di registrazione dai comandi disponibili una volta che la registrazione è stata completata
+        comandiDisponibili.remove(1);
     }
 
+    /**
+    * Gestisce il processo di accesso (login) dell’utente.
+    *
+    * @param userInput Scanner per ricevere l’input dell’utente.
+    */    
     private static void login(Scanner userInput) {        
         System.out.println("\nLOG-IN:");
         
-        // Controllo se l'user è presente, se ritorno false vuol dire che l'utente ha sbagliato input e non vuole ritentare l'accesso
+        // Tenta di effettuare il login. Se il metodo ritorna false, l’utente ha scelto di non riprovare dopo un input errato.
         if (!searchUserCheck(userInput, "LOGIN")) return;
         
         System.out.println("\nLog-In avvenuto con successo!");
     
-        comandiDisponibili.remove(1); // Elimino 'Register' dai comandi disponibili
-        comandiDisponibili.remove(2); // Elimino 'Login' dai comandi disponibili
-        comandiDisponibili.put(5, "Insert Review");
-        comandiDisponibili.put(6, "Show My Badges");
-        comandiDisponibili.put(7, "Log-Out");
+        // Aggiorna i comandi disponibili in base allo stato dell’utente (loggato o non loggato)
+        comandiDisponibili.remove(1); // Rimuove l’opzione di registrazione
+        comandiDisponibili.remove(2); // Rimuove l’opzione di login
+        comandiDisponibili.put(5, "Insert Review"); // Aggiunge l’opzione di inserire una recensione
+        comandiDisponibili.put(6, "Show My Badges"); // Aggiunge l’opzione di visualizzare i propri distintivi
+        comandiDisponibili.put(7, "Log-Out"); // Aggiunge l’opzione di logout
     }
     
+    /**
+    * Gestisce il logout dell’utente.
+    */
     private static void logOut() {
         outputStream.println("LOGOUT");
 
+        // Aggiorna i comandi disponibili rimuovendo le opzioni non più disponibili dopo il logout
         comandiDisponibili.put(1, "Register");
         comandiDisponibili.put(2, "Log-In");
-        comandiDisponibili.remove(5); // Elimino 'Insert Review' dai comandi disponibili
-        comandiDisponibili.remove(6); // Elimino 'Show My Badges' dai comandi disponibili
-        comandiDisponibili.remove(7); // Elimino 'Log Out' dai comandi disponibili
+        comandiDisponibili.remove(5); // Rimuove l’opzione di inserire una recensione
+        comandiDisponibili.remove(6); // Rimuove l’opzione di visualizzare i propri distintivi
+        comandiDisponibili.remove(7); // Rimuove l’opzione di logout
     }
     
+    /**
+    * Interagisce con l’utente per eseguire una ricerca di un hotel specifico e visualizzare i risultati.
+    *
+    * @param userInput Scanner per ricevere l’input dell’utente.
+    */
     private static void searchHotel(Scanner userInput) {
         String serverResponse = "";
 
         System.out.println("\nRICERCA HOTEL:");
-        
-        // Controllo se l'hotel, se ritorno false vuol dire che l'utente ha sbagliato input e non vuole ritentare la ricerca
+
+        // Interazione per il controllo della ricerca; ritorna se l’utente interrompe il processo
         if (!searchHotelCheck(userInput, "SEARCH_HOTEL")) {
             outputStream.println("USER_EXIT");
             return;
         }
 
+        // Invio della richiesta di ricerca al server
         outputStream.println("REQUEST_SEARCH");
 
         System.out.println("\nHotel trovato\n-------------");
 
+        // Ricezione e stampa dei dati dell’hotel dal server
         while (inputStream.hasNextLine()) {
             serverResponse = inputStream.nextLine();
             
+             // Controllo per identificare la fine dei dati relativi all’hotel
             if (serverResponse.equals("END")) {
                 break;
             }
@@ -205,6 +234,11 @@ public class ClientMain {
         }
     }
 
+    /**
+    * Gestisce la ricerca di tutti gli hotel in una città specificata dall’utente.
+    *
+    * @param userInput Scanner per ricevere l’input dell’utente.
+    */    
     private static void searchAllHotels(Scanner userInput) {
         String serverResponse = "";
         System.out.println("\nRICERCA DI TUTTI GLI HOTEL DI UNA CITTA':");
@@ -226,6 +260,8 @@ public class ClientMain {
 
             if (serverResponse.equals("HOTEL_NOT_FOUND")){
                 System.out.printf("\nQuesta città (%s) non ha Hotel!\n", nomeCitta);
+
+                // Offre all’utente la possibilità di riprovare o di uscire
                 try {
                     System.out.print("\nPremere 0 per riprovare o qualsiasi altro numero per uscire: ");
                     inputChoice = Integer.parseInt(userInput.nextLine());
@@ -235,6 +271,7 @@ public class ClientMain {
                     return;
                 }
 
+                // Se l’utente sceglie di riprovare, imposta la flag
                 if (inputChoice == 0) {
                     tryAgain = true;
                 } else {
@@ -248,26 +285,36 @@ public class ClientMain {
 
         outputStream.println("REQUEST_SEARCH");
 
+        // Ricezione e stampa dei dati degli hotel dal server
         while (inputStream.hasNextLine()) {
             serverResponse = inputStream.nextLine();
 
+            // Controllo per individuare la fine dei dati
             if (serverResponse.equals("END")) {
                 break;
             }
 
             System.out.println(serverResponse);
-            
         }
     }
-    
+ 
+    /**
+    * Visualizza i badge dell’utente.
+    */    
     private static void showBadges() {
         String serverResponse;
 
         outputStream.println("SHOW_BADGE");
+
         serverResponse = inputStream.nextLine();
         System.out.printf("\n%s\n", serverResponse);
     }
 
+    /**
+    * Consente all’utente di inserire una recensione per un hotel.
+    *
+    * @param userInput Scanner per ricevere l’input dell’utente.
+    */    
     private static void insertReview(Scanner userInput) {
         String serverResponse = "";
         int globalScore = 0;
@@ -280,6 +327,8 @@ public class ClientMain {
             outputStream.println("USER_EXIT");
             return;
         }
+
+        // Richiesta di autorizzazione per inserire una recensione
         outputStream.println("REQUEST_REVIEW");
         serverResponse = inputStream.nextLine();
 
@@ -299,6 +348,7 @@ public class ClientMain {
             outputStream.println(singleScores[2]);
             outputStream.println(singleScores[3]);
             
+            // Ricezione della conferma del server e notifica all’utente del successo
             serverResponse = inputStream.nextLine();
             if (serverResponse.equals("ACCEPT")) {
                 System.out.println("\nNuova recensione aggiunta con successo!");
@@ -306,7 +356,14 @@ public class ClientMain {
         }
     }
 
-    // Other Methods
+    // OTHER METHODS:
+
+    /**
+    * Avvia un thread dedicato all'ascolto di eventuali notifiche dal server.
+    * In caso di notifica aggiunge un'opzione al menu per permettere all'utente di visualizzarla
+    * 
+    * @param socket Il socket attraverso il quale il client riceve notifiche dal server
+    */
     private static void startListeningForNotifications(Socket socket) {
         new Thread(() -> {
             try (Scanner inputStream = new Scanner(socket.getInputStream());
@@ -327,11 +384,22 @@ public class ClientMain {
         }).start();
     }
 
+    /** 
+    * Visualizza la notifica ricevuta dal server e rimuove l'opzione dal menu
+    */  
     private static void showNotify() {
         System.out.println("\n" + notify);
         comandiDisponibili.remove(9);
     }
 
+    /**
+    * Chiede all'utente di inserire un valore intero in un intervallo specifico e ripete la richiesta in caso di input errato.
+    * @param userInput Scanner usato per ricevere l’input dell’utente.
+    * @param msg Il messaggio da visualizzare all’utente.
+    * @param min Il valore minimo accettabile.
+    * @param max Il valore massimo accettabile.
+    * @return Il valore intero inserito dall’utente.     
+    */
     private static int inputCheck(Scanner userInput, String msg, int min, int max) {
         int value = -1;
         boolean tryAgain;
@@ -359,6 +427,14 @@ public class ClientMain {
         return value;
     }
 
+    /**
+    * Interagisce con l’utente per effettuare una ricerca di un hotel e verifica la risposta dal server.
+    * Se l’hotel cercato non viene trovato, offre all’utente l’opzione di riprovare.
+    *
+    * @param userInput Scanner per ricevere l’input dell’utente.
+    * @param searchType Stringa che indica il tipo di ricerca (SEARCH_HOTEL o INSERT_REVIEW).
+    * @return true se l’hotel è stato trovato o l’utente decide di non ripetere la ricerca, altrimenti false.
+    */
     private static boolean searchHotelCheck(Scanner userInput, String searchType) {
         int inputChoice;
         boolean tryAgain;
@@ -399,6 +475,13 @@ public class ClientMain {
         return true;
     }
 
+    /** 
+    * Interagisce con l’utente per eseguire il processo di login o registrazione e verifica la risposta del server.
+    *
+    * @param userInput Scanner per ricevere l’input dell’utente.
+    * @param searchType Stringa che indica il tipo di processo (LOGIN o REGISTER).
+    * @return true se il processo è andato a buon fine, false altrimenti.
+    */
     private static boolean searchUserCheck(Scanner userInput, String searchType) {
         String username, password, serverResponse;
         int inputChoice;
@@ -448,6 +531,9 @@ public class ClientMain {
         return true;
     }
 
+    /**
+    * Pulisce il terminale in base al sistema operativo su cui è in esecuzione il client.
+    */
     private static void clearTerminal() {
         String os = System.getProperty("os.name").toLowerCase();
 

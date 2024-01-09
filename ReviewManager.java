@@ -17,7 +17,7 @@ import com.google.gson.stream.JsonReader;
 public class ReviewManager {
     private static final String REVIEW_FILE_PATH = "JSON/Review.json";
 
-    public void addReview(LoggedUser loggedUser, int idHotel, String nomeHotel, String nomeCitta, int globalScore, int[] singleScores) {
+    public synchronized void addReview(LoggedUser loggedUser, int idHotel, String nomeHotel, String nomeCitta, int globalScore, int[] singleScores) {
         LocalDateTime dateTime = LocalDateTime.now();
         
         // Serializza la data in una stringa formattata
@@ -49,7 +49,7 @@ public class ReviewManager {
         loggedUser.setNumReview(loggedUser.getNumReview() + 1);
     }
 
-    public int getNumReviewByUsername (String username) {
+    public synchronized int getNumReviewByUsername (String username) {
         String fieldName, existingUsername = null;
         int numReview = 0;
 
@@ -89,7 +89,7 @@ public class ReviewManager {
         return numReview;
     }
 
-    public List<Review> getAllReviewByHotel (int idHotel) {
+    public synchronized List<Review> getAllReviewByHotel (int idHotel) {
         String fieldName, username = "", existingHotel = "", existingCity = "", formattedDateTime = "";
         int globalScore = 0, existingIdHotel = -1;
         int[] singleScores = {0,0,0,0};
@@ -148,7 +148,7 @@ public class ReviewManager {
         return allReviews;
     }
 
-    public String getDateLastReviewByUser(String username, int idHotel) {
+    public synchronized String getDateLastReviewByUser(String username, int idHotel) {
         String existingDate = "", existingUsername = "", fieldName = "";
         int existingIdHotel = -1;
     

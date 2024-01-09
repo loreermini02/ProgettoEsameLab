@@ -13,7 +13,7 @@ import com.google.gson.stream.JsonReader;
 public class HotelManager {
     private static final String HOTEL_FILE_PATH = "JSON/Hotels.json";
 
-    public void loadReview (Hotel hotel) {
+    public synchronized void loadReview (Hotel hotel) {
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         Type listType = new TypeToken<List<Hotel>>(){}.getType();
 
@@ -41,7 +41,7 @@ public class HotelManager {
         }
     }
 
-    public Hotel searchHotel (String nomeHotel, String citta) {
+    public synchronized Hotel searchHotel (String nomeHotel, String citta) {
         String fieldName = "";
 
         // Proprietà Hotel
@@ -117,7 +117,7 @@ public class HotelManager {
         return null;
     }
 
-    public List<Hotel> searchHotelByCity (String citta) {
+    public synchronized List<Hotel> searchHotelByCity (String citta) {
         List<Hotel> resultHotels = new ArrayList<>();
         
         String fieldName = "";
@@ -195,7 +195,7 @@ public class HotelManager {
         return resultHotels;
     }
     
-    public List<Hotel> searchAllHotels () {
+    public synchronized List<Hotel> searchAllHotels () {
        List<Hotel> resultHotels = new ArrayList<>();
 
         String fieldName = "";

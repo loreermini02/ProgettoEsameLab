@@ -14,7 +14,7 @@ public class UserManager {
 
     private static final String USERS_FILE_PATH = "JSON/Users.json";
 
-    public void addUser(String username, String password) {
+    public synchronized void addUser(String username, String password) {
         // Crea l’oggetto JSON per l’utente usando Gson
 
         User newUser = new User(username, password);
@@ -39,7 +39,7 @@ public class UserManager {
         }
     }
 
-    public String[] checkUsername(String username) {
+    public synchronized String[] checkUsername(String username) {
         String existingUsername = null, password = "", fieldName = "";
         String[] result = {"",""};
 
@@ -90,7 +90,7 @@ public class UserManager {
         return result;
     }
 
-    public boolean checkUsername (String username, String password) {
+    public synchronized boolean checkUsername (String username, String password) {
         String[] resultCheck = checkUsername(username);
         if (!resultCheck[0].isEmpty() && resultCheck[1].equals(password))
             return true;
