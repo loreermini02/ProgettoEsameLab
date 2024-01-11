@@ -14,9 +14,23 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 
+/**
+* Gestisce il file json contenente le recensioni fatte dagli utenti.
+*/
 public class ReviewManager {
     private static final String REVIEW_FILE_PATH = "JSON/Review.json";
 
+    /**
+    * Aggiunge una recensione al file. 
+    * Il metodo è synchronized per gestire l’accesso concorrente al file.
+    *
+    * @param loggedUser L’utente che ha fatto il login e vuole lasciare la recensione.
+    * @param idHotel L’identificativo numerico dell’hotel oggetto della recensione.
+    * @param nomeHotel Il nome dell’hotel oggetto della recensione.
+    * @param nomeCitta La città in cui si trova l’hotel.
+    * @param globalScore Il punteggio globale assegnato all’hotel.
+    * @param singleScores I punteggi per singola categoria assegnati all’hotel.
+    */    
     public synchronized void addReview(LoggedUser loggedUser, int idHotel, String nomeHotel, String nomeCitta, int globalScore, int[] singleScores) {
         LocalDateTime dateTime = LocalDateTime.now();
         
@@ -49,6 +63,12 @@ public class ReviewManager {
         loggedUser.setNumReview(loggedUser.getNumReview() + 1);
     }
 
+    /**
+    * Ottiene il numero di recensioni scritte da un utente specifico.
+    *
+    * @param username Il nome dell’utente di cui si desiderano contare le recensioni.
+    * @return Il numero di recensioni effettuate dall’utente.
+    */    
     public synchronized int getNumReviewByUsername (String username) {
         String fieldName, existingUsername = null;
         int numReview = 0;
@@ -89,6 +109,12 @@ public class ReviewManager {
         return numReview;
     }
 
+    /**
+    * Ottiene tutte le recensioni relative a un determinato hotel.
+    *
+    * @param idHotel L’identificativo numerico dell’hotel per cui si vogliono ottenere le recensioni.
+    * @return Una lista di recensioni relative all’hotel specificato.
+    */    
     public synchronized List<Review> getAllReviewByHotel (int idHotel) {
         String fieldName, username = "", existingHotel = "", existingCity = "", formattedDateTime = "";
         int globalScore = 0, existingIdHotel = -1;
@@ -148,6 +174,13 @@ public class ReviewManager {
         return allReviews;
     }
 
+    /**
+    * Ottiene la data dell’ultima recensione effettuata da un utente per un certo hotel.
+    *
+    * @param username Il nome dell’utente di cui si desidera ottenere la data dell’ultima recensione.
+    * @param idHotel L’identificativo numerico dell’hotel per cui si desidera ottenere la data dell’ultima recensione dell’utente.
+    * @return La stringa che rappresenta la data e l’ora dell’ultima recensione effettuata dall’utente specificato.
+    */
     public synchronized String getDateLastReviewByUser(String username, int idHotel) {
         String existingDate = "", existingUsername = "", fieldName = "";
         int existingIdHotel = -1;
@@ -193,7 +226,14 @@ public class ReviewManager {
         return existingDate;
     }
     
-    // Other methods
+    // OTHER METHODS:
+    
+    /**
+    * Legge una lista di valutazioni da un JsonReader.
+    *
+    * @param jsonReader Il reader da cui leggere la lista di rating.
+    * @return Un array di interi contenente le valutazioni.
+    */    
     private int[] readRatingList(JsonReader jsonReader) throws IOException {
         int[] ratings = {0,0,0,0};
  

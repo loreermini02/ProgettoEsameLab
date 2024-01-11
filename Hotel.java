@@ -1,7 +1,14 @@
 import java.util.List;
 
+/**
+* La classe Hotel rappresenta le info di un hotel.
+*/
+
 public class Hotel {
+    // Identificatore univoco dell'hotel
     private int id;
+
+    // Altri dettagli:
     private String name;
     private String description;
     private String city;
@@ -9,6 +16,8 @@ public class Hotel {
     private List<String> services;
     private int rate;
     private Ratings ratings;
+
+    // Punteggio medio dell’hotel basato sulle recensioni.
     private double score;
     private int numReviews;
     private String dateLastReview;
@@ -33,6 +42,10 @@ public class Hotel {
 
         this.dateLastReview = dateLastReview;
     } 
+
+    /**
+    * Classe Ratings incapsula le valutazioni specifiche in diverse categorie per l’hotel.
+    */
 
     class Ratings {
         int cleaning;
@@ -97,15 +110,14 @@ public class Hotel {
     public int getNumReviews() {
         return numReviews;
     }
-
-    public void IncrementNumReview() {
-        this.numReviews++;
-    }
-
+    
     public void setNumReviews(int num) {
         this.numReviews = num;
     }
-
+    
+    public void IncrementNumReview() {
+        this.numReviews++;
+    }
     public void setDateLastReview(String date) {
         this.dateLastReview = date;
     }

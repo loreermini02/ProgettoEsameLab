@@ -10,9 +10,18 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 
+
+/**
+* Gestisce le opererazioni sul file Json contenente i dettagli di ogni Hotel.
+*/
 public class HotelManager {
     private static final String HOTEL_FILE_PATH = "JSON/Hotels.json";
 
+    /**
+    * Aggiorna le recensioni relative ad un hotel.
+    *
+    * @param hotel Oggetto Hotel contenente le informazioni aggiornate da salvare.
+    */    
     public synchronized void loadReview (Hotel hotel) {
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         Type listType = new TypeToken<List<Hotel>>(){}.getType();
@@ -41,6 +50,13 @@ public class HotelManager {
         }
     }
 
+    /**
+    * Ricerca un hotel per nome e città.
+    *
+    * @param nomeHotel Nome dell’hotel da cercare.
+    * @param citta Città in cui si trova l’hotel.
+    * @return Oggetto Hotel che corrisponde ai criteri di ricerca oppure null se l’hotel non è trovato.
+    */    
     public synchronized Hotel searchHotel (String nomeHotel, String citta) {
         String fieldName = "";
 
@@ -117,6 +133,12 @@ public class HotelManager {
         return null;
     }
 
+    /**
+    * Ricerca tutti gli hotel nella città specificata.
+    *
+    * @param citta Città in cui si vogliono trovare gli hotel.
+    * @return Lista di oggetti Hotel che si trovano nella città specificata.
+    */    
     public synchronized List<Hotel> searchHotelByCity (String citta) {
         List<Hotel> resultHotels = new ArrayList<>();
         
@@ -195,6 +217,11 @@ public class HotelManager {
         return resultHotels;
     }
     
+    /**
+    * Restituisce tutti gli hotel presenti nel file JSON.
+    *
+    * @return Lista di tutti gli Hotel.
+    */    
     public synchronized List<Hotel> searchAllHotels () {
        List<Hotel> resultHotels = new ArrayList<>();
 
@@ -273,7 +300,14 @@ public class HotelManager {
         return resultHotels;        
     }
 
-    // Other methods
+    // OTHER METHODS:
+
+    /**
+    * Legge una lista di stringhe da un JsonReader.
+    *
+    * @param jsonReader Il reader da cui leggere la lista.
+    * @return Lista di stringhe lette dal JsonReader.
+    */    
     private static List<String> readStringList(JsonReader jsonReader) throws IOException {
         List<String> list = new ArrayList<>();
 
@@ -287,6 +321,12 @@ public class HotelManager {
         return list;
     }
 
+    /**
+    * Legge una lista di valutazioni (array di interi) da un JsonReader.
+    *
+    * @param jsonReader Il reader da cui leggere la lista di valutazioni.
+    * @return Array di interi che rappresentano le valutazioni.
+    */    
     private static int[] readRatingList(JsonReader jsonReader) throws IOException {
         int[] ratings = {0,0,0,0};
  

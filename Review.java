@@ -1,4 +1,7 @@
-
+/**
+ * La classe Review rappresenta una recensione fatta da un utente per un hotel specifico.
+ * Contiene dettagli come il punteggio globale, punteggio specifico e data della recensione
+ */
 public class Review {
     private String username;
     private int idHotel;
@@ -16,6 +19,8 @@ public class Review {
         this.globalScore = globalScore;
         
         this.singleScores = singleScores;
+
+        // Data e ora in cui la recensione è stata scritta
         this.dateTime = dateTime;
     }
 

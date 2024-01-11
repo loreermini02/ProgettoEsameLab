@@ -3,9 +3,20 @@ import java.io.IOException;
 
 import com.google.gson.stream.JsonReader;
 
+/**
+ * Il ConfigManager si occupa della lettura delle configurazioni da un file JSON.
+*/
 public class ConfigManager {
     static final String CONFIG_FILE_PATH = "JSON/Config.json";
 
+    /*
+    * Legge il file di configurazione e costruisce un oggetto Config con i dati recuperati.
+    *
+    * Se non viene trovato un valore per uno qualsiasi dei campi, si utilizzano i valori di default 
+    * specificati all’inizio del metodo.
+    *
+    * @return Oggetto Config con le informazioni di configurazione lette dal file JSON.
+    */    
     public Config readConfigFile() {
         String fieldName, serverName = "localhost";
         int serverPort = 8080, notificationPort = 1111, numThread = 20, timer = 40, numDay = 30;

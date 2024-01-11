@@ -11,9 +11,18 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.stream.JsonReader;
 
+/**
+* Gestisce la creazione e la lettura di una classifica degli hotel
+* ordinati per punteggio in base alla loro città.
+*/
 public class RankingManager {
     private static final String RANKING_FILE_PATH = "JSON/Ranking.json";
-    
+
+    /**
+    * Crea e salva una classifica degli hotel per ciascuna città.
+    *
+    * @param allHotel Lista di tutti gli hotel da classificare.
+    */    
     public synchronized void rankHotels(List<Hotel> allHotel) throws IOException {
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         Map <String, List<Hotel>> cityToHotel = new HashMap<>();
@@ -31,11 +40,17 @@ public class RankingManager {
             cityToRankedHotels.put(entry.getKey(), rankedHotels);
         }
 
+        // Scrittura della classifica ordinata nel file JSON.
         try (Writer writer = new FileWriter(RANKING_FILE_PATH)) {
             gson.toJson(cityToRankedHotels, writer);
         }
     }
 
+    /**
+    * Legge e ritorna il nome dell’hotel che si trova al primo posto in classifica per ogni città.
+    *
+    * @return Mappa con chiave il nome della città e valore il nome dell’hotel primo in classifica.
+    */    
     public synchronized Map<String, String> readFirstInRank() {
         Map<String, String> firstInCity = new HashMap<>();
         String nomeCitta = "", fieldName, nomeHotel = "";

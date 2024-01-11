@@ -10,10 +10,19 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.List;
 
+/**
+ * Gestisce le operazioni relative al file json contenente tutti gli utenti registrati al sistema.
+ */
 public class UserManager {
-
     private static final String USERS_FILE_PATH = "JSON/Users.json";
 
+    /**
+    * Aggiunge un nuovo utente al file JSON.
+    * Il metodo è synchronized per gestire l’accesso concorrente al file.
+    *
+    * @param username L’username per il nuovo utente.
+    * @param password La password per il nuovo utente.
+    */    
     public synchronized void addUser(String username, String password) {
         // Crea l’oggetto JSON per l’utente usando Gson
 
@@ -39,6 +48,12 @@ public class UserManager {
         }
     }
 
+    /**
+    * Verifica se l’username esiste e ne restituisce le credenziali sotto forma di array.
+    *
+    * @param username L’username da verificare.
+    * @return Un array contenente l’username e la password se trovati, o un array vuoto altrimenti.
+    */
     public synchronized String[] checkUsername(String username) {
         String existingUsername = null, password = "", fieldName = "";
         String[] result = {"",""};
@@ -90,6 +105,13 @@ public class UserManager {
         return result;
     }
 
+    /**
+    * Verifica se l’username e la password corrispondono ad un account esistente.
+    *
+    * @param username L’username da verificare.
+    * @param password La password da verificare.
+    * @return true se le credenziali corrispondono, false altrimenti.
+    */
     public synchronized boolean checkUsername (String username, String password) {
         String[] resultCheck = checkUsername(username);
         if (!resultCheck[0].isEmpty() && resultCheck[1].equals(password))

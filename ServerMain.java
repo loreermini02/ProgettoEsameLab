@@ -11,7 +11,9 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-
+/**
+* Avvia e gestisce un server per l’applicazione di recensioni di hotel.
+*/
 public class ServerMain {
 
     static ConfigManager configManager = new ConfigManager();
@@ -64,8 +66,9 @@ public class ServerMain {
         }
     }
 
-    //Other Methods
-
+    /**
+    * Ricarica i ranking degli hotel e invia notifiche se ci sono cambiamenti.
+    */
     private static void reloadRanking() throws IOException {
         List<Hotel> allHotel;
         Map<String, String> rankBeforeUpdate, rankAfterUpdate;
@@ -82,6 +85,12 @@ public class ServerMain {
         System.out.println("Ranking Aggiornato!");
     }   
 
+    /**
+    * Confronta due mappe per determinare se vi sono stati cambiamenti nel ranking.
+    *
+    * @param hashMap1 La mappa contenente il ranking prima dell’aggiornamento.
+    * @param hashMap2 La mappa contenente il ranking dopo l’aggiornamento.
+    */
     private static void checkRanking(Map<String,String> hashMap1, Map<String,String> hashMap2) {
         Set<String> citta = hashMap1.keySet();
 
@@ -92,6 +101,12 @@ public class ServerMain {
         }
     }
 
+    /**
+    * Notifica gli utenti loggati di un cambiamento nel ranking.
+    *
+    * @param city La città coinvolta nel cambiamento di ranking.
+    * @param nomeHotel Il nuovo hotel in prima posizione nel ranking di quella città.
+    */
     private static void notifyLoggedUser(String city, String nomeHotel) {
         String message = "NOTIFICA: Ranking Aggiornato! A '" + city + "' l'hotel in 1° posizione è diventato '" + nomeHotel + "'";
 
