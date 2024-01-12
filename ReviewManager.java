@@ -18,7 +18,7 @@ import com.google.gson.stream.JsonReader;
 * Gestisce il file json contenente le recensioni fatte dagli utenti.
 */
 public class ReviewManager {
-    private static final String REVIEW_FILE_PATH = "JSON/Review.json";
+    private static final String REVIEW_FILE_PATH = "JSON/Reviews.json";
 
     /**
     * Aggiunge una recensione al file. 

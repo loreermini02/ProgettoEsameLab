@@ -4026,16 +4026,16 @@
         "Palestra",
         "Cancellazione gratuita"
       ],
-      "rate": 1,
+      "rate": 0,
       "ratings": {
-        "cleaning": 3,
-        "position": 2,
-        "services": 4,
-        "quality": 5
+        "cleaning": 0,
+        "position": 0,
+        "services": 0,
+        "quality": 0
       },
-      "score": 0.6,
-      "numReviews": 1,
-      "dateLastReview": "09-01-2024 18:21:56"
+      "score": 0.0,
+      "numReviews": 0,
+      "dateLastReview": ""
     },
     {
       "id": 2,
