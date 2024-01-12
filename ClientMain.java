@@ -74,6 +74,9 @@ public class ClientMain {
                     } catch (InputMismatchException e) {
                         System.out.printf("\nERRORE: Il comando inserito non esiste!\n");
                         tryAgain = true;
+                    } catch (NumberFormatException e) {
+                        System.out.printf("\nERRORE: Il comando inserito non esiste!\n");
+                        tryAgain = true;
                     }
 
                 } while(tryAgain);
@@ -267,6 +270,10 @@ public class ClientMain {
                     inputChoice = Integer.parseInt(userInput.nextLine());
                 } catch (InputMismatchException e) {
                     outputStream.println("USER_EXIT");
+                    
+                    return;
+                } catch (NumberFormatException e) {
+                    outputStream.println("USER_EXIT");
 
                     return;
                 }
@@ -409,7 +416,7 @@ public class ClientMain {
 
             try {
                 System.out.print(msg);
-                value = userInput.nextInt();
+                value = Integer.parseInt(userInput.nextLine());
                 if (value < min || value > max) {
                     System.out.println("Valore non valido!"); 
                     tryAgain = true;
@@ -418,10 +425,10 @@ public class ClientMain {
                 System.out.println("Valore non valido!"); 
                 tryAgain = true;
 
-                // Consuma il resto della riga di input errata
-                userInput.nextLine();
+            } catch (NumberFormatException e) {
+                System.out.println("Valore non valido!"); 
+                tryAgain = true;
             }
-                
         } while(tryAgain);
 
         return value;
@@ -459,8 +466,10 @@ public class ClientMain {
                 System.out.printf("\nHotel (%s) non trovato!\n", nomeHotel);
                 try {
                     System.out.print("\nPremere 0 per riprovare o qualsiasi altro numero per uscire: ");
-                    inputChoice =  Integer.parseInt(userInput.nextLine());
+                    inputChoice = Integer.parseInt(userInput.nextLine());
                 } catch (InputMismatchException e) {
+                    return false;
+                } catch (NumberFormatException e) {
                     return false;
                 }
                 
@@ -503,22 +512,18 @@ public class ClientMain {
             serverResponse = inputStream.nextLine();
             if (serverResponse.equals("DENIED")){ 
                 if (searchType.equals("LOGIN"))
-                    System.out.printf("\nUsername (%s) e/o Password (%s) sbagliati", username, password);
+                    System.out.printf("\nUsername (%s) e/o Password (%s) sbagliati\n", username, password);
                 else if (searchType.equals("REGISTER"))
-                    System.out.printf("\nUsername (%s) già utilizzato!", username);
+                    System.out.printf("\nUsername (%s) già utilizzato!\n", username);
 
                 try {
                     System.out.print("\nPremere 0 per riprovare o qualsiasi altro numero per uscire: ");
-                    inputChoice =  userInput.nextInt();
+                    inputChoice = Integer.parseInt(userInput.nextLine());
                 } catch (InputMismatchException e) {
-                    // Consuma il resto della riga di input errata
-                    userInput.nextLine();
-
+                    return false;
+                } catch (NumberFormatException e) {
                     return false;
                 }
-                
-                // Consuma il carattere di nuova linea nel buffer
-                userInput.nextLine();
 
                 if (inputChoice == 0) {
                     tryAgain = true;
